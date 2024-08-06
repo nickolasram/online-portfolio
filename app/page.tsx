@@ -1,95 +1,73 @@
-import Image from "next/image";
+'use client';
+
 import styles from "./page.module.css";
+import {Stack} from '@mui/material';
+import Image from 'next/image';
+
+
+
 
 export default function Home() {
+  function parallax() {
+    var s = document.getElementById("banner-div");
+  var yPos = 0 - window.pageYOffset/11;  
+  s!.style.top = yPos + "%"; }
+
+  window.addEventListener("scroll", function(){
+      parallax(); 
+  });
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main>
+      {/* <Stack>
+        <p>asad</p>
+        <p>asdad</p>
+        <p>udqwi</p>
+      </Stack> */}
+      <div className="banner-wrapper">
+        <div className="banner-div" id="banner-div">
+          <h1 className="banner-heading">
+            This is a welcoming
+          </h1>
+          <Image
+            src="https://imgur.com/voEgSSD.jpeg"
+            height={100}
+            width={100}
+            alt='personal photo'
+          />
+          <p className="banner-p">
+            This is a paragraph containing details.
+          </p>
         </div>
       </div>
+      <div className="carousel-wrapper">
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <style jsx>{`
+          .banner-wrapper{
+            height: 75vh;
+            background-color: red;
+            width: 100vw;
+            z-index: 1;
+            overflow: visible;
+          }
+          .banner-div{
+            height: 100vh;
+            width: 100vw;
+            background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,0) 100%);
+            z-index: 2;
+            position: relative;
+          }
+          .carousel-wrapper{
+            background-color: blue;
+            width: 100vw;
+            height: 75vh;
+            z-index: 1;
+          }
+          h1, p{
+            color: white;
+          }
+      `}</style>
     </main>
   );
 }
