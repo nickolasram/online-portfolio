@@ -4,5 +4,6 @@ export interface Project{
     github?: string;
     site?: string;
     description?: string;
-    role: string; 
+    role?: string;
+    tags?: string[];
 }

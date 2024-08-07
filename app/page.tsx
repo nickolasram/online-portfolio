@@ -1,12 +1,18 @@
 'use client';
 
 import styles from "./page.module.css";
-import {Stack} from '@mui/material';
+import { Carousel } from "@/components/Carousel";
 import Image from 'next/image';
 import { useState } from "react";
+import bart from '@/public/bart.jpg'
+import suit from '@/public/suit.png'
+import { Project } from "@/Models/Project";
 
-
-// filter: brightness(0.4);
+const project1: Project = {title: 'a'}
+const project2: Project = {title: 'b'}
+const project3: Project = {title: 'c'}
+const project4: Project = {title: 'd'}
+const projectArray = [project1, project2, project3, project4, project1, project2, project3, project4]
 
 export default function Home() {
   const [pageYOffset, setPageYOffset] = useState(window.pageYOffset);
@@ -14,11 +20,9 @@ export default function Home() {
   function parallax() {
     var s = document.getElementById("banner-div");
     var r = document.getElementById("banner-wrapper-backdrop-filter");
-    var yPos = 0 - window.pageYOffset/4;  
+    var yPos = 0 - window.pageYOffset/8;  
     s!.style.top = yPos + "%"; 
-    var z = document.getElementById("carousel-wrapper");
     var filterValue = Math.min(0.01 * Math.max(10, window.pageYOffset/4), 1)
-    z!.style.filter = `brightness(${filterValue})`;
     r!.style.filter = `brightness(${filterValue})`;
     setPageYOffset(window.pageYOffset)
   }
@@ -29,23 +33,20 @@ export default function Home() {
 
   return (
     <main>
-      {/* <Stack>
-        <p>asad</p>
-        <p>asdad</p>
-        <p>udqwi</p>
-      </Stack> */}
       <div className="banner-wrapper">
-        <div className="banner-wrapper-backdrop-filter" id="banner-wrapper-backdrop-filter"></div>
-        <div className="banner-div" id="banner-div">
+      <div className="banner-div" id="banner-div">
           <div className="banner-grid">
             <Image
-              src="https://imgur.com/voEgSSD.jpeg"
-              height={300}
-              width={300}
+              src={bart}
+              height={250}
+              width={'auto'}
               alt='personal photo'
               className="banner-image"
               style={{float: 'right',
-                      margin: 5}}
+                      marginRight: 75,
+                      marginLeft: 25,
+                      marginBottom: 25
+                    }}
             />
             <div className="banner-headings-flex">
               <h1 className="banner-heading">
@@ -67,62 +68,54 @@ export default function Home() {
             Ut viverra augue mauris, a euismod mauris efficitur non.</p>
           </div>
         </div>
-        <div className="links-div">
-          <p>Here will be links</p>
+        <div className="banner-wrapper-backdrop-filter" id="banner-wrapper-backdrop-filter">
+          <h3 className="nav-big">Portfolio</h3>
+          <div className="carousel-wrapper">
+            <Carousel projects={projectArray} />
+          </div>
         </div>
       </div>
-      <div className="carousel-wrapper" id="carousel-wrapper">
-        <div className="carousel-item">
-        </div>
-        <div className="carousel-item">
-        </div>
-        <div className="carousel-item">
-        </div>
-        <div className="carousel-item">
-        </div>
-      </div>
-      <div className="carousel-wrapper">
+      
+      <div className="carousel-wrapper2">
       </div>
       <style jsx>{`
           .banner-wrapper{
-            height: 75vh;
-            background-color: gray;
+            height: fit-content;
+            background-color: #000851;
             width: 100vw;
             z-index: 1;
             overflow: visible;
             position: relative;
-            backdrop-filter: brightness(0.1);
             display: grid;
             grid-template-areas: "q";
           }
           .banner-wrapper-backdrop-filter{
-            background-color: gray;
+            background-color: #000851;
             grid-area: "q";
             filter: brightness(0.1);
+            padding-top: 70vh;
           }
           .banner-div{
             grid-area: "q";
-            height: 100vh;
             width: 100vw;
             background-color: blue;
-            background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,0) 100%);
+            background: linear-gradient(180deg, rgba(15,15,15,1) 0%, rgba(15,15,15,1) 35%, rgba(15,15,15,0) 100%);
             z-index: 2;
             position: absolute;
-            top: 0;
             display: flex;
             align-items: flex-start;
             justify-content: center;
           }
           .banner-grid{
-            margin-top: 2rem;
+            margin-top: 5rem;
             height: fit-content;
             width: 60%;
           }
           .banner-headings-flex{
-            height: 250px;
+            height: 125px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
           }
           .banner-heading {
             font-size: 3rem;
@@ -134,57 +127,40 @@ export default function Home() {
             
           }
           .banner-p{
-            grid-area: c;
-            
             font-size: 1.5rem;
           }
-          .links-div{
+          .nav-big{
             z-index: 1;
             height: fit-content;
-            position: absolute;
-            bottom: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: white;
+            font-size: 2rem;
           }
           .carousel-wrapper{
-            background-color: gray;
+            background-color: #000851;
             width: 100vw;
             height: 75vh;
             z-index: 1;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            filter: brightness(0.1);
           }
           .carousel-item{
             height: 70vh;
             width: 20%;
             background-color: green;
+            border-radius: 15px;
           }
           h1, h2, p{
             color: white;
+          }
+          .carousel-wrapper2{
+            height: 75vw;
+            width: 100vw;
+            background-color: pink;
           }
       `}</style>
     </main>
   );
 }
-// .banner-wrapper{
-//   height: 75vh;
-//   background-color: red;
-//   width: 100vw;
-//   z-index: 1;
-//   overflow: visible;
-//   display: grid;
-//   grid-template-rows: 150px 1fr;
-// }
-// .banner-div{
-//   height: 100vh;
-//   width: 100vw;
-//   background-color: blue;
-//   background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,0) 100%);
-//   z-index: 2;
-//   grid-row: 1;
-// }
-// .links-div{
-//   z-index: 1;
-//   height: fit-content;
-//   grid-row: -1;
-// }
