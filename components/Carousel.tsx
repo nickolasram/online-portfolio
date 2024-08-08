@@ -91,7 +91,7 @@ const CarouselArrowRight = styled('div', {
             cursor: 'pointer',
             paddingLeft: 20,
             backgroundColor: "transparent",
-            boxShadow: "inset 0 0 8px rgba(0, 0, 0, .75)",
+            boxShadow: "inset 0 0 8px rgba(255, 255, 255, .75)",
         }
     }
 );
