@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+// import ThemeContextProvider from "./theme/providers";
+import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { lightTheme, darkTheme } from "./theme/themes";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -19,8 +23,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <html lang="en">
+        <body className={inter.className}>
+          {/* <ThemeContextProvider> */}
+          <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            {children}
+          </ThemeProvider>
+          {/* </ThemeContextProvider> */}
+        </body>
     </html>
   );
 }
+

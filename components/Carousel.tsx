@@ -1,10 +1,11 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack,Box } from "@mui/material";
 import { styled, useThemeProps, createTheme, ThemeProvider, Theme } from '@mui/material/styles';
 import * as React from 'react';
 import { OverridesStyleRules } from "@mui/material/styles/overrides";
 import ProjectCard from "./ProjectCard";
-// import { MdArrowBackIos  } from "react-icons/md";
-// import { IconContext } from "react-icons";
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import { useTheme } from "@mui/material/styles";;
 import { Project } from "@/Models/Project";
 
 export interface CarouselProps {
@@ -13,8 +14,18 @@ export interface CarouselProps {
 }
 
 type CarouselElementClassKey = "left" | "right";
+  
+declare module "@mui/material/styles" {
+    interface Components {
+        CarouselElement?: {
+        styleOverrides?: Partial<
+          OverridesStyleRules<CarouselElementClassKey, "CarouselElement", Theme>
+        >;
+      };
+    }
+  }
 
-const CarouselComponentWrapper = styled('div', {
+  const CarouselComponentWrapper = styled('div', {
     name: 'CarouselElement',
     slot: 'overallWrapper',
     })(({ theme }) => ({
@@ -44,6 +55,8 @@ const CarouselContainer = styled('div', {
         flexDirection: 'row',
         gap: 20,
         overflowX: 'scroll',
+        // borderInline: '5px solid red',
+        // borderRadius: 5,
         maxWidth: 1200,
         '&::-webkit-scrollbar': {
             width: 0,
@@ -59,17 +72,26 @@ const CarouselArrowLeft = styled('div', {
     })(({ theme }) => {
         return {
             position: 'absolute',
-            top: 'calc(50% - 35px)',
-            height: 70,
+            top: 0,
+            height: '100%',
             width: 70,
-            borderRadius: 40,
+            borderTopLeftRadius: 40,
+            borderBottomLeftRadius: 40,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            paddingLeft: 20,
-            backgroundColor: "transparent",
-            boxShadow: "inset 0 0 8px rgba(0, 0, 0, .75)",
+            paddingRight: 35,
+            backgroundColor: "#C4CED4",
+            // background: 'linear-gradient(90deg, rgba(196,206,212,1) 0px, rgba(196,206,212,1) 45px, rgba(196,206,212,0) 45px)',
+            background: `linear-gradient(270deg, 
+                        rgba(0,92,92,0) 0px,
+                        rgba(0,92,92,1) 28px,
+                        rgba(0,92,92,1) 32px,
+                        rgba(196,206,212,1) 32px,
+                        rgba(196,206,212,1) 35px,
+                        rgba(196,206,212,0) 35px,
+                        rgba(196,206,212,0) 70px)`
         }
     }
 );
@@ -81,17 +103,25 @@ const CarouselArrowRight = styled('div', {
     })(({ theme }) => {
         return {
             position: 'absolute',
-            top: 'calc(50% - 35px)',
-            height: 70,
+            top: 0,
+            height: '100%',
             width: 70,
-            borderRadius: 40,
+            // borderTopRightRadius: 40,
+            // borderBottomRightRadius: 40,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            paddingLeft: 20,
-            backgroundColor: "transparent",
-            boxShadow: "inset 0 0 8px rgba(255, 255, 255, .75)",
+            paddingLeft: 35,
+            backgroundColor: "#C4CED4",
+            background: `linear-gradient(90deg, 
+                        rgba(0,92,92,0) 0px,
+                        rgba(0,92,92,1) 28px,
+                        rgba(0,92,92,1) 32px,
+                        rgba(196,206,212,1) 32px,
+                        rgba(196,206,212,1) 35px,
+                        rgba(196,206,212,0) 35px,
+                        rgba(196,206,212,0) 70px)`,
         }
     }
 );
@@ -101,7 +131,7 @@ const CarouselElement = React.forwardRef<HTMLDivElement, CarouselProps>(
         const props = useThemeProps({ props: inProps, name: 'CarouselElement' });
         const {children, projects, ...other } = props;
         function slide(interval: number){
-            var container = document.getElementById('carouselID');
+            const container = document.getElementById('carouselID');
             let scrollCompleted = 0;
             var slideVar = setInterval(function(){
             container!.scrollLeft += interval;
@@ -112,21 +142,33 @@ const CarouselElement = React.forwardRef<HTMLDivElement, CarouselProps>(
             }, 25);
         }
 
+        const leftArrowStyle={
+            backgroundColor: '#C4CED4',
+            height: '100%',
+            width: 40,
+            borderTopLeftRadius: 50,
+            borderBottomLeftRadius: 50,
+        }
+
+        const rightArrowStyle={
+            backgroundColor: '#C4CED4',
+            height: '100%',
+            width: 40,
+            borderTopRightRadius: 50,
+            borderBottomRightRadius: 50,
+        }
+
         return (
             <CarouselComponentWrapper>
                 <CarouselContainerWrapper>
                     <CarouselArrowLeft onClick={()=>slide(-70)}>
-                        {/* <IconContext.Provider value={{ color: "#114FA3", size: '60' }}>
-                            <MdArrowBackIos  aria-label="Toggle Light Theme"/>
-                        </IconContext.Provider> */}
+                        <ArrowBackIosNewRoundedIcon fontSize='large' sx={leftArrowStyle}/>
                     </CarouselArrowLeft>
                     <CarouselContainer id={'carouselID'}>
                     {children}
                     </CarouselContainer>
                     <CarouselArrowRight onClick={()=>slide(70)}>
-                        {/* <IconContext.Provider value={{ color: "#114FA3", size: '60' }}>
-                            <MdArrowBackIos  aria-label="Toggle Light Theme"/>
-                        </IconContext.Provider> */}
+                        <ArrowForwardIosRoundedIcon fontSize='large' sx={rightArrowStyle}/>
                     </CarouselArrowRight>
                 </CarouselContainerWrapper>
             </CarouselComponentWrapper>
@@ -134,45 +176,17 @@ const CarouselElement = React.forwardRef<HTMLDivElement, CarouselProps>(
 },
 );
 
-declare module "@mui/material/styles" {
-    interface Components {
-        CarouselElement?: {
-        styleOverrides?: Partial<
-          OverridesStyleRules<CarouselElementClassKey, "CarouselElement", Theme>
-        >;
-      };
-    }
-  }
-
-const theme = createTheme({
-    components: {
-        CarouselElement: {
-        styleOverrides: {
-          left: {
-            left: -40,
-          },
-          right: {
-            right: -40,
-            transform: "rotate(0.5turn)"
-          }
-        }
-      },
-
-    }
-  });
-  
 export function Carousel({ projects }: CarouselProps){
+    const theme = useTheme();
     return (
         <Stack direction="row" spacing={2}>
-             <ThemeProvider theme={theme}>
-                <CarouselElement projects={projects}>
-                    { projects &&
-                        projects.map((project, index)=>(
-                            <ProjectCard project={project} key={index}/>
-                        ))
-                    }
-                </CarouselElement>
-            </ThemeProvider>
+            <CarouselElement projects={projects}>
+                { projects &&
+                    projects.map((project, index)=>(
+                        <ProjectCard project={project} key={index}/>
+                    ))
+                }
+            </CarouselElement>
         </Stack>
     )
 }
