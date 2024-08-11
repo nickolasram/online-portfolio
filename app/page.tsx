@@ -1,5 +1,4 @@
 'use client';
-
 import { Carousel } from "@/components/Carousel";
 import Image from 'next/image';
 import { useState } from "react";
@@ -13,6 +12,7 @@ import GGC from '@/public/GGC.png'
 import NSCEvents from '@/public/NSCEvents.png'
 import OnlinePortfolio from '@/public/OnlinePortfolio.png'
 import { Project } from "@/Models/Project";
+import Dossier from "@/components/Dossier";
 
 import { useTheme } from "@mui/material/styles";
 import { Typography, Stack, Box, Container, Link } from "@mui/material";
@@ -126,15 +126,19 @@ export default function Home() {
         </Box>
         <Box
           id="banner-wrapper-backdrop-filter"
-          bgcolor='primary.main'
+          // bgcolor='primary.main'
+          bgcolor='#222'
           gridArea='q'
           pt='70vh'
           width={1}
           sx={{
-            filter: 'brightness(0.1)'
+            filter: 'brightness(0.1)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
           }}
         >
-          <Container>
+          {/* <Container>
             <Typography variant='h2' id='portfolio-heading'>
               Portfolio
             </Typography>
@@ -146,18 +150,24 @@ export default function Home() {
             justifyContent='center'
           >
             <Carousel projects={projectsArray} />
-          </Stack>
+          </Stack> */}
+          <Dossier />
         </Box>
         <Container>
-            <Typography variant='h2'>
+            {/* <Typography variant='h2'>
               About
-            </Typography>
+            </Typography> */}
           </Container> 
-          <Stack
-            height='75vh'
-            bgcolor='primary.light'
+          {/* <Stack
+            height='100vh'
+            bgcolor='#222'
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
           >
-          </Stack>
+            <Dossier />
+          </Stack> */}
       </Box>
     </main>
   );

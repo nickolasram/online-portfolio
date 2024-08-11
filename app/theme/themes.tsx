@@ -13,7 +13,7 @@ let darkTheme = createTheme({
     },
     secondary: {
       light: "#6fbf73",
-      main: "#4caf50",
+      main: "#fff",
       dark: "#357a38",
       contrastText: "#fff",
     },
