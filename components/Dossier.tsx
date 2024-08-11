@@ -1,5 +1,13 @@
 import { Link, Typography, Box, Tabs, Tab, AppBar } from "@mui/material";
 import { useState, SyntheticEvent } from 'react';
+import Image from 'next/image';
+import portfolioSVG from '@/public/PortfolioSVG.svg';
+import ProjectFile from '@/models/ProjectFile';
+import { Project } from "@/Models/Project";
+
+interface DossierProps{
+    projects: Project[];
+}
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -42,7 +50,7 @@ const folderTabStyle = {
     // backgroundColor: '#e7d19c',
     width: 'fit-content',
     height: 'fit-content',
-    transform: 'rotate(180deg)',
+    // transform: 'rotate(180deg)',
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
     paddingBlock: 5,
@@ -111,10 +119,12 @@ const pictureStyle={
     width: 190,
     backgroundColor: '#009',
     top: -15,
-    right: -10
+    right: -10,
+    border: '5px solid white',
+    boxShadow: '-4px 4px #222',
 }
 
-export default function Dossier(){
+export default function Dossier({projects}: DossierProps){
     const [value, setValue] = useState(0);
 
     const handleChange = (event: SyntheticEvent, newValue: number) => {
@@ -124,9 +134,19 @@ export default function Dossier(){
     return(
         <Box sx={wrapperStyle}>
             <Box sx={folderTabStyle}>
-                <Typography sx={folderTabTitleStyle}>
+                {/* <Typography sx={folderTabTitleStyle}>
                     Portfolio
-                </Typography>
+                </Typography> */}
+                <Image
+                src={portfolioSVG}
+                height={550}
+                alt='Portfolio Heading'
+                // style={{float: 'right',
+                //         marginRight: 75,
+                //         marginLeft: 25,
+                //         marginBottom: 25
+                //       }}
+              />
             </Box>
             <Box sx={folderStyle}>
                 <Box sx={fileWrapperStyle}>
@@ -139,9 +159,14 @@ export default function Dossier(){
                             textColor="primary"
                             indicatorColor='secondary'
                         >
-                            <Tab value={0} label='one' sx={fileTabStyle} {...a11yProps(0)}/>
+                            {
+                                projects.map((project, index)=>(
+                                    <Tab value={index} label={'aaa'} sx={fileTabStyle} {...a11yProps(index)}></Tab>
+                                ))
+                            }
+                            {/* <Tab value={0} label='one' sx={fileTabStyle} {...a11yProps(0)}/>
                             <Tab value={1} label='two' sx={fileTabStyle} {...a11yProps(1)}/>
-                            <Tab value={2} label='three' sx={fileTabStyle} {...a11yProps(2)}/>
+                            <Tab value={2} label='three' sx={fileTabStyle} {...a11yProps(2)}/> */}
                         </Tabs>
                     </Box>
                     <CustomTabPanel value={value} index={0}>

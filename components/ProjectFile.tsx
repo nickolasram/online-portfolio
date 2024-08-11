@@ -1,5 +1,12 @@
 import { Link, Typography, Box, Tabs, Tab, AppBar } from "@mui/material";
 import { useState, SyntheticEvent } from 'react';
+import { Project } from "@/Models/Project";
+
+interface ProjectCardProps {
+  value: number;
+  index: number;
+  project: Project;
+}
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -38,13 +45,13 @@ const pictureStyle={
     right: -10
 }
 
-export default function ProjectFile(){
+export default function ProjectFile({value, index, project}: ProjectCardProps){
     return(
-        <CustomTabPanel value={0} index={0}>
+        <CustomTabPanel value={value} index={0}>
                         <Box sx={fileStyle}>
                             <Box sx={pictureStyle}></Box>
                             <Typography color='#000'>
-                                Title
+                                {project.title}
                             </Typography>
                             <Typography color='#000'>
                                 Detail

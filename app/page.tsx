@@ -13,6 +13,7 @@ import NSCEvents from '@/public/NSCEvents.png'
 import OnlinePortfolio from '@/public/OnlinePortfolio.png'
 import { Project } from "@/Models/Project";
 import Dossier from "@/components/Dossier";
+import NoirBG from '@/public/NoirBG.png'
 
 import { useTheme } from "@mui/material/styles";
 import { Typography, Stack, Box, Container, Link } from "@mui/material";
@@ -135,7 +136,8 @@ export default function Home() {
             filter: 'brightness(0.1)',
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            // backgroundImage: `url(${NoirBG.src})`,
           }}
         >
           {/* <Container>
@@ -151,7 +153,7 @@ export default function Home() {
           >
             <Carousel projects={projectsArray} />
           </Stack> */}
-          <Dossier />
+          <Dossier projects={projectsArray}/>
         </Box>
         <Container>
             {/* <Typography variant='h2'>
