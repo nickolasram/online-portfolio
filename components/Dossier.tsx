@@ -76,7 +76,7 @@ const folderTabTitleStyle={
 // background: linear-gradient();
 
 const folderStyle={
-    border: '2px solid #e7d19c',
+    // border: '2px solid #e7d19c',
     padding: 5,
     width: 'fit-content',
     height: 'fit-content',
@@ -106,22 +106,31 @@ const fileWrapperStyle={
     justifyContent: 'start',
     height: 550,
     width: 'fit-content',
+    gap: 5
 }
 const fileStyle={
     backgroundColor: '#fff',
     height: 550,
     width: 425,
-    position: 'relative'
+    position: 'relative',
+    borderBottom: '5px solid #e7d19c',
+    borderRight: '5px solid #e7d19c',
+    borderTop: '5px solid #e7d19c',
 }
 const pictureStyle={
     position: 'absolute',
-    height: 150,
-    width: 190,
-    backgroundColor: '#009',
-    top: -15,
-    right: -10,
-    border: '5px solid white',
-    boxShadow: '-4px 4px #222',
+    // height: 150,
+    // width: 190,
+    // backgroundColor: '#009',
+    top: 15,
+    left: '75%',
+    border: '5px solid #222',
+    padding: '5px',
+    // boxShadow: '-4px 4px #222',
+    backgroundColor: '#fff'
+}
+const tabsStyle={
+    border: '5px solid #e7d19c'
 }
 
 export default function Dossier({projects}: DossierProps){
@@ -155,62 +164,45 @@ export default function Dossier({projects}: DossierProps){
                             value={value} 
                             onChange={handleChange} 
                             aria-label="basic tabs example"
-                            // variant="fullWidth"
+                            variant="fullWidth"
                             textColor="primary"
                             indicatorColor='secondary'
+                            sx={tabsStyle}
                         >
                             {
                                 projects.map((project, index)=>(
-                                    <Tab value={index} label={'aaa'} sx={fileTabStyle} {...a11yProps(index)}></Tab>
+                                    <Tab value={index} label={project.abbr} sx={fileTabStyle} {...a11yProps(index)}></Tab>
                                 ))
                             }
-                            {/* <Tab value={0} label='one' sx={fileTabStyle} {...a11yProps(0)}/>
-                            <Tab value={1} label='two' sx={fileTabStyle} {...a11yProps(1)}/>
-                            <Tab value={2} label='three' sx={fileTabStyle} {...a11yProps(2)}/> */}
                         </Tabs>
                     </Box>
-                    <CustomTabPanel value={value} index={0}>
-                        <Box sx={fileStyle}>
-                            <Box sx={pictureStyle}></Box>
-                            <Typography color='#000'>
-                                Title
-                            </Typography>
-                            <Typography color='#000'>
-                                Detail
-                            </Typography>
-                            <Typography color='#000'>
-                                Detail
-                            </Typography>
-                        </Box>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={value} index={1}>
-                        <Box sx={fileStyle}>
-                            <Box sx={pictureStyle}></Box>
-                            <Typography color='#000'>
-                                Title2
-                            </Typography>
-                            <Typography color='#000'>
-                                Detail2
-                            </Typography>
-                            <Typography color='#000'>
-                                Detail2
-                            </Typography>
-                        </Box>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={value} index={2}>
-                        <Box sx={fileStyle}>
-                            <Box sx={pictureStyle}></Box>
-                            <Typography color='#000'>
-                                Title3
-                            </Typography>
-                            <Typography color='#000'>
-                                Detail3
-                            </Typography>
-                            <Typography color='#000'>
-                                Detail3
-                            </Typography>
-                        </Box>
-                    </CustomTabPanel>
+                    {
+                        projects.map((project, index)=>(
+                            <CustomTabPanel value={value} index={index}>
+                                <Box sx={fileStyle}>
+                                    <Box sx={pictureStyle}>
+                                    <Image
+                                        src={project.displayImage}
+                                        height={250}
+                                        alt='project photo'
+                                        // style={{
+                                        //         paddingBottom: 0
+                                        //     }}
+                                    />
+                                    </Box>
+                                    <Typography color='#000' maxWidth={'40%'}>
+                                        {project.title}
+                                    </Typography>
+                                    <Typography color='#000'>
+                                        Detail
+                                    </Typography>
+                                    <Typography color='#000'>
+                                        Detail
+                                    </Typography>
+                                </Box>
+                            </CustomTabPanel>
+                        ))
+                    }
                 </Box>
             </Box>
         </Box>

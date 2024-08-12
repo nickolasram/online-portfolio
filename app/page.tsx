@@ -19,13 +19,13 @@ import { useTheme } from "@mui/material/styles";
 import { Typography, Stack, Box, Container, Link } from "@mui/material";
 
 const projectsArray: Project[] = [
-  {title: 'Geek Girl Con Mobile App', abbrTitle: 'GGC Mobile', github: '/', role: 'Frontend Dev', tags: ['Expo', 'React-Native', 'tamagui'], status: 'In Development', client: 'Geek Girl Con', date: '2024', displayImage: GGC},
-  {title: 'Belinda\'s Closet Mobile App', abbrTitle: 'Belinda\'s Closet Mobile', github: '/', role: 'Full Stack Dev', tags: ['Kotlin', 'SomethingUI', 'Figma'], status: 'In Development', client: 'North Seattle College', date: '2024', displayImage: BelindasMobile},
-  {title: 'NSC Practicum Site', abbrTitle: 'NSC Practicum Site', github: '/', role: 'Lead Dev, Designer, etc.', tags: ['React', 'Figma'], status: 'In Development',  client: 'North Seattle College', date: '2024', displayImage: ADPracticum},
-  {title: 'Belinda\'s Closet Website', abbrTitle: 'Belinda\'s Closet Web', github: '/', role: 'Front End Dev', tags: ['NextJS', 'MUI', 'MongoDB Atlas'], status: 'In Development',  client: 'North Seattle College', date: '2024', displayImage: BelindasWeb},
-  {title: 'Complexity-Helper Website', abbrTitle: 'Complexity-Helper', github: '/', role: 'Sole Developer', tags: ['React', 'Amplify', 'Dynamo DB', 'Lambda', 'S3', 'API Gateway', 'AWS'], status: 'In Development',  client: 'Self', date: '2024', displayImage: ComplexityHelper},
-  {title: 'NSC Events Website', abbrTitle: 'NSC Events Web', github: '/', role: 'Review/Testing', tags: ['NextJS', 'MUI', 'MongoDB Atlas'], status: 'In Development', client: 'North Seattle College', date: '2024', displayImage: NSCEvents},
-  {title: 'Portfolio Website', abbrTitle: 'Online Portfolio', github: '/', role: 'Sole Developer', tags: ['NextJS', 'MUI'], status: 'In Development', client: 'North Seattle College', date: '2024', displayImage: OnlinePortfolio},
+  {title: 'Geek Girl Con Mobile App', abbrTitle: 'GGC Mobile', github: '/', role: 'Frontend Dev', tags: ['Expo', 'React-Native', 'tamagui'], status: 'In Development', client: 'Geek Girl Con', date: '2024', displayImage: GGC, abbr: 'GGC'},
+  {title: 'Belinda\'s Closet Mobile App', abbrTitle: 'Belinda\'s Closet Mobile', github: '/', role: 'Full Stack Dev', tags: ['Kotlin', 'SomethingUI', 'Figma'], status: 'In Development', client: 'North Seattle College', date: '2024', displayImage: BelindasMobile, abbr: 'BCM'},
+  {title: 'NSC Practicum Site', abbrTitle: 'NSC Practicum Site', github: '/', role: 'Lead Dev, Designer, etc.', tags: ['React', 'Figma'], status: 'In Development',  client: 'North Seattle College', date: '2024', displayImage: ADPracticum, abbr: 'NSCP'},
+  {title: 'Belinda\'s Closet Website', abbrTitle: 'Belinda\'s Closet Web', github: '/', role: 'Front End Dev', tags: ['NextJS', 'MUI', 'MongoDB Atlas'], status: 'In Development',  client: 'North Seattle College', date: '2024', displayImage: BelindasWeb, abbr: 'BCW'},
+  {title: 'Complexity-Helper Website', abbrTitle: 'Complexity-Helper', github: '/', role: 'Sole Developer', tags: ['React', 'Amplify', 'Dynamo DB', 'Lambda', 'S3', 'API Gateway', 'AWS'], status: 'In Development',  client: 'Self', date: '2024', displayImage: ComplexityHelper, abbr: 'CH'},
+  {title: 'NSC Events Website', abbrTitle: 'NSC Events Web', github: '/', role: 'Review/Testing', tags: ['NextJS', 'MUI', 'MongoDB Atlas'], status: 'In Development', client: 'North Seattle College', date: '2024', displayImage: NSCEvents, abbr: 'NSCE'},
+  {title: 'Portfolio Website', abbrTitle: 'Online Portfolio', github: '/', role: 'Sole Developer', tags: ['NextJS', 'MUI'], status: 'In Development', client: 'North Seattle College', date: '2024', displayImage: OnlinePortfolio, abbr: 'OP'},
 
 ]
 
