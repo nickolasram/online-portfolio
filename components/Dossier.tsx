@@ -2,7 +2,7 @@ import { Link, Typography, Box, Tabs, Tab, AppBar } from "@mui/material";
 import { useState, SyntheticEvent } from 'react';
 import Image from 'next/image';
 import portfolioSVG from '@/public/PortfolioSVG.svg';
-import ProjectFile from '@/models/ProjectFile';
+import ProjectFile from '@/components/ProjectFile';
 import { Project } from "@/Models/Project";
 
 interface DossierProps{
@@ -45,39 +45,9 @@ const wrapperStyle = {
     width: 'fit-content',
     marginBottom: 30
 }
-
-const folderTabStyle = {
-    // backgroundColor: '#e7d19c',
-    width: 'fit-content',
-    height: 'fit-content',
-    // transform: 'rotate(180deg)',
-    borderTopRightRadius: 5,
-    borderBottomRightRadius: 5,
-    paddingBlock: 5,
-    paddingInline: 1,
-}
-const folderTabTitleStyle={
-    fontFamily: 'Shrikhand, serif',
-    fontWeight: 400,
-    fontStyle: 'normal',
-    color: '#C00',
-    writingMode: 'vertical-rl',
-    textOrientation: 'mixed',
-    backgroundColor: '#222',
-    paddingInline: 2,
-    // border: '1px solid #fff',
-    fontSize: [110, "!important"],
-    // backgroundImage: 'linear-gradient(268deg, rgba(192,0,0,1) 0%, rgba(192,0,0,1) 44%, rgba(34,32,0,1) 70%, rgba(34,32,0,1) 100%)',
-    // backgroundImage: 'radial-gradient(circle, rgba(192,0,0,.8) 0%, rgba(192,0,0,.8) 64%, rgba(34,32,0,1) 90%)',
-    // color: 'transparent',
-    // backgroundClip: 'text',
-}
-// background: rgb(192,0,0);
-// background: linear-gradient();
-
 const folderStyle={
     // border: '2px solid #e7d19c',
-    padding: 5,
+    // padding: 1,
     width: 'fit-content',
     height: 'fit-content',
     borderTopRightRadius: 5,
@@ -86,18 +56,25 @@ const folderStyle={
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'start',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    // backgroundColor: '#444',
+    // marginBottom: 2
 }
 const fileTabStyle={
     writingMode: 'vertical-rl',
     textOrientation: 'mixed',
     transform: 'rotate(180deg)',
     color: '#000',
-    border: '1px solid black',
     width: 'fit-content',
     minWidth: 'fit-content',
     padding: 1,
-    // marginRight: 10
+    marginRight: 2,
+    marginBottom: 2,
+    backgroundColor: '#F9FBFF ',
+    // borderTopRightRadius: 3,
+    // borderBottomRightRadius: 3
+    fontFamily: "Spline Sans Mono, monospace",
+    // border: '2px solid #800'
 }
 const fileWrapperStyle={
     display: 'flex', 
@@ -106,32 +83,51 @@ const fileWrapperStyle={
     justifyContent: 'start',
     height: 550,
     width: 'fit-content',
-    gap: 5
-}
-const fileStyle={
-    backgroundColor: '#fff',
-    height: 550,
-    width: 425,
-    position: 'relative',
-    borderBottom: '5px solid #e7d19c',
-    borderRight: '5px solid #e7d19c',
-    borderTop: '5px solid #e7d19c',
-}
-const pictureStyle={
-    position: 'absolute',
-    // height: 150,
-    // width: 190,
-    // backgroundColor: '#009',
-    top: 15,
-    left: '75%',
-    border: '5px solid #222',
-    padding: '5px',
-    // boxShadow: '-4px 4px #222',
-    backgroundColor: '#fff'
+    gap: 1,
 }
 const tabsStyle={
-    border: '5px solid #e7d19c'
+    height:'fit-content',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingTop: 2,
+    width: 'calc(100% + 5px)',
+    marginLeft: 1,
 }
+const tabWrapperStyle={
+    // borderTop: '2px solid #C5B485',
+    borderLeft: '2px solid #C5B485',
+    borderBottom: '2px solid #C5B485',
+    // borderTop: '5px solid #CCC',
+    // borderBottom: '5px solid #CCC',
+    // borderLeft: '5px solid #CCC',
+    height: 'fit-content',
+    width: 'fit-content',
+    // borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+    backgroundColor: '#22222200',
+}
+const titleAndTab={
+    display: 'flex',
+    height: '100%',
+    // width: 170,
+    alignItems: 'flex-start',
+    justifyContent: 'end',
+    // backgroundImage: `url(${portfolioSVG.src})`,
+    // backgroundPosition: 'left bottom',
+    // backgroundRepeat: 'no-repeat',
+}
+const pageWrapper = {
+    paddingTop: 1,
+    paddingRight: 1,
+    paddingBottom: 1,
+    // backgroundColor: '#C5B485',
+    // borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    // borderTop: '2px solid #C5B485',
+    borderRight: '2px solid #C5B485',
+    borderBottom: '2px solid #C5B485'
+}
+
 
 export default function Dossier({projects}: DossierProps){
     const [value, setValue] = useState(0);
@@ -141,64 +137,47 @@ export default function Dossier({projects}: DossierProps){
     };
 
     return(
-        <Box sx={wrapperStyle}>
-            <Box sx={folderTabStyle}>
-                {/* <Typography sx={folderTabTitleStyle}>
-                    Portfolio
-                </Typography> */}
-                <Image
-                src={portfolioSVG}
-                height={550}
-                alt='Portfolio Heading'
-                // style={{float: 'right',
-                //         marginRight: 75,
-                //         marginLeft: 25,
-                //         marginBottom: 25
-                //       }}
-              />
-            </Box>
+        <Box sx={[wrapperStyle, {textFillColor: 'initial'}]}>
             <Box sx={folderStyle}>
                 <Box sx={fileWrapperStyle}>
-                    <Box sx={{backgroundColor: '#fff', width: 'fit-content'}}>
-                        <Tabs orientation='vertical' 
-                            value={value} 
-                            onChange={handleChange} 
-                            aria-label="basic tabs example"
-                            variant="fullWidth"
-                            textColor="primary"
-                            indicatorColor='secondary'
-                            sx={tabsStyle}
-                        >
-                            {
-                                projects.map((project, index)=>(
-                                    <Tab value={index} label={project.abbr} sx={fileTabStyle} {...a11yProps(index)}></Tab>
-                                ))
-                            }
-                        </Tabs>
+                    <Box sx={titleAndTab}>
+                        <Box sx={tabWrapperStyle}>
+                            <Tabs orientation='vertical' 
+                                value={value} 
+                                onChange={handleChange} 
+                                aria-label="basic tabs example"
+                                variant="standard"
+                                textColor="#222"
+                                sx={tabsStyle}
+                                TabIndicatorProps={{
+                                    sx: {
+                                        backgroundColor: '#F9FBFF',
+                                        width: `${25-value*1.5}px`,
+                                        boxShadow: '-4px 0px #800',
+                                    }
+                                }}
+                            >
+                                {
+                                    projects.map((project, index)=>(
+                                        <Tab 
+                                            value={index}
+                                            label={project.abbr}
+                                            sx={
+                                                [fileTabStyle, 
+                                                 {position: 'relative',
+                                                 left: index*2
+                                                }]} 
+                                                {...a11yProps(index)}></Tab>
+                                    ))
+                                }
+                            </Tabs>
+                        </Box>
                     </Box>
                     {
                         projects.map((project, index)=>(
                             <CustomTabPanel value={value} index={index}>
-                                <Box sx={fileStyle}>
-                                    <Box sx={pictureStyle}>
-                                    <Image
-                                        src={project.displayImage}
-                                        height={250}
-                                        alt='project photo'
-                                        // style={{
-                                        //         paddingBottom: 0
-                                        //     }}
-                                    />
-                                    </Box>
-                                    <Typography color='#000' maxWidth={'40%'}>
-                                        {project.title}
-                                    </Typography>
-                                    <Typography color='#000'>
-                                        Detail
-                                    </Typography>
-                                    <Typography color='#000'>
-                                        Detail
-                                    </Typography>
+                                <Box sx={pageWrapper}>
+                                    <ProjectFile project={project} />
                                 </Box>
                             </CustomTabPanel>
                         ))

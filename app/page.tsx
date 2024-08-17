@@ -14,9 +14,38 @@ import OnlinePortfolio from '@/public/OnlinePortfolio.png'
 import { Project } from "@/Models/Project";
 import Dossier from "@/components/Dossier";
 import NoirBG from '@/public/NoirBG.png'
+import portfolioSVG from '@/public/PortfolioSVG.svg';
 
 import { useTheme } from "@mui/material/styles";
 import { Typography, Stack, Box, Container, Link } from "@mui/material";
+
+const portfolioBGBox = {
+  // backgroundColor: '#11111199', 
+  // display: 'grid',
+  // backgroundClip: 'text',
+  // textFillColor: 'transparent'
+  width: 'fit-content',
+  height: 'fit-content',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  marginBottom: 4,
+}
+
+const portfolioHeading = {
+  backgroundImage: `url(${portfolioSVG.src})`,
+  backgroundPosition: 'left bottom',
+  backgroundRepeat: 'no-repeat',
+  width: 240,
+  height: 80,
+  backgroundSize: 'cover',
+  // position: 'relative',
+  // top: 25,
+  padding: 0,
+  margin: 0,
+  borderBottom: '2px solid #C5B485'
+}
 
 const projectsArray: Project[] = [
   {title: 'Geek Girl Con Mobile App', abbrTitle: 'GGC Mobile', github: '/', role: 'Frontend Dev', tags: ['Expo', 'React-Native', 'tamagui'], status: 'In Development', client: 'Geek Girl Con', date: '2024', displayImage: GGC, abbr: 'GGC'},
@@ -153,13 +182,19 @@ export default function Home() {
           >
             <Carousel projects={projectsArray} />
           </Stack> */}
-          <Dossier projects={projectsArray}/>
+          <Box sx={portfolioBGBox}>
+            {/* <Link sx={portfolioHeading} underline="none">Portfolio</Link> */}
+            <Box sx={portfolioHeading}>  
+            {/* <Typography variant='h2' color='#700'>Portfolio</Typography>             */}
+            </Box>
+            <Dossier projects={projectsArray}/>
+          </Box>
         </Box>
-        <Container>
+        {/* <Container> */}
             {/* <Typography variant='h2'>
               About
             </Typography> */}
-          </Container> 
+          {/* </Container>  */}
           {/* <Stack
             height='100vh'
             bgcolor='#222'
