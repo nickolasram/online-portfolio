@@ -55,6 +55,10 @@ let darkTheme = createTheme({
     body2: {
       fontSize: '1rem',
       color: '#fff'
+    },
+    tag1: {
+      fontSize: '1rem',
+      color: '#fff'
     }
   }
 //   components: {

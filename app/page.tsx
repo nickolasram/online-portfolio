@@ -5,10 +5,10 @@ import { useState } from "react";
 import bart from '@/public/bart.jpg'
 import suit from '@/public/suit.png'
 import BelindasWeb from '@/public/BelindasWeb.png'
-import BelindasMobile from '@/public/BelindasMobile.png'
+import BelindasMobile from '@/public/BelindasMobileDisplay.png'
 import ADPracticum from '@/public/ADPracticum.png'
 import ComplexityHelper from '@/public/ComplexityHelper.png'
-import GGC from '@/public/GGC.png'
+import GGC from '@/public/GGCDisplay.png'
 import NSCEvents from '@/public/NSCEvents.png'
 import OnlinePortfolio from '@/public/OnlinePortfolio.png'
 import { Project } from "@/Models/Project";
@@ -18,7 +18,7 @@ import LocationCityIcon from '@mui/icons-material/LocationCity';
 import MemoryIcon from '@mui/icons-material/Memory';
 
 import { useTheme } from "@mui/material/styles";
-import { Typography, Stack, Box, Container, Link, Slide } from "@mui/material";
+import { Typography, Stack, Box, Container, Link, Slide, Collapse } from "@mui/material";
 
 const portfolioBGBox = {
   width: '100%',
@@ -28,7 +28,7 @@ const portfolioBGBox = {
   justifyContent: 'center',
   alignItems: 'flex-start',
   marginBottom: 30,
-  paddingLeft: '12.5%'
+  paddingLeft: '9.85%'
 }
 
 const animation = {
@@ -200,7 +200,7 @@ export default function Home() {
           <Box sx={portfolioBGBox}>
             {/* <Link sx={portfolioHeading} underline="none">Portfolio</Link> */}
             <Box>
-              <Box sx={portfolioHeading}>  
+              <Box sx={portfolioHeading} id='portfolio-heading'>  
               {/* <Typography variant='h2' color='#700'>Portfolio</Typography>             */}
               </Box>
               <Dossier projects={projectsArray}/>

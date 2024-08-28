@@ -1,9 +1,11 @@
-import { Link, Typography, Box, Tabs, Tab, AppBar } from "@mui/material";
-import { useState, SyntheticEvent } from 'react';
+import { Link, Typography, Box, Tabs, Tab, Collapse, Fade  } from "@mui/material";
+import { useState, SyntheticEvent, useEffect } from 'react';
 import Image from 'next/image';
 import portfolioSVG from '@/public/PortfolioSVG.svg';
 import ProjectFile from '@/components/ProjectFile';
 import { Project } from "@/Models/Project";
+import Masonry from '@mui/lab/Masonry';
+import { styled } from '@mui/material/styles';
 
 interface DossierProps{
     projects: Project[];
@@ -14,29 +16,29 @@ interface TabPanelProps {
     index: number;
     value: number;
   }
-  
-  function CustomTabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && <Box>{children}</Box>}
-      </div>
-    );
-  }
-  
-  function a11yProps(index: number) {
+
+function CustomTabPanel(props: TabPanelProps) {
+const { children, value, index, ...other } = props;
+
+return (
+    <div
+    role="tabpanel"
+    hidden={value !== index}
+    id={`simple-tabpanel-${index}`}
+    aria-labelledby={`simple-tab-${index}`}
+    {...other}
+    >
+    {value === index && <Box>{children}</Box>}
+    </div>
+);
+}
+
+function a11yProps(index: number) {
     return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
     };
-  }
+}
 const wrapperStyle = {
     display: 'flex',
     flexDirection: 'row',
@@ -45,6 +47,13 @@ const wrapperStyle = {
     width: 'fit-content',
     marginBottom: 5
 }
+const pictureStyle={
+    padding: '2px',
+    height: '260px',
+    backgroundColor: '#C5B485',
+    cursor: 'pointer',
+    width: 'fit-content'
+  }
 const folderStyle={
     // border: '2px solid #e7d19c',
     // padding: 1,
@@ -97,11 +106,11 @@ const tabsStyle={
     // alignItems: 'flex-end',
 }
 const tabWrapperStyle={
-    borderLeft: '2px solid #C5B485',
-    borderBottom: '2px solid #C5B485',
+    // borderLeft: '2px solid #C5B485',
+    // borderBottom: '2px solid #C5B485',
     height: 'fit-content',
     width: 100,
-    borderBottomLeftRadius: 5,
+    // borderBottomLeftRadius: 5,
     backgroundColor: '#22222200',
 }
 const titleAndTab={
@@ -118,21 +127,33 @@ const pageWrapper = {
     paddingTop: 1,
     paddingRight: 1,
     paddingBottom: 1,
-    // backgroundColor: '#C5B485',
-    // borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
-    // borderTop: '2px solid #C5B485',
     borderRight: '2px solid #C5B485',
-    borderBottom: '2px solid #C5B485'
+    borderBottom: '2px solid #C5B485',
 }
 
+const Item = styled(Typography)(({ theme }: any) => ({
+    // backgroundColor: '#111',
+    padding: '3px 5px'
+    // textAlign: 'center',
+    // opacity: .8,
+  }));
 
 export default function Dossier({projects}: DossierProps){
     const [value, setValue] = useState(0);
+    const [tagCollapse, setTagCollapse] = useState(true);
+
+    const handleCollapse=()=>{
+        setTagCollapse(false);
+        // setTagCollapse(true);
+        setTimeout(()=>setTagCollapse(true), 1500)
+    }
 
     const handleChange = (event: SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
+    
+    const heights = [30, 70, 50, 66, 40, 60, 30, 50, 80];
 
     return(
         <Box sx={[wrapperStyle, {textFillColor: 'initial'}]}>
@@ -162,6 +183,7 @@ export default function Dossier({projects}: DossierProps){
                                             key={index*1000}
                                             value={index}
                                             label={project.abbr}
+                                            onClick={handleCollapse}
                                             sx={
                                                 [fileTabStyle, 
                                                  {
@@ -179,7 +201,17 @@ export default function Dossier({projects}: DossierProps){
                         projects.map((project, index)=>(
                             <CustomTabPanel value={value} index={index} key={index}>
                                 <Box sx={pageWrapper}>
-                                    <ProjectFile project={project} />
+                                    <ProjectFile project={project} passThrough={setTagCollapse} />
+                                    <Collapse
+                                        in={tagCollapse}
+                                        orientation="horizontal"
+                                        timeout={500}
+                                        sx={{height: '2rem'}}
+                                    >
+                                        <Typography variant="tag1">
+                                            Tags: {project.tags?.join(", ")}
+                                        </Typography>
+                                    </Collapse>
                                 </Box>
                             </CustomTabPanel>
                         ))
