@@ -13,31 +13,37 @@ import NSCEvents from '@/public/NSCEvents.png'
 import OnlinePortfolio from '@/public/OnlinePortfolio.png'
 import { Project } from "@/Models/Project";
 import Dossier from "@/components/Dossier";
-import NoirBG from '@/public/NoirBG.png'
 import portfolioSVG from '@/public/PortfolioSVG.svg';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+import MemoryIcon from '@mui/icons-material/Memory';
 
 import { useTheme } from "@mui/material/styles";
-import { Typography, Stack, Box, Container, Link } from "@mui/material";
+import { Typography, Stack, Box, Container, Link, Slide } from "@mui/material";
 
 const portfolioBGBox = {
-  // backgroundColor: '#11111199', 
-  // display: 'grid',
-  // backgroundClip: 'text',
-  // textFillColor: 'transparent'
-  width: 'fit-content',
+  width: '100%',
   height: 'fit-content',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'flex-start',
-  marginBottom: 4,
+  marginBottom: 30,
+  paddingLeft: '12.5%'
+}
+
+const animation = {
+  
+}
+
+const navSize = {
+  fontSize: '1.5rem'
 }
 
 const portfolioHeading = {
   backgroundImage: `url(${portfolioSVG.src})`,
   backgroundPosition: 'left bottom',
   backgroundRepeat: 'no-repeat',
-  width: 240,
+  width: 250,
   height: 80,
   backgroundSize: 'cover',
   // position: 'relative',
@@ -78,23 +84,25 @@ export default function Home() {
 
   return (
     <main>
-      <Stack
-        bgcolor='#00000066'
-        position='fixed'
-        top={0}
-        left={0}
-        width='fit-content'
-        zIndex={3}
-        p={2}
-        useFlexGap
-        spacing={2}
-        >
-            <Link href='#banner-div' variant='body2' color="primary.contrastText" underline="none">Greeting</Link>
-            <Link href='#portfolio-heading'  variant='body2' color="primary.contrastText" underline="none">Portfolio</Link>
-            <Link href='/'  variant='body2' color="primary.contrastText" underline="none">About</Link>
-            <Link href='/'  variant='body2' color="primary.contrastText" underline="none">Contact</Link>
-            <Link href='/'  variant='body2' color="primary.contrastText" underline="none">O</Link>
+      <Slide direction="down" in timeout={1000}>
+        <Stack
+          bgcolor='#00000066'
+          width='8%'
+          p={2}
+          useFlexGap
+          spacing={2}
+          sx={{position: 'fixed', top: 0, left: 0, zIndex: 3}}
+          >
+              <Link href='#banner-div' variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Greeting</Link>
+              <Link href='#portfolio-heading'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Portfolio</Link>
+              <Link href='/'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>About</Link>
+              <Link href='/'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Contact</Link>
+              <Stack direction='row' sx={{display: 'flex', justifyContent: 'space-around'}}>
+                <LocationCityIcon fontSize="large" sx={{color: 'rgba(197,180,133,1)'}}/>
+                <MemoryIcon fontSize="large" sx={{color: '#008C8C'}}/>
+              </Stack>
         </Stack>
+      </Slide>
       <Box
         bgcolor='primary.main'
         width='100vw'
@@ -138,19 +146,14 @@ export default function Home() {
                     Nickolas Ramirez
                   </Typography>
                   <Typography variant='subtitle1'>
-                    Web Developer - UI/UX Engineer
+                    UI/UX Engineer
                   </Typography>
               </Stack>
               <Typography variant='body1'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Cras ornare dui erat, et hendrerit augue consectetur et. 
-                Nullam eleifend dapibus elit nec condimentum. 
-                Aliquam posuere maximus libero, eu ultricies diam. 
-                Nulla efficitur tempor velit sit amet sagittis. 
-                Vivamus quis leo eget enim pretium tincidunt ut sed tortor. 
-                Proin a euismod elit. Maecenas convallis at tortor quis sollicitudin. 
-                Aliquam tincidunt malesuada dignissim. 
-                Ut viverra augue mauris, a euismod mauris efficitur non.
+                Recent graduate from North Seattle College with a BAS in application development where I focused on front end development.
+                If you're reading this, you're hopefully a perspective employer. Here you'll find a portfolio of projects I worked on as a 
+                student at NSC and independently; more information about myself,
+                my studies, and my goals as a developer; as well as my contact information.
               </Typography>
           </Box>
         </Box>
@@ -164,9 +167,21 @@ export default function Home() {
           sx={{
             filter: 'brightness(0.1)',
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             // backgroundImage: `url(${NoirBG.src})`,
+            backgroundImage: `linear-gradient(90deg,
+                              rgba(17,17,17,1) 0%, 
+                              rgba(17,17,17,1) 8%, 
+                              rgba(197,180,133,1) 8%, 
+                              rgba(197,180,133,1) 8.5%, 
+                              rgba(17,17,17,1) 8.5%, 
+                              rgba(17,17,17,1) 9.35%, 
+                              rgba(197,180,133,1) 9.35%, 
+                              rgba(197,180,133,1) 9.85%, 
+                              rgba(34,34,34,1) 9.85%, 
+                              rgba(34,34,34,1) 100%)`
           }}
         >
           {/* <Container>
@@ -184,12 +199,21 @@ export default function Home() {
           </Stack> */}
           <Box sx={portfolioBGBox}>
             {/* <Link sx={portfolioHeading} underline="none">Portfolio</Link> */}
-            <Box sx={portfolioHeading}>  
-            {/* <Typography variant='h2' color='#700'>Portfolio</Typography>             */}
+            <Box>
+              <Box sx={portfolioHeading}>  
+              {/* <Typography variant='h2' color='#700'>Portfolio</Typography>             */}
+              </Box>
+              <Dossier projects={projectsArray}/>
             </Box>
-            <Dossier projects={projectsArray}/>
+          </Box>
+          <Box>
+            <Typography variant='h2'>About</Typography>
+            <Box sx={{marginTop: '1rem', marginBottom: '10rem'}}>
+              <Typography>The aspect of web development that has appealed most to me is considering how </Typography>
+            </Box> 
           </Box>
         </Box>
+        
         {/* <Container> */}
             {/* <Typography variant='h2'>
               About

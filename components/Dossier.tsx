@@ -43,7 +43,7 @@ const wrapperStyle = {
     justifyContent: 'start',
     alignItems: 'flex-start',
     width: 'fit-content',
-    marginBottom: 30
+    marginBottom: 5
 }
 const folderStyle={
     // border: '2px solid #e7d19c',
@@ -63,18 +63,19 @@ const folderStyle={
 const fileTabStyle={
     writingMode: 'vertical-rl',
     textOrientation: 'mixed',
-    transform: 'rotate(180deg)',
-    color: '#000',
+    transform: 'rotate(180deg) rotateY(0.5turn)',
+    color: '#fff',
     width: 'fit-content',
     minWidth: 'fit-content',
     padding: 1,
-    marginRight: 2,
-    marginBottom: 2,
-    backgroundColor: '#F9FBFF ',
-    // borderTopRightRadius: 3,
-    // borderBottomRightRadius: 3
+    marginLeft: 4,
+    marginBottom: 1,
+    // backgroundColor: '#F9FBFF ',
+    backgroundColor: '#111',
     fontFamily: "Spline Sans Mono, monospace",
-    // border: '2px solid #800'
+    transition: 'all .25s ease-out',
+    alignSelf: 'flex-end',
+    border: '1px solid #C5B485'
 }
 const fileWrapperStyle={
     display: 'flex', 
@@ -88,21 +89,18 @@ const fileWrapperStyle={
 const tabsStyle={
     height:'fit-content',
     display: 'flex',
-    flexDirection: 'column',
-    paddingTop: 2,
-    width: 'calc(100% + 5px)',
-    marginLeft: 1,
+    paddingTop: 1,
+    // width: 'calc(100% + 5px)',
+    transform: 'rotateY(0.5turn)',
+    width: 'fit-content',
+    // flexDirection: 'column',
+    // alignItems: 'flex-end',
 }
 const tabWrapperStyle={
-    // borderTop: '2px solid #C5B485',
     borderLeft: '2px solid #C5B485',
     borderBottom: '2px solid #C5B485',
-    // borderTop: '5px solid #CCC',
-    // borderBottom: '5px solid #CCC',
-    // borderLeft: '5px solid #CCC',
     height: 'fit-content',
-    width: 'fit-content',
-    // borderTopLeftRadius: 5,
+    width: 100,
     borderBottomLeftRadius: 5,
     backgroundColor: '#22222200',
 }
@@ -151,21 +149,25 @@ export default function Dossier({projects}: DossierProps){
                                 sx={tabsStyle}
                                 TabIndicatorProps={{
                                     sx: {
-                                        backgroundColor: '#F9FBFF',
-                                        width: `${25-value*1.5}px`,
-                                        boxShadow: '-4px 0px #800',
+                                        backgroundColor: '#C5B485',
+                                        width: `1px`,
+                                        // boxShadow: '-4px 0px #800',
+                                        // transform: 'rotate(180deg)',
                                     }
                                 }}
                             >
                                 {
                                     projects.map((project, index)=>(
                                         <Tab 
+                                            key={index*1000}
                                             value={index}
                                             label={project.abbr}
                                             sx={
                                                 [fileTabStyle, 
-                                                 {position: 'relative',
-                                                 left: index*2
+                                                 {
+                                                    // paddingRight: Math.max(1, 5-(Math.abs(index-value)*Math.abs(index-value)*0.15)),
+                                                    paddingRight: index===value?5:1,  
+                                                  opacity: index===value?1:0.75                                              
                                                 }]} 
                                                 {...a11yProps(index)}></Tab>
                                     ))
@@ -175,7 +177,7 @@ export default function Dossier({projects}: DossierProps){
                     </Box>
                     {
                         projects.map((project, index)=>(
-                            <CustomTabPanel value={value} index={index}>
+                            <CustomTabPanel value={value} index={index} key={index}>
                                 <Box sx={pageWrapper}>
                                     <ProjectFile project={project} />
                                 </Box>

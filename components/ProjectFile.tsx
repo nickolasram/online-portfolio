@@ -1,4 +1,4 @@
-import { Link, Typography, Box, Stack } from "@mui/material";
+import { Link, Typography, Box, Stack, Grow, Collapse } from "@mui/material";
 import { useState, SyntheticEvent } from 'react';
 import { Project } from "@/Models/Project";
 import Image from 'next/image';
@@ -36,30 +36,30 @@ interface TabPanelProps {
 
 const fileStyle={
   height: 550,
-  width: 425,
+  width: 600,
   position: 'relative',
   
 }
 const pictureStyle={
   position: 'absolute',
-  top: '3.5rem',
+  top: '-8px',
   left: '75%',
   // border: '5px solid #222',
-  padding: '5px',
+  padding: '2px',
   height: '260px',
-  backgroundColor: '#F9FBFF',
-  zIndex: 2,
+  backgroundColor: '#C5B485',
+  zIndex: 4,
   cursor: 'pointer',
-  // transform: 'rotate(1deg)',
+  transform: 'rotate(0.75deg)',
   transition: 'all .5s ease-out',
-  '&:hover': {
-    left: '100%',
-    transform: 'rotate(0deg)'
-  }
+  // '&:hover': {
+  //   left: '100%',
+  //   transform: 'rotate(0deg)'
+  // }
 }
 const basicFontStyle={
-  color: '#000',
-  fontFamily: "Spline Sans Mono, monospace",
+  color: '#F9FBFF',
+  // fontFamily: "Spline Sans Mono, monospace",
 }
 const linkStyle={
   position: 'absolute',
@@ -70,7 +70,7 @@ const linkStyle={
   paddingInline: 2
 }
 const PageStyle={
-  backgroundColor: '#F9FBFF',
+  backgroundColor: '#111',
   borderRight: '1px solid #222',
   borderTop: '1px solid #222',
   borderBottom: '1px solid #222',
@@ -85,54 +85,70 @@ const PageStyle={
   boxShadow: '1px 0px #222'
 }
 const pageTopStyle={
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 2
+  // display: 'flex',
+  // flexDirection: 'column',
+  // gap: 2
+} 
+
+const Bold =({text}: {text: string})=>{
+  return(
+    <Box component='span' fontWeight={700}>{text}</Box>
+  )
 }
 
 export default function ProjectFile({project}: ProjectCardProps){
     return(
+      // <Grow in>
       <Box sx={fileStyle}>
-        <Box sx={pictureStyle}>
-            <Image
-                src={project.displayImage}
-                height={250}
-                alt='project photo'
-            />
-        </Box>
+        <Grow in>
+          <Box sx={pictureStyle}>
+              <Image
+                  src={project.displayImage}
+                  height={250}
+                  alt='project photo'
+              />
+          </Box>
+        </Grow>
         <Box sx={PageStyle}>
           <Box sx={pageTopStyle}>
-            <Typography sx={[basicFontStyle, {fontWeight: 700, }]} >
-                {project.title}
+            <Collapse in> 
+              {/* <Typography variant='body2' sx={[basicFontStyle, 
+                {fontWeight: 700, color: '#F9FBFF', fontSize: '1.75rem'}]} >
+                  {project.title}
+              </Typography> */}
+                {/* <Typography>
+                  asasas
+                </Typography> */}
+                <p>uubub</p>
+            </Collapse>
+            <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+                <Bold text='Role:'/> {project.role}
             </Typography>
-            <Typography variant='body2' sx={[basicFontStyle]}>
-                Role: {project.role}
+            <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+            <Bold text='Status:'/> {project.status}
             </Typography>
-            <Typography variant='body2' sx={[basicFontStyle]}>
-                Status: {project.status}
+            <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+            <Bold text='Client:'/> {project.client}
             </Typography>
-            <Typography variant='body2' sx={[basicFontStyle]}>
-                Client: {project.client}
+            <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+            <Bold text='Date:'/> {project.date}
             </Typography>
-            <Typography variant='body2' sx={[basicFontStyle]}>
-                Date: {project.date}
-            </Typography>
-            <Typography variant='body2' sx={[basicFontStyle]}>
-                <GitHubIcon /> <YouTubeIcon /> <LaunchIcon />
+            <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+                <GitHubIcon fontSize="large" /> <YouTubeIcon fontSize="large" /> <LaunchIcon fontSize="large" />
             </Typography>
           </Box>
           <Box sx={{height: '40%'}}>
             <Typography variant='h6' sx={[basicFontStyle]}>
                 Tags
             </Typography>
-            <Box sx={{border: '1px solid #222', backgroundColor: '#ddd', padding: 2, overflowY: 'hidden', maxHeight: '70%'}}>
+            <Box sx={{border: '1px solid #222', backgroundColor: '#222', padding: 2, overflowY: 'hidden', maxHeight: '70%'}}>
               <Typography 
               sx={[basicFontStyle, {textDecoration: 'underline',
                   overflowWrap: 'break-word', wordBreak: 'break-all'}
                 ]}
               variant='body2'
               >{project.tags?.join(', ')} {[...Array(300)].map((nullitem, index)=>(
-                <Box component="span" key={index} variant='body2' >&ensp;</Box>
+                <Box component="span" key={index}>&ensp;</Box>
               ))}</Typography>
             </Box>
           </Box>
@@ -144,5 +160,6 @@ export default function ProjectFile({project}: ProjectCardProps){
           </Stack>
         </Box>
     </Box>
+    // </Grow>
     )
 } 
