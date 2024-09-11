@@ -143,10 +143,17 @@ export default function Dossier({projects}: DossierProps){
     const [value, setValue] = useState(0);
     const [tagCollapse, setTagCollapse] = useState(true);
 
+
+//set up ref
+//set div to ref
+//set useeffect to change when ref changes
+//when new div loads, set width to old width, then switch to auto then record old height 
+//should ref be a ref to the width or container itself with a state holding the width
+
     const handleCollapse=()=>{
         setTagCollapse(false);
         // setTagCollapse(true);
-        setTimeout(()=>setTagCollapse(true), 1500)
+        setTimeout(()=>setTagCollapse(true), 500)
     }
 
     const handleChange = (event: SyntheticEvent, newValue: number) => {
@@ -202,16 +209,19 @@ export default function Dossier({projects}: DossierProps){
                             <CustomTabPanel value={value} index={index} key={index}>
                                 <Box sx={pageWrapper}>
                                     <ProjectFile project={project} passThrough={setTagCollapse} />
-                                    <Collapse
-                                        in={tagCollapse}
-                                        orientation="horizontal"
-                                        timeout={500}
-                                        sx={{height: '2rem'}}
-                                    >
-                                        <Typography variant="tag1">
-                                            Tags: {project.tags?.join(", ")}
+                                        <Typography variant="tag1" sx={[{display: 'flex', gap: '1rem', height: '1.5rem', overflow:'hidden'}]}>
+                                            Tags: 
+                                            <Collapse
+                                                in={tagCollapse}
+                                                orientation="horizontal"
+                                                timeout={500}
+                                                sx={{height: '2rem'}}
+                                            >
+                                                <Typography variant="tag1">
+                                                    {project.tags?.join(", ")}
+                                                </Typography>
+                                            </Collapse>
                                         </Typography>
-                                    </Collapse>
                                 </Box>
                             </CustomTabPanel>
                         ))

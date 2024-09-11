@@ -4,13 +4,13 @@ import Image from 'next/image';
 import { useState } from "react";
 import bart from '@/public/bart.jpg'
 import suit from '@/public/suit.png'
-import BelindasWeb from '@/public/BelindasWeb.png'
-import BelindasMobile from '@/public/BelindasMobileDisplay.png'
-import ADPracticum from '@/public/ADPracticum.png'
-import ComplexityHelper from '@/public/ComplexityHelper.png'
-import GGC from '@/public/GGCDisplay.png'
-import NSCEvents from '@/public/NSCEvents.png'
-import OnlinePortfolio from '@/public/OnlinePortfolio.png'
+import BelindasWeb from '@/public/BeWeResized.png'
+import BelindasMobile from '@/public/BeMoResized.png'
+import ADPracticum from '@/public/ADPResized.png'
+import ComplexityHelper from '@/public/CompHelpResized.png'
+import GGC from '@/public/GGCResized.png'
+import NSCEvents from '@/public/NSCResized.png'
+import OnlinePortfolio from '@/public/OnlineResized.png'
 import { Project } from "@/Models/Project";
 import Dossier from "@/components/Dossier";
 import portfolioSVG from '@/public/PortfolioSVG.svg';
@@ -212,7 +212,7 @@ export default function Home() {
               <Typography>The aspect of web development that has appealed most to me is considering how </Typography>
             </Box> 
           </Box>
-        </Box>
+        </Box>                                                                                                                                                      
         
         {/* <Container> */}
             {/* <Typography variant='h2'>
