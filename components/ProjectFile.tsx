@@ -7,10 +7,14 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LaunchIcon from '@mui/icons-material/Launch';
 import ProjectCard from "./ProjectCard";
+import Dimensions from '@/Models/Dimensions';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
 
 interface ProjectCardProps {
   project: Project;
   passThrough: Function;
+  dimensionsFunction: Function;
+  passedDimensions: Dimensions;
 }
 
 interface TabPanelProps {
@@ -42,11 +46,15 @@ const fileStyle={
   // zIndex: 3,
   display: 'flex',
   backgroundColor: '#111',
-  padding: 3,
-  gap: 2,
+  paddingLeft: 3,
+  paddingRight: 7,
+  paddingTop: 3,
+  paddingBottom: 7,
+  gap: 3,
   position: 'relative',
   marginBottom: '2rem',
-  minWidth: '50vw'
+  marginRight: '.5rem',
+  minWidth: '50vw',
 }
 
 const basicFontStyle={
@@ -58,8 +66,15 @@ const linkStyle={
   bottom: '4%', 
   color: '#fff',
   backgroundColor: '#700',
-  right: -15,
-  paddingInline: 2
+  right: -25,
+  paddingInline: 2,
+  "@keyframes jiggle": {
+      "0%": { transform: "translateX(0)" },
+      "80%": { transform: "translateX(5px)" },
+      "85%": { transform: "translateX(-5px)" },
+      "95%": { transform: "translateX(5px)" },
+      "100%": { transform: "translateX(0)" }},
+    animation: "jiggle 3s ease-in-out",
 }
 const PageStyle={
   // borderRight: '1px solid #222',
@@ -77,7 +92,7 @@ const PageStyle={
 const pageTopStyle={
   display: 'flex',
   flexDirection: 'column',
-  gap: 2,
+  gap: 3,
   minWidth: 350
 } 
 
@@ -87,7 +102,7 @@ const Bold =({text}: {text: string})=>{
   )
 }
 
-export default function ProjectFile({project, passThrough}: ProjectCardProps){
+export default function ProjectFile({project, passThrough, dimensionsFunction, passedDimensions}: ProjectCardProps){
   const [titleCollapse, setTitleCollapse] = useState(false);
   const [roleCollapse, setRoleCollapse] = useState(false);
   const [statusCollapse, setStatusCollapse] = useState(false);
@@ -95,17 +110,10 @@ export default function ProjectFile({project, passThrough}: ProjectCardProps){
   const [dateCollapse, setDateCollapse] = useState(false);
   const [linksCollapse, setLinksCollapse] = useState(false);
   // const [imgWidth, setImgWidth] = useState(null);
-  const [displayImageWidth, setDisplayImageWidth] = useState(250);
-  const [displayImageHeight, setDisplayImageHeight] = useState(250)
 
   useEffect(()=>{
     setTitleCollapse(true)
   },[]);
-
-  const setDimenions=()=>{
-    setDisplayImageHeight(project.displayImage.height);
-    setDisplayImageWidth(project.displayImage.width)
-  }
 
   const pictureStyle={
     position: 'relative',
@@ -117,10 +125,10 @@ export default function ProjectFile({project, passThrough}: ProjectCardProps){
     backgroundColor: '#fff',
     zIndex: 4,
     cursor: 'pointer',
-    height: `${displayImageHeight}px`,
-    width: `${displayImageWidth}px`,
+    height: `${passedDimensions.height}px`,
+    width: `${passedDimensions.width}px`,
     // transform: 'rotate(0.75deg)',
-    // border: '2px solid #C5B485'
+    border: '2px solid #C5B485',
     transition: 'all .5s ease-out',
     // '&:hover': {
     //   left: '100%',
@@ -132,18 +140,19 @@ export default function ProjectFile({project, passThrough}: ProjectCardProps){
     <Box sx={fileStyle} >
       <Box sx={PageStyle}>
         <Box sx={pageTopStyle}>
-          <Collapse
-            in={titleCollapse} 
-            orientation="horizontal"
-            timeout={250}
-            addEndListener={()=>setTimeout(()=>setRoleCollapse(roleCollapse => !roleCollapse), 250)}
-            // sx={{height: '1.9rem'}}
-          >
-            <Typography variant='body2' sx={[basicFontStyle, 
-              {fontWeight: 700, color: '#F9FBFF', fontSize: '1.75rem', textWrap: 'nowrap'}]} >
-                {project.title}
-            </Typography>
-          </Collapse>
+          <Box sx={{borderBottom: '1px solid #C5B485'}}>
+            <Collapse
+              in={titleCollapse} 
+              orientation="horizontal"
+              timeout={250}
+              addEndListener={()=>setTimeout(()=>setRoleCollapse(roleCollapse => !roleCollapse), 250)}
+            >
+              <Typography variant='body2' sx={[basicFontStyle, 
+                {fontWeight: 700, color: '#F9FBFF', fontSize: '1.75rem', textWrap: 'nowrap'}]} >
+                  {project.title}
+              </Typography>
+            </Collapse>
+          </Box>
           <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
               <Bold text='Role:'/> 
               <Collapse
@@ -204,7 +213,7 @@ export default function ProjectFile({project, passThrough}: ProjectCardProps){
                 </Typography>
               </Collapse>
           </Typography>
-          <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
+          {/* <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
             <Grow in={linksCollapse}
             style={{ transitionDelay: '0ms' }}
             >
@@ -219,7 +228,7 @@ export default function ProjectFile({project, passThrough}: ProjectCardProps){
               <LaunchIcon fontSize="large" />
             </Grow>
               
-          </Typography>
+          </Typography> */}
         </Box>
         {/* <Box sx={{height: '40%'}}>
           <Typography variant='h6' sx={[basicFontStyle]}>
@@ -239,20 +248,21 @@ export default function ProjectFile({project, passThrough}: ProjectCardProps){
       </Box>
       <Box sx={pictureStyle}>
         <Fade in style={{ transitionDelay:'500ms', }}>
-          <Box sx={{height: '100%', width: '100%' }}>
+          <Box sx={{height: '100%', width: '100%', display: 'relative'}}>
             <Image
                   src={project.displayImage}
                   // height={250}
                   // sizes="(max-width: 1000px) 5vw, 33vw"
                   fill
                   alt='project photo'
-                  onLoad={setDimenions}
+                  onLoad={()=>dimensionsFunction({width: project.displayImage.width, height: project.displayImage.height})}
               />
+              <ZoomInIcon sx={{position: 'absolute', bottom: 0, right: 0, color: 'grey', fontSize: '36px'}}/>
           </Box>
         </Fade>
       </Box>
       <Stack direction="row" alignItems="center" gap={1} sx={[linkStyle, {cursor: 'pointer'}]}>
-        <Link variant='body1' underline="none" color="#F9FBFF" >
+        <Link variant='body1' underline="none" color="#F9FBFF">
             More Details 
         </Link>
         <DoubleArrowIcon />

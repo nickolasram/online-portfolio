@@ -1,4 +1,4 @@
-import { Link, Typography, Box, Tabs, Tab, Collapse, Fade  } from "@mui/material";
+import { Link, Typography, Box, Tabs, Tab, Collapse, Stack  } from "@mui/material";
 import { useState, SyntheticEvent, useEffect } from 'react';
 import Image from 'next/image';
 import portfolioSVG from '@/public/PortfolioSVG.svg';
@@ -6,6 +6,10 @@ import ProjectFile from '@/components/ProjectFile';
 import { Project } from "@/Models/Project";
 import Masonry from '@mui/lab/Masonry';
 import { styled } from '@mui/material/styles';
+import Dimensions from '@/Models/Dimensions'
+import GitHubIcon from '@mui/icons-material/GitHub';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 interface DossierProps{
     projects: Project[];
@@ -93,7 +97,7 @@ const fileWrapperStyle={
     justifyContent: 'start',
     height: 550,
     width: 'fit-content',
-    gap: 1,
+    gap: 6,
 }
 const tabsStyle={
     height:'fit-content',
@@ -142,6 +146,7 @@ const Item = styled(Typography)(({ theme }: any) => ({
 export default function Dossier({projects}: DossierProps){
     const [value, setValue] = useState(0);
     const [tagCollapse, setTagCollapse] = useState(true);
+    const [dimensions, setDimensions] = useState<Dimensions>({height: 250, width: 250})
 
 
 //set up ref
@@ -159,6 +164,8 @@ export default function Dossier({projects}: DossierProps){
     const handleChange = (event: SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
+
+
     
     const heights = [30, 70, 50, 66, 40, 60, 30, 50, 80];
 
@@ -195,7 +202,7 @@ export default function Dossier({projects}: DossierProps){
                                                 [fileTabStyle, 
                                                  {
                                                     // paddingRight: Math.max(1, 5-(Math.abs(index-value)*Math.abs(index-value)*0.15)),
-                                                    paddingRight: index===value?5:1,  
+                                                    paddingRight: index===value?10:5,  
                                                   opacity: index===value?1:0.75                                              
                                                 }]} 
                                                 {...a11yProps(index)}></Tab>
@@ -207,8 +214,9 @@ export default function Dossier({projects}: DossierProps){
                     {
                         projects.map((project, index)=>(
                             <CustomTabPanel value={value} index={index} key={index}>
+                                <Box sx={{display: 'flex', flexDirection: 'row'}}>
                                 <Box sx={pageWrapper}>
-                                    <ProjectFile project={project} passThrough={setTagCollapse} />
+                                    <ProjectFile project={project} passThrough={setTagCollapse} dimensionsFunction={setDimensions} passedDimensions={dimensions}/>
                                         <Typography variant="tag1" sx={[{display: 'flex', gap: '1rem', height: '1.5rem', overflow:'hidden'}]}>
                                             Tags: 
                                             <Collapse
@@ -223,6 +231,15 @@ export default function Dossier({projects}: DossierProps){
                                             </Collapse>
                                         </Typography>
                                 </Box>
+                                {/* <Typography variant='body2' sx={[{fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}> */}
+                                    <Stack>
+                                        <GitHubIcon fontSize="large" />
+                                        <YouTubeIcon fontSize="large" />
+                                        <LaunchIcon fontSize="large" />
+                                    </Stack>
+                                    {/* </Typography> */}    
+                                </Box>
+                                
                             </CustomTabPanel>
                         ))
                     }

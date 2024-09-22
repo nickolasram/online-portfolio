@@ -40,21 +40,15 @@ const navSize = {
 }
 
 const portfolioHeading = {
-  backgroundImage: `url(${portfolioSVG.src})`,
-  backgroundPosition: 'left bottom',
-  backgroundRepeat: 'no-repeat',
-  width: 250,
-  height: 80,
-  backgroundSize: 'cover',
-  // position: 'relative',
-  // top: 25,
-  padding: 0,
-  margin: 0,
-  borderBottom: '2px solid #C5B485'
+  width: 300,
+  borderBottom: '2px solid #C5B485',
+  marginBottom: '1.5rem',
+  paddingLeft: 1,
+  textShadow: '0 0 #999'
 }
 
 const projectsArray: Project[] = [
-  {title: 'Geek Girl Con Mobile App', abbrTitle: 'GGC Mobile', github: '/', role: 'Frontend Dev', tags: ['Expo', 'React-Native', 'tamagui'], status: 'In Development', client: 'Geek Girl Con', date: '2024', displayImage: GGC, abbr: 'GGC'},
+  {title: 'Geek Girl Con Mobile App', abbrTitle: 'GGC Mobile', github: '/', role: 'Frontend Dev', tags: ['Expo', 'React-Native', 'tamagui'], status: 'In Development', client: 'Geek Girl Con', date: '2024', displayImage: GGC, abbr: 'GGC', mobile: "Yes", desktop: 'Yes'},
   {title: 'Belinda\'s Closet Mobile App', abbrTitle: 'Belinda\'s Closet Mobile', github: '/', role: 'Full Stack Dev', tags: ['Kotlin', 'SomethingUI', 'Figma'], status: 'In Development', client: 'North Seattle College', date: '2024', displayImage: BelindasMobile, abbr: 'BCM'},
   {title: 'NSC Practicum Site', abbrTitle: 'NSC Practicum Site', github: '/', role: 'Lead Dev, Designer, etc.', tags: ['React', 'Figma'], status: 'In Development',  client: 'North Seattle College', date: '2024', displayImage: ADPracticum, abbr: 'NSCP'},
   {title: 'Belinda\'s Closet Website', abbrTitle: 'Belinda\'s Closet Web', github: '/', role: 'Front End Dev', tags: ['NextJS', 'MUI', 'MongoDB Atlas'], status: 'In Development',  client: 'North Seattle College', date: '2024', displayImage: BelindasWeb, abbr: 'BCW'},
@@ -191,7 +185,7 @@ export default function Home() {
           </Container> 
           <Stack
             width={1}
-            height='75vh'
+            height='75vh'S
             alignItems='center'
             justifyContent='center'
           >
@@ -200,9 +194,9 @@ export default function Home() {
           <Box sx={portfolioBGBox}>
             {/* <Link sx={portfolioHeading} underline="none">Portfolio</Link> */}
             <Box>
-              <Box sx={portfolioHeading} id='portfolio-heading'>  
-              {/* <Typography variant='h2' color='#700'>Portfolio</Typography>             */}
-              </Box>
+              {/* <Box sx={portfolioHeading} id='portfolio-heading'>   */}
+              <Typography color='#700' variant="h1" sx={portfolioHeading} id='portfolio-heading'>Portfolio</Typography>            
+              {/* </Box> */}
               <Dossier projects={projectsArray}/>
             </Box>
           </Box>
