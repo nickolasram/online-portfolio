@@ -230,14 +230,15 @@ export default function Dossier({projects}: DossierProps){
                                                 </Typography>
                                             </Collapse>
                                         </Typography>
-                                </Box>
-                                {/* <Typography variant='body2' sx={[{fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}> */}
-                                    <Stack>
-                                        <GitHubIcon fontSize="large" />
-                                        <YouTubeIcon fontSize="large" />
-                                        <LaunchIcon fontSize="large" />
+                                    </Box>
+                                    <Stack spacing={1} p={3} >
+                                        <GitHubIcon fontSize="large" 
+                                            sx={{color: project.github? "#F9FBFF": "#555", cursor: project.github? "pointer": "default"}}/>
+                                        <YouTubeIcon fontSize="large" 
+                                            sx={{color: project.video? "#F9FBFF": "#555", cursor: project.video? "pointer": "default"}}/>
+                                        <LaunchIcon fontSize="large" 
+                                            sx={{color: project.site? "#F9FBFF": "#555", cursor: project.site? "pointer": "default"}}/>
                                     </Stack>
-                                    {/* </Typography> */}    
                                 </Box>
                                 
                             </CustomTabPanel>

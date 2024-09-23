@@ -1,11 +1,5 @@
 import { StaticImageData } from "next/image";
 
-declare enum platformEnum{
-    "Yes",
-    "No",
-    "In Development"
-}
-
 export interface Project{
     title: string;
     abbrTitle: string;
@@ -20,6 +14,6 @@ export interface Project{
     client?: string;
     date?: string;
     abbr: string;
-    mobile?: platformEnum;
-    desktop?: platformEnum;
+    mobile: "Yes" | "No" | "In Development";
+    desktop: "Yes" | "No" | "In Development";
 }

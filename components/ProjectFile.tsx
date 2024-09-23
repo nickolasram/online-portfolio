@@ -9,6 +9,9 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import ProjectCard from "./ProjectCard";
 import Dimensions from '@/Models/Dimensions';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import CheckIcon from '@mui/icons-material/Check';
+import ClearIcon from '@mui/icons-material/Clear';
 
 interface ProjectCardProps {
   project: Project;
@@ -135,6 +138,18 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
     //   transform: 'rotate(0deg)'
     // }
   }
+
+  const ReturnIcon=()=>{
+    switch(project.status){
+      case 'In Development':
+        return <ConstructionIcon fontSize="large" sx={{color: '#111', backgroundColor: '#C5B485'}} />;
+      case 'Completed':
+        return <CheckIcon fontSize="large" sx={{color: '#fff', backgroundColor: '#428d81'}} />;
+      default:
+        return <ConstructionIcon fontSize="large" sx={{color: '#111', backgroundColor: '#C5B485'}} />;
+    }
+  }
+
   return(
     // <Grow in>
     <Box sx={fileStyle} >
@@ -170,18 +185,14 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
           </Typography>
           <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
               <Bold text='Status:'/> 
-              <Collapse
-              component='p'
-              in={statusCollapse} 
-              orientation="horizontal"
-              timeout={150}
-              addEndListener={()=>setTimeout(()=>setClientCollapse(!clientCollapse), 150)}
-              sx={{height: '1.6rem', display: 'inline'}}
+              <Grow 
+                in={statusCollapse}
+                timeout={200}
+                addEndListener={()=>setTimeout(()=>setClientCollapse(!clientCollapse), 150)}
+                // hover and description
               >
-                <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
-                  {project.status}
-                </Typography>
-              </Collapse>
+                {ReturnIcon()}
+            </Grow>
           </Typography>
           <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
               <Bold text='Client:'/> 
