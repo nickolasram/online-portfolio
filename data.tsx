@@ -1,11 +1,18 @@
 import { Project } from "@/Models/Project";
-import BelindasWeb from '@/public/BeWeResized.png'
-import BelindasMobile from '@/public/BeMoResized.png'
-import ADPracticum from '@/public/ADPResized.png'
-import ComplexityHelper from '@/public/CompHelpResized.png'
-import GGC from '@/public/GGCResized.png'
-import NSCEvents from '@/public/NSCResized.png'
-import OnlinePortfolio from '@/public/OnlineResized.png'
+import BelindasWeb from '@/public/BCWPreview.png';
+import FullBelindasWeb from '@/public/BCWFull.png';
+import BelindasMobile from '@/public/BCMPreview.png';
+import FullBelindasMobile from '@/public/BCMFull.png';
+import ADPracticum from '@/public/ADPreview.png';
+import FullADPracticum from '@/public/ADPFull.png';
+import ComplexityHelper from '@/public/CHPreview.png';
+import FullComplexityHelper from '@/public/CHFull.png';
+import GGC from '@/public/GGCPreview.png';
+import FullGGC from '@/public/GGCFull.png';
+import NSCEvents from '@/public/NSCPreview.png';
+import FullNSCEvents from '@/public/NSCFull.png';
+import OnlinePortfolio from '@/public/OPPreview.png'
+import FullOnlinePortfolio from '@/public/OPFull.png';
 
 const projectData: Project[]=[
   {
@@ -17,11 +24,27 @@ const projectData: Project[]=[
       status: 'In Development', 
       client: 'Geek Girl Con', 
       date: '2024', 
-      displayImage: GGC, 
+      thumbImage: GGC, 
       abbr: 'GGC', 
       mobile: "Yes", 
-      desktop: 'Yes'
+      desktop: 'Yes',
+      displayImage: FullGGC
     },
+  {
+    title: 'Complexity-Helper Website', 
+    abbrTitle: 'Complexity-Helper', 
+    github: '/', 
+    role: 'Sole Developer', 
+    tags: ['React', 'Amplify', 'Dynamo DB', 'Lambda', 'S3', 'API Gateway', 'AWS'], 
+    status: 'In Development', 
+    client: 'Self', 
+    date: '2024', 
+    thumbImage: ComplexityHelper, 
+    abbr: 'CH',
+    mobile: "In Development", 
+    desktop: 'Yes',
+    displayImage: FullComplexityHelper
+  },
   {
       title: 'Belinda\'s Closet Mobile App', 
       abbrTitle: 'Belinda\'s Closet Mobile', 
@@ -31,10 +54,11 @@ const projectData: Project[]=[
       status: 'In Development', 
       client: 'North Seattle College', 
       date: '2024', 
-      displayImage: BelindasMobile, 
+      thumbImage: BelindasMobile, 
       abbr: 'BCM',
       mobile: "Yes", 
-      desktop: 'No'
+      desktop: 'No',
+      displayImage: FullBelindasMobile
     },
   {
       title: 'NSC Practicum Site', 
@@ -45,11 +69,27 @@ const projectData: Project[]=[
       status: 'In Development', 
       client: 'North Seattle College', 
       date: '2024', 
-      displayImage: ADPracticum, 
+      thumbImage: ADPracticum, 
       abbr: 'NSCP',
       mobile: "No", 
-      desktop: 'Yes'
+      desktop: 'Yes',
+      displayImage: FullADPracticum
     },
+  {
+    title: 'NSC Events Website', 
+    abbrTitle: 'NSC Events Web', 
+    github: '/', 
+    role: 'Review/Testing', 
+    tags: ['NextJS', 'MUI', 'MongoDB Atlas'], 
+    status: 'In Development', 
+    client: 'North Seattle College', 
+    date: '2024', 
+    thumbImage: NSCEvents, 
+    abbr: 'NSCE',
+    mobile: "No", 
+    desktop: 'Yes',
+    displayImage: FullNSCEvents
+  },
   {
       title: 'Belinda\'s Closet Website', 
       abbrTitle: 'Belinda\'s Closet Web', 
@@ -59,38 +99,11 @@ const projectData: Project[]=[
       status: 'In Development',  
       client: 'North Seattle College', 
       date: '2024', 
-      displayImage: BelindasWeb, 
+      thumbImage: BelindasWeb, 
       abbr: 'BCW',
       mobile: "No", 
-      desktop: 'Yes'
-    },
-  {
-      title: 'Complexity-Helper Website', 
-      abbrTitle: 'Complexity-Helper', 
-      github: '/', 
-      role: 'Sole Developer', 
-      tags: ['React', 'Amplify', 'Dynamo DB', 'Lambda', 'S3', 'API Gateway', 'AWS'], 
-      status: 'In Development', 
-      client: 'Self', 
-      date: '2024', 
-      displayImage: ComplexityHelper, 
-      abbr: 'CH',
-      mobile: "In Development", 
-      desktop: 'Yes'
-    },
-  {
-      title: 'NSC Events Website', 
-      abbrTitle: 'NSC Events Web', 
-      github: '/', 
-      role: 'Review/Testing', 
-      tags: ['NextJS', 'MUI', 'MongoDB Atlas'], 
-      status: 'In Development', 
-      client: 'North Seattle College', 
-      date: '2024', 
-      displayImage: NSCEvents, 
-      abbr: 'NSCE',
-      mobile: "No", 
-      desktop: 'Yes'
+      desktop: 'Yes',
+      displayImage: FullBelindasWeb
     },
   {
       title: 'Portfolio Website', 
@@ -102,10 +115,11 @@ const projectData: Project[]=[
       status: 'Completed', 
       client: 'North Seattle College', 
       date: '2024', 
-      displayImage: OnlinePortfolio, 
+      thumbImage: OnlinePortfolio, 
       abbr: 'OP',
       mobile: "In Development", 
-      desktop: 'Yes'
+      desktop: 'Yes',
+      displayImage: FullOnlinePortfolio
     },
 ]
 

@@ -1,4 +1,4 @@
-import { Link, Typography, Box, Stack, Grow, Collapse, Fade, Slide } from "@mui/material";
+import { Link, Typography, Box, Stack, Grow, Collapse, Fade, Dialog, DialogContent } from "@mui/material";
 import { useState, useEffect, useRef } from 'react';
 import { Project } from "@/Models/Project";
 import Image from 'next/image';
@@ -112,11 +112,28 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
   const [clientCollapse, setClientCollapse] = useState(false);
   const [dateCollapse, setDateCollapse] = useState(false);
   const [linksCollapse, setLinksCollapse] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [picY, setPicY] = useState(900);
+  const [picX, setPicX] = useState(project.displayImage.width)
   // const [imgWidth, setImgWidth] = useState(null);
+
+// default window height = x
+// default pic height = 900
+// default pic width = y
+// default window width = w
+// 900/y = x/w
+// w900/y = x
+//w900 = xy
+//w900/x = y
 
   useEffect(()=>{
     setTitleCollapse(true)
   },[]);
+
+  window.addEventListener("resize", function(){
+    var x = window.innerWidth
+    // parallax(); 
+  });
 
   const pictureStyle={
     position: 'relative',
@@ -148,6 +165,10 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
       default:
         return <ConstructionIcon fontSize="large" sx={{color: '#111', backgroundColor: '#C5B485'}} />;
     }
+  }
+
+  const handleDialogClose=()=>{
+    setDialogOpen(false)
   }
 
   return(
@@ -257,16 +278,16 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
           </Box>
         </Box> */}
       </Box>
-      <Box sx={pictureStyle}>
+      <Box sx={pictureStyle} onClick={()=>setDialogOpen(true)}>
         <Fade in style={{ transitionDelay:'500ms', }}>
           <Box sx={{height: '100%', width: '100%', display: 'relative'}}>
             <Image
-                  src={project.displayImage}
+                  src={project.thumbImage}
                   // height={250}
                   // sizes="(max-width: 1000px) 5vw, 33vw"
                   fill
                   alt='project photo'
-                  onLoad={()=>dimensionsFunction({width: project.displayImage.width, height: project.displayImage.height})}
+                  onLoad={()=>dimensionsFunction({width: project.thumbImage.width, height: project.thumbImage.height})}
               />
               <ZoomInIcon sx={{position: 'absolute', bottom: 0, right: 0, color: 'grey', fontSize: '36px'}}/>
           </Box>
@@ -278,6 +299,28 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
         </Link>
         <DoubleArrowIcon />
       </Stack>
+      <Dialog
+        open={dialogOpen}
+        onClose={handleDialogClose}
+        // fullWidth
+        maxWidth="xl"
+      >
+        <DialogContent
+          sx={{
+            height: '90vh',
+            width: 'auto',
+            maxWidth: '100vw',
+            aspectRatio: `${project.displayImage.width} / ${project.displayImage.height}`
+          }}
+        >
+          <Image
+            src={project.displayImage}
+            fill
+            alt='full project preview image'
+          />
+          {/* <Typography>Pop Up</Typography> */}
+        </DialogContent>
+      </Dialog>
   </Box>
   // </Grow>
   )

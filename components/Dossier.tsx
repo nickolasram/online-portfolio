@@ -49,15 +49,8 @@ const wrapperStyle = {
     justifyContent: 'start',
     alignItems: 'flex-start',
     width: 'fit-content',
-    marginBottom: 5
+    marginBottom: 0
 }
-const pictureStyle={
-    padding: '2px',
-    height: '260px',
-    backgroundColor: '#C5B485',
-    cursor: 'pointer',
-    width: 'fit-content'
-  }
 const folderStyle={
     // border: '2px solid #e7d19c',
     // padding: 1,
@@ -95,9 +88,10 @@ const fileWrapperStyle={
     flexDirection: 'row',
     alignItems: 'flex-start', 
     justifyContent: 'start',
-    height: 550,
+    height: 'fit-content',
     width: 'fit-content',
     gap: 6,
+    marginBottom: '4rem'
 }
 const tabsStyle={
     height:'fit-content',

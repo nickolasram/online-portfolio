@@ -21,7 +21,7 @@ const portfolioBGBox = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'flex-start',
-  marginBottom: 30,
+  marginBottom: 0,
   paddingLeft: '9.85%'
 }
 
@@ -30,13 +30,8 @@ const navSize = {
 }
 
 const portfolioHeading = {
-  height: 50,
-  width: 200,
-  borderBottom: '2px solid #C5B485',
-  marginBottom: '1.5rem',
-  paddingLeft: 1,
-  marginLeft: 1,
-  textShadow: '0 0 #999',
+  height: 55,
+  width: 220,
   backgroundImage:`url(${portHead.src})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "contain",
@@ -180,15 +175,21 @@ export default function Home() {
           <Box sx={portfolioBGBox}>
             {/* <Link sx={portfolioHeading} underline="none">Portfolio</Link> */}
             <Box>
-              <Box sx={portfolioHeading} id='portfolio-heading'>  
-              {/* <Typography color='#F9FBFF' variant="h1" sx={portfolioHeading} id='portfolio-heading'>Portfolio</Typography>             */}
+              <Box  sx={{display: "flex", gap: 0, alignItems: 'flex-end', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>
+                <Box sx={{height: 5, width: 20}}></Box>
+                <Box sx={portfolioHeading} id='portfolio-heading'></Box>
               </Box>
               <Dossier projects={projectsArray}/>
             </Box>
           </Box>
-          <Box>
-            <Typography variant='h2'>About</Typography>
-            <Box sx={{marginTop: '1rem', marginBottom: '10rem'}}>
+          <Box
+            sx={{
+              paddingLeft: '9.85%',
+              width: '100%',
+            }}
+          >
+            <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>About</Typography>
+            <Box sx={{marginTop: 0, marginBottom: '10rem'}}>
               <Typography>The aspect of web development that has appealed most to me is considering how </Typography>
             </Box> 
           </Box>

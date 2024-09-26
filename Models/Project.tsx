@@ -3,6 +3,7 @@ import { StaticImageData } from "next/image";
 export interface Project{
     title: string;
     abbrTitle: string;
+    thumbImage: StaticImageData;
     displayImage: StaticImageData;
     github?: string;
     site?: string;
