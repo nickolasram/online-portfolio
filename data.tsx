@@ -1,4 +1,5 @@
 import { Project } from "@/Models/Project";
+import { Logo } from '@/Models/Logo';
 import BelindasWeb from '@/public/BCWPreview.png';
 import FullBelindasWeb from '@/public/BCWFull.png';
 import BelindasMobile from '@/public/BCMPreview.png';
@@ -13,8 +14,14 @@ import NSCEvents from '@/public/NSCPreview.png';
 import FullNSCEvents from '@/public/NSCFull.png';
 import OnlinePortfolio from '@/public/OPPreview.png'
 import FullOnlinePortfolio from '@/public/OPFull.png';
+import ReactSmall from '@/public/CertLogos/ReactSmall.png';
+import MUISmall from '@/public/CertLogos/MUISmall.png';
+import CSSSmall from '@/public/CertLogos/CSSSmall.png';
+import AWSCASmall from '@/public/CertLogos/AWSCASmall.png';
+import AWSCDSmall from '@/public/CertLogos/AWSCDSmall.png';
+import AWSCFSmall from '@/public/CertLogos/AWSCFSmall.png';
 
-const projectData: Project[]=[
+export const projectData: Project[]=[
   {
       title: 'Geek Girl Con Mobile App', 
       abbrTitle: 'GGC Mobile', 
@@ -123,4 +130,35 @@ const projectData: Project[]=[
     },
 ]
 
-export default projectData;
+export const LogoArray: Logo[]=[
+  {
+    alt: "React Logo",
+    badge: ReactSmall,
+    background: "#fff"
+  },
+  {
+    alt: 'Material UI Logo',
+    badge: MUISmall,
+    background: '#000',
+  },
+  {
+    alt: 'CSS Logo',
+    badge: CSSSmall,
+    background: '#fff'
+  },
+  {
+    alt: 'AWS Cloud Architecting Badge',
+    badge: AWSCASmall,
+    background: '#000'
+  },
+  {
+    alt: 'AWS Cloud Developing Badge',
+    badge: AWSCDSmall,
+    background: '#000'
+  },
+  {
+    alt: 'AWS Cloud Foundations Badge',
+    badge: AWSCFSmall,
+    background: '#000'
+  }
+]

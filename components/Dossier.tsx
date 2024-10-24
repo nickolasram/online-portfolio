@@ -142,13 +142,6 @@ export default function Dossier({projects}: DossierProps){
     const [tagCollapse, setTagCollapse] = useState(true);
     const [dimensions, setDimensions] = useState<Dimensions>({height: 250, width: 250})
 
-
-//set up ref
-//set div to ref
-//set useeffect to change when ref changes
-//when new div loads, set width to old width, then switch to auto then record old height 
-//should ref be a ref to the width or container itself with a state holding the width
-
     const handleCollapse=()=>{
         setTagCollapse(false);
         // setTagCollapse(true);
