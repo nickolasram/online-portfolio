@@ -12,8 +12,12 @@ import MemoryIcon from '@mui/icons-material/Memory';
 import {projectData} from "@/data";
 import portHead from "@/public/PortHead.png"
 import { useTheme } from "@mui/material/styles";
-import { Typography, Stack, Box, Container, Link, Slide, Collapse } from "@mui/material";
-import Logos from '@/components/Logos'
+import { Typography, Stack, Box, Container, Button, Link, Slide, Collapse, TextField } from "@mui/material";
+import Logos from '@/components/Logos';
+import ReCAPTCHA from "react-google-recaptcha";
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 const portfolioBGBox = {
   width: '100%',
@@ -71,8 +75,8 @@ export default function Home() {
           >
               <Link href='#banner-div' variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Greeting</Link>
               <Link href='#portfolio-heading'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Portfolio</Link>
-              <Link href='/'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>About</Link>
-              <Link href='/'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Contact</Link>
+              <Link href='#about-heading'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>About</Link>
+              <Link href='#contact-heading'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Contact</Link>
               <Stack direction='row' sx={{display: 'flex', justifyContent: 'space-around'}}>
                 <LocationCityIcon fontSize="large" sx={{color: 'rgba(197,180,133,1)'}}/>
                 <MemoryIcon fontSize="large" sx={{color: '#008C8C'}}/>
@@ -188,8 +192,8 @@ export default function Home() {
               width: '100%',
             }}
           >
-            <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>About</Typography>
-            <Box sx={{marginTop: 0, marginBottom: '10rem', display: 'flex', gap: 3}}>
+            <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}} id="about-heading">About</Typography>
+            <Box sx={{marginTop: 0, marginBottom: '2rem', display: 'flex', gap: 3}}>
               <Typography ml={10} sx={{ maxWidth: '40vw'}}>I recently graduated from NSC’s application development program. 
               After establishing a foundation in coding with Java and Python, 
               the program ultimately focused on developing desktop and mobile web-based applications 
@@ -207,6 +211,34 @@ export default function Home() {
                 <Logos />
               </Box>
             </Box> 
+          </Box>
+          <Box
+            sx={{
+              paddingLeft: '9.85%',
+              width: '100%',
+            }}
+          >
+            <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}} id="contact-heading">Contact</Typography>
+            <Box sx={{marginTop: 0, marginBottom: '10rem', display: 'flex', gap: 3}}>
+              <Box ml={10}  sx={{maxWidth: '40vw'}}>
+                <form>
+                  <TextField label="Full Name" size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
+                  <TextField label="Company" size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
+                  <TextField label="E-mail Address" size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
+                  <TextField label="Message" multiline rows={10} size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
+                  <ReCAPTCHA
+                    sitekey="Your client site key"
+                    onChange={null}
+                  />
+                  <Button variant="contained" color="primary" sx={{marginTop: 2}}>Submit</Button>
+                </form>
+              </Box>
+              <Box bgcolor='#111' p={2} sx={{ width: '30%', maxHeight: 'fit-content'}}>
+                <Typography><LocalPhoneIcon /> (509) 643-2115</Typography>
+                <Typography><EmailIcon /> nick@ramrezdev.com</Typography>
+                <Typography>Seattle, WA</Typography>
+              </Box>
+            </Box>
           </Box>
         </Box>                                                                                                                                                      
         

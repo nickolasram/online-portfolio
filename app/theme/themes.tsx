@@ -19,16 +19,32 @@ let darkTheme = createTheme({
     },
   },
   components: {
-    CarouselElement: {
-      styleOverrides: {
-        left: {
-          left: -40,
-        },
-        right: {
-          right: -40,
-        }
+  MuiInput: {
+    styleOverrides: {
+      root: {
+        backgroundColor: '#eee',
+      },input: {
+        backgroundColor: '#eee',
       },
     },
+  },
+  MuiFormHelperText: {
+    styleOverrides: {
+      root: {
+        backgroundColor: '#eee',
+      }
+    },
+  },
+  CarouselElement: {
+    styleOverrides: {
+      left: {
+        left: -40,
+      },
+      right: {
+        right: -40,
+      }
+    },
+  },
   },
   typography: {
     h1: {

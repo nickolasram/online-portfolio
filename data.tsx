@@ -20,6 +20,27 @@ import CSSSmall from '@/public/CertLogos/CSSSmall.png';
 import AWSCASmall from '@/public/CertLogos/AWSCASmall.png';
 import AWSCDSmall from '@/public/CertLogos/AWSCDSmall.png';
 import AWSCFSmall from '@/public/CertLogos/AWSCFSmall.png';
+import AmplifySmall from '@/public/CertLogos/AmplifySmall.png';
+import APISmall from '@/public/CertLogos/APISmall.png';
+import DjangoSmall from '@/public/CertLogos/DjangoSmall.png';
+import DockerSmall from '@/public/CertLogos/DockerSmall.png';
+import DynamoSmall from '@/public/CertLogos/DynamoSmall.png';
+import EC2Small from '@/public/CertLogos/EC2Small.png';
+import ExpoSmall from '@/public/CertLogos/ExpoSmall.png';
+import JavaSmall from '@/public/CertLogos/JavaSmall.png';
+import KotlinSmall from '@/public/CertLogos/KotlinSmall.png';
+import LambdaSmall from '@/public/CertLogos/LambdaSmall.png';
+import MongoDBSmall from '@/public/CertLogos/MongoDBSmall.png';
+import NextSmall from '@/public/CertLogos/NextSmall.png';
+import PostgresSmall from '@/public/CertLogos/PostgresSmall.png';
+import PythonSmall from '@/public/CertLogos/PythonSmall.png';
+import RDSSMall from '@/public/CertLogos/RDSSmall.png';
+import RedisSmall from '@/public/CertLogos/RedisSmall.png';
+import S3Small from '@/public/CertLogos/S3Small.png';
+import SQLSmall from '@/public/CertLogos/SQLSmall.png';
+import TailwindSmall from '@/public/CertLogos/TailwindSmall.png';
+import TamaguiSmall from '@/public/CertLogos/TamaguiSmall.png';
+import FigmaSmall from '@/public/CertLogos/FigmaSmall.png';
 
 export const projectData: Project[]=[
   {
@@ -160,5 +181,89 @@ export const LogoArray: Logo[]=[
     alt: 'AWS Cloud Foundations Badge',
     badge: AWSCFSmall,
     background: '#000'
+  },
+  {
+    alt: 'Amplify Logo',
+    badge: AmplifySmall
+  },
+  {
+    alt: 'AWS API Bridge Logo',
+    badge: APISmall
+  },
+  {
+    alt: 'Django Logo',
+    badge: DjangoSmall
+  },
+  {
+    alt: 'Docker Logo',
+    badge: DockerSmall
+  },
+  {
+    alt: 'AWS Dynamo Logo',
+    badge: DynamoSmall
+  },
+  {
+    alt: 'EC2 Logo',
+    badge: EC2Small
+  },
+  {
+    alt: 'Expo Logo',
+    badge: ExpoSmall
+  },
+  {
+    alt: 'Java Logo',
+    badge: JavaSmall
+  },
+  {
+    alt: 'Kotlin Logo',
+    badge: KotlinSmall
+  },
+  {
+    alt: 'Lambda Logo',
+    badge: LambdaSmall
+  },
+  {
+    alt: 'Figma Logo',
+    badge: FigmaSmall
+  },
+  {
+    alt: 'MongoDB Logo',
+    badge: MongoDBSmall
+  },
+  {
+    alt: 'NextJS Logo',
+    badge: NextSmall
+  },
+  {
+    alt: 'Postgres Logo',
+    badge: PostgresSmall
+  },
+  {
+    alt: 'Python Logo',
+    badge: PythonSmall
+  },
+  {
+    alt: 'AWS RDS Logo',
+    badge: RDSSMall
+  },
+  {
+    alt: 'Redis Logo',
+    badge: RedisSmall
+  },
+  {
+    alt: 'AWS S3 Logo',
+    badge: S3Small
+  },
+  {
+    alt: 'SQL Logo',
+    badge: SQLSmall
+  },
+  {
+    alt: 'Tailwind Logo',
+    badge: TailwindSmall
+  },
+  {
+    alt: 'TamaGui Logo',
+    badge: TamaguiSmall
   }
 ]
