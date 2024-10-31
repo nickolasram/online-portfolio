@@ -63,7 +63,7 @@ export default function Home() {
   });
 
   return (
-    <Box>
+    <main>
       <Slide direction="down" in timeout={1000}>
         <Stack
           bgcolor='#00000066'
@@ -258,6 +258,6 @@ export default function Home() {
             <Dossier />
           </Stack> */}
       </Box>
-    </Box>
+    </main>
   );
 }
