@@ -131,7 +131,7 @@ export default function Home() {
               </Stack>
               <Typography variant='body1'>
                 Recent graduate from North Seattle College with a BAS in application development where I focused on front end development.
-                Here you'll find a portfolio of projects I worked on as a student at NSC and independently; more information about myself,
+                Here you&apos;ll find a portfolio of projects I worked on as a student at NSC and independently; more information about myself,
                 my studies, and my goals as a developer; as well as my contact information.
               </Typography>
           </Box>
@@ -194,18 +194,18 @@ export default function Home() {
           >
             <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}} id="about-heading">About</Typography>
             <Box sx={{marginTop: 0, marginBottom: '2rem', display: 'flex', gap: 3}}>
-              <Typography ml={10} sx={{ maxWidth: '40vw'}}>I recently graduated from NSC’s application development program. 
+              <Typography ml={10} sx={{ maxWidth: '40vw'}}>I recently graduated from NSC&apos;s application development program. 
               After establishing a foundation in coding with Java and Python, 
-              the program ultimately focused on developing desktop and mobile web-based applications 
-              across the entire stack with such topics as client-side and server-side web development, 
+              the program ultimately focused on developing desktop and mobile web&ndash;based applications 
+              across the entire stack with such topics as client&ndash;side and server&ndash;side web development, 
               cloud computing SAS, and data science. Not only was I able to learn about these topics in the classroom, 
               but I was lucky enough to exercise the skills I learned by helping to develop a number of websites and applications
                for NSC and other clients in an agile-like environment with my cohorts. 
                While studying at NSC (and even before when I started exploring the topic as a hobby,) 
                the aspect of web development that always appealed to me most was building interesting, 
                readable, intuitive, and quick UIs and UXs. This is why I spent a majority of my time while developing
-                websites and applications at NSC as a front-end developer working with React 
-                and React-related frameworks and libraries and why I’m looking for work in front-end web development.</Typography>
+                websites and applications at NSC as a front&ndash;end developer working with React 
+                and React&ndash;related frameworks and libraries and why I’m looking for work in front-end web development.</Typography>
               <Box sx={{width: '30%'}}>
                 <Typography variant="caption">Hover for caption/zoom</Typography>
                 <Logos />
