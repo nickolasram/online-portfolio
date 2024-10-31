@@ -14,7 +14,7 @@ import portHead from "@/public/PortHead.png"
 import { useTheme } from "@mui/material/styles";
 import { Typography, Stack, Box, Container, Button, Link, Slide, Collapse, TextField } from "@mui/material";
 import Logos from '@/components/Logos';
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
@@ -226,10 +226,10 @@ export default function Home() {
                   <TextField label="Company" size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
                   <TextField label="E-mail Address" size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
                   <TextField label="Message" multiline rows={10} size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
-                  <ReCAPTCHA
-                    sitekey="Your client site key"
-                    onChange={null}
-                  />
+//               <ReCAPTCHA
+//                  sitekey="Your client site key"
+//                   onChange={null}
+//                  />
                   <Button variant="contained" color="primary" sx={{marginTop: 2}}>Submit</Button>
                 </form>
               </Box>
