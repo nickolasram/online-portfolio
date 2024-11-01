@@ -110,6 +110,7 @@ const tabWrapperStyle={
     width: 100,
     // borderBottomLeftRadius: 5,
     backgroundColor: '#22222200',
+    textColor: "#222"
 }
 const titleAndTab={
     display: 'flex',
@@ -167,7 +168,7 @@ export default function Dossier({projects}: DossierProps){
                                 onChange={handleChange} 
                                 aria-label="basic tabs example"
                                 variant="standard"
-                                textColor="#222"
+                                textColor="inherit"
                                 sx={tabsStyle}
                                 TabIndicatorProps={{
                                     sx: {
@@ -204,7 +205,7 @@ export default function Dossier({projects}: DossierProps){
                                 <Box sx={{display: 'flex', flexDirection: 'row'}}>
                                 <Box sx={pageWrapper}>
                                     <ProjectFile project={project} passThrough={setTagCollapse} dimensionsFunction={setDimensions} passedDimensions={dimensions}/>
-                                        <Typography variant="tag1" sx={[{display: 'flex', gap: '1rem', height: '1.5rem', overflow:'hidden'}]}>
+                                        <Typography variant="body2" sx={[{display: 'flex', gap: '1rem', height: '1.5rem', overflow:'hidden'}]}>
                                             Tags: 
                                             <Collapse
                                                 in={tagCollapse}
@@ -212,7 +213,7 @@ export default function Dossier({projects}: DossierProps){
                                                 timeout={500}
                                                 sx={{height: '2rem'}}
                                             >
-                                                <Typography variant="tag1">
+                                                <Typography variant="body2">
                                                     {project.tags?.join(", ")}
                                                 </Typography>
                                             </Collapse>

@@ -72,10 +72,10 @@ let darkTheme = createTheme({
       fontSize: '1rem',
       color: '#fff'
     },
-    tag1: {
-      fontSize: '1rem',
-      color: '#fff'
-    }
+    // tag1: {
+      // fontSize: '1rem',
+      // color: '#fff'
+    // }
   }
 //   components: {
 //     MuiButton: {

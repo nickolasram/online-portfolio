@@ -1,7 +1,7 @@
 'use client';
 import { Carousel } from "@/components/Carousel";
 import Image from 'next/image';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import bart from '@/public/bart.jpg'
 import suit from '@/public/suit.png'
 import { Project } from "@/Models/Project";
@@ -45,7 +45,7 @@ const portfolioHeading = {
 const projectsArray: Project[] = projectData;
 
 export default function Home() {
-  const [pageYOffset, setPageYOffset] = useState(window.pageYOffset);
+  const [pageYOffset, setPageYOffset] = useState(0);
   const theme = useTheme();
 
   function parallax() {
@@ -58,9 +58,14 @@ export default function Home() {
     setPageYOffset(window.pageYOffset)
   }
 
-  window.addEventListener("scroll", function(){
-      parallax(); 
-  });
+  useEffect(() => {
+    if (typeof window !== "undefined") { 
+      setPageYOffset(window.pageYOffset)
+      window.addEventListener("scroll", function(){
+        parallax(); 
+      });
+    }
+  }, []);
 
   return (
     <main>

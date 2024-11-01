@@ -127,13 +127,13 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
 //w900/x = y
 
   useEffect(()=>{
-    setTitleCollapse(true)
+    setTitleCollapse(true);
+    // window.addEventListener("resize", function(){
+    //   var x = window.innerWidth
+      // parallax(); 
+    // });
   },[]);
 
-  window.addEventListener("resize", function(){
-    var x = window.innerWidth
-    // parallax(); 
-  });
 
   const pictureStyle={
     position: 'relative',
@@ -183,7 +183,7 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
               timeout={250}
               addEndListener={()=>setTimeout(()=>setRoleCollapse(roleCollapse => !roleCollapse), 250)}
             >
-              <Typography variant='body2' sx={[basicFontStyle, 
+              <Typography variant='body2' component='span' sx={[basicFontStyle, 
                 {fontWeight: 700, color: '#F9FBFF', fontSize: '1.75rem', textWrap: 'nowrap'}]} >
                   {project.title}
               </Typography>
@@ -192,14 +192,14 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
           <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
               <Bold text='Role:'/> 
               <Collapse
-              component='p'
+              component='span'
               in={roleCollapse} 
               orientation="horizontal"
               timeout={150}
               addEndListener={()=>setTimeout(()=>setStatusCollapse(!statusCollapse), 150)}
               sx={{height: '1.6rem', display: 'inline'}}
               >
-                <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+                <Typography variant='body2' component='span' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
                   {project.role}
                 </Typography>
               </Collapse>
@@ -218,14 +218,14 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
           <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
               <Bold text='Client:'/> 
               <Collapse
-              component='p'
+              component='span'
               in={clientCollapse} 
               orientation="horizontal"
               timeout={150}
               addEndListener={()=>setTimeout(()=>setDateCollapse(!dateCollapse), 150)}
               sx={{height: '1.6rem', display: 'inline'}}
               >
-                <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+                <Typography variant='body2' component='span' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
                   {project.client}
                 </Typography>
               </Collapse>
@@ -233,14 +233,14 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
           <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
               <Bold text='Date:'/> 
               <Collapse
-              component='p'
+              component='span'
               in={dateCollapse} 
               orientation="horizontal"
               timeout={150}
               addEndListener={()=>setTimeout(()=>setLinksCollapse(!linksCollapse), 150)}
               sx={{height: '1.6rem', display: 'inline'}}
               >
-                <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+                <Typography variant='body2' component='span' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
                   {project.date}
                 </Typography>
               </Collapse>

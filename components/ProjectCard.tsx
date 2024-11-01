@@ -73,7 +73,7 @@ export default function ProjectCard({project}: ProjectCardProps){
 
     const TagStack =()=>{
         return (
-            <Box direction='row' sx={{ flexWrap: 'wrap' }}>
+            <Box component='div' sx={{ flexWrap: 'wrap', flexDirection: 'row' }}>
                 {
                     project.tags?.map((tag, index)=>(
                         <Chip color={'primary'} label={tag} key={index} sx={{margin: 0.25}} />
