@@ -222,10 +222,31 @@ export default function Home() {
             <Box sx={{marginTop: 0, marginBottom: '10rem', display: 'flex', gap: 3}}>
               <Box ml={10}  sx={{maxWidth: '40vw'}}>
                 <form>
-                  <TextField label="Full Name" size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
-                  <TextField label="Company" size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
-                  <TextField label="E-mail Address" size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
-                  <TextField label="Message" multiline rows={10} size="small" variant="filled" sx={{marginBottom: 2, width: '100%'}}/>
+                  <TextField 
+                    label="Full Name" 
+                    size="small" 
+                    variant="filled"
+                    InputProps={{disableUnderline: true }}
+                    sx={{marginBottom: 2, width: '100%'}}/>
+                  <TextField 
+                    label="Company" 
+                    size="small" 
+                    variant="filled"
+                    InputProps={{disableUnderline: true }}
+                    sx={{marginBottom: 2, width: '100%'}}/>
+                  <TextField 
+                    label="E-mail Address" 
+                    size="small" 
+                    variant="filled"
+                    InputProps={{disableUnderline: true }} 
+                    sx={{marginBottom: 2, width: '100%'}}/>
+                  <TextField 
+                    label="Message" 
+                    multiline rows={10} 
+                    size="small" 
+                    variant="filled" 
+                    InputProps={{disableUnderline: true }}
+                    sx={{marginBottom: 2, width: '100%'}}/>
                   <ReCAPTCHA
                     sitekey="Your client site key"
                     onChange={null}

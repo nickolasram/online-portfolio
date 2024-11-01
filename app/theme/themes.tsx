@@ -19,20 +19,20 @@ let darkTheme = createTheme({
     },
   },
   components: {
+  MuiInputLabel: {
+    styleOverrides: {
+      root: {
+        "&.Mui-focused": {
+          color: '#fff'
+        }
+      }
+    },
+  },
   MuiInput: {
     styleOverrides: {
       root: {
-        backgroundColor: '#eee',
-      },input: {
-        backgroundColor: '#eee',
+        fontSize: 1
       },
-    },
-  },
-  MuiFormHelperText: {
-    styleOverrides: {
-      root: {
-        backgroundColor: '#eee',
-      }
     },
   },
   CarouselElement: {
