@@ -231,26 +231,30 @@ export default function Home() {
                     label="Full Name" 
                     size="small" 
                     variant="filled"
-                    InputProps={{disableUnderline: true }}
+                    InputLabelProps={{style: {fontSize: 20}}}
+                    InputProps={{disableUnderline: true, style: {fontSize: 20} }}
                     sx={{marginBottom: 2, width: '100%'}}/>
                   <TextField 
                     label="Company" 
                     size="small" 
                     variant="filled"
-                    InputProps={{disableUnderline: true }}
+                    InputLabelProps={{style: {fontSize: 20}}}
+                    InputProps={{disableUnderline: true, style: {fontSize: 20} }}
                     sx={{marginBottom: 2, width: '100%'}}/>
                   <TextField 
                     label="E-mail Address" 
                     size="small" 
                     variant="filled"
-                    InputProps={{disableUnderline: true }} 
+                    InputLabelProps={{style: {fontSize: 20}}}
+                    InputProps={{disableUnderline: true, style: {fontSize: 20} }}
                     sx={{marginBottom: 2, width: '100%'}}/>
                   <TextField 
                     label="Message" 
                     multiline rows={10} 
                     size="small" 
                     variant="filled" 
-                    InputProps={{disableUnderline: true }}
+                    InputLabelProps={{style: {fontSize: 20}}}
+                    InputProps={{disableUnderline: true, style: {fontSize: 20} }}
                     sx={{marginBottom: 2, width: '100%'}}/>
                {/* <ReCAPTCHA
                   sitekey=""
