@@ -225,7 +225,7 @@ export default function Home() {
           >
             <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}} id="contact-heading">Contact</Typography>
             <Box sx={{marginTop: 0, marginBottom: '10rem', display: 'flex', gap: 3}}>
-              <Box ml={10}  sx={{maxWidth: '40vw'}}>
+              {/* <Box ml={10}  sx={{maxWidth: '40vw'}}>
                 <form>
                   <TextField 
                     label="Full Name" 
@@ -251,15 +251,15 @@ export default function Home() {
                     size="small" 
                     variant="filled" 
                     InputProps={{disableUnderline: true }}
-                    sx={{marginBottom: 2, width: '100%'}}/>
+                    sx={{marginBottom: 2, width: '100%'}}/> */}
                {/* <ReCAPTCHA
                   sitekey=""
                    onChange={null}
                   /> */}
-                  <Button variant="contained" color="primary" sx={{marginTop: 2}}>Submit</Button>
+                  {/* <Button variant="contained" color="primary" sx={{marginTop: 2}}>Submit</Button>
                 </form>
-              </Box>
-              <Box bgcolor='#111' p={2} sx={{ width: '30%', maxHeight: 'fit-content'}}>
+              </Box> */}
+              <Box ml={10} bgcolor='#111' p={2} sx={{ width: '30%', maxHeight: 'fit-content'}}>
                 <Typography><LocalPhoneIcon /> (509) 643-2115</Typography>
                 <Typography><EmailIcon /> nick@ramrezdev.com</Typography>
                 <Typography>Seattle, WA</Typography>
