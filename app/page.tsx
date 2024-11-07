@@ -24,8 +24,7 @@ const portfolioBGBox = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'flex-start',
-  marginBottom: 0,
-  paddingLeft: '9.85%'
+  marginBottom: 0
 }
 
 const navSize = {
@@ -95,13 +94,12 @@ export default function Home() {
         sx={{
           overflow: 'visible',
           display:'grid',
-          gridTemplateAreas: `"q"`
+          gridTemplateColumns: '8% 1fr'
         }}
       >
         <Box 
           id="banner-div"
           width={1}
-          gridArea='q'
           bgcolor='#000'
           zIndex={2}
           position='absolute'
@@ -111,6 +109,7 @@ export default function Home() {
           justifyContent='center'
           sx={{
             background: 'linear-gradient(180deg, rgba(15,15,15,1) 0%, rgba(15,15,15,1) 35%, rgba(15,15,15,0) 100%)',
+            gridColumn: '1 / -1'
           }}
           >
             <Box mt={10} width={.6}>
@@ -143,7 +142,6 @@ export default function Home() {
           id="banner-wrapper-backdrop-filter"
           // bgcolor='primary.main'
           bgcolor='#222'
-          gridArea='q'
           pt='70vh'
           width={1}
           sx={{
@@ -152,17 +150,7 @@ export default function Home() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundImage: `linear-gradient(90deg,
-                              rgba(17,17,17,1) 0%, 
-                              rgba(17,17,17,1) 8%, 
-                              rgba(197,180,133,1) 8%, 
-                              rgba(197,180,133,1) 8.5%, 
-                              rgba(17,17,17,1) 8.5%, 
-                              rgba(17,17,17,1) 9.35%, 
-                              rgba(197,180,133,1) 9.35%, 
-                              rgba(197,180,133,1) 9.85%, 
-                              rgba(34,34,34,1) 9.85%, 
-                              rgba(34,34,34,1) 100%)`
+            gridColumn: '2 / -1'
           }}
         >
           {/* <Container>
@@ -189,7 +177,6 @@ export default function Home() {
           </Box>
           <Box
             sx={{
-              paddingLeft: '9.85%',
               width: '100%',
             }}
           >
@@ -215,7 +202,6 @@ export default function Home() {
           </Box>
           <Box
             sx={{
-              paddingLeft: '9.85%',
               width: '100%',
             }}
           >
