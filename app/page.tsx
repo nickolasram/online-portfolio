@@ -94,7 +94,8 @@ export default function Home() {
         sx={{
           overflow: 'visible',
           display:'grid',
-          gridTemplateColumns: '8% 1fr'
+          gridTemplateColumns: '8% 1fr',
+          gap: '1.5%'
         }}
       >
         <Box 
@@ -150,7 +151,8 @@ export default function Home() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            gridColumn: '2 / -1'
+            gridColumn: '2 / -1',
+            borderLeft: '8px solid rgb(197,180,133,1)'
           }}
         >
           {/* <Container>
