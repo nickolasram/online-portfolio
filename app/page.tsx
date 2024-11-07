@@ -6,15 +6,13 @@ import bart from '@/public/bart.jpg'
 import suit from '@/public/suit.png'
 import { Project } from "@/Models/Project";
 import Dossier from "@/components/Dossier";
-import portfolioSVG from '@/public/PortfolioSVG.svg';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import MemoryIcon from '@mui/icons-material/Memory';
 import {projectData} from "@/data";
 import portHead from "@/public/PortHead.png"
 import { useTheme } from "@mui/material/styles";
-import { Typography, Stack, Box, Container, Button, Link, Slide, Collapse, TextField } from "@mui/material";
+import { Typography, Stack, Box, Link, Slide } from "@mui/material";
 import Logos from '@/components/Logos';
-// import ReCAPTCHA from "react-google-recaptcha";
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
@@ -154,7 +152,6 @@ export default function Home() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            // backgroundImage: `url(${NoirBG.src})`,
             backgroundImage: `linear-gradient(90deg,
                               rgba(17,17,17,1) 0%, 
                               rgba(17,17,17,1) 8%, 
@@ -182,7 +179,6 @@ export default function Home() {
             <Carousel projects={projectsArray} />
           </Stack> */}
           <Box sx={portfolioBGBox}>
-            {/* <Link sx={portfolioHeading} underline="none">Portfolio</Link> */}
             <Box>
               <Box  sx={{display: "flex", gap: 0, alignItems: 'flex-end', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>
                 <Box sx={{height: 5, width: 20}}></Box>
@@ -225,64 +221,14 @@ export default function Home() {
           >
             <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}} id="contact-heading">Contact</Typography>
             <Box sx={{marginTop: 0, marginBottom: '10rem', display: 'flex', gap: 3}}>
-              {/* <Box ml={10}  sx={{maxWidth: '40vw'}}>
-                <form>
-                  <TextField 
-                    label="Full Name" 
-                    size="small" 
-                    variant="filled"
-                    InputProps={{disableUnderline: true }}
-                    sx={{marginBottom: 2, width: '100%'}}/>
-                  <TextField 
-                    label="Company" 
-                    size="small" 
-                    variant="filled"
-                    InputProps={{disableUnderline: true }}
-                    sx={{marginBottom: 2, width: '100%'}}/>
-                  <TextField 
-                    label="E-mail Address" 
-                    size="small" 
-                    variant="filled"
-                    InputProps={{disableUnderline: true }} 
-                    sx={{marginBottom: 2, width: '100%'}}/>
-                  <TextField 
-                    label="Message" 
-                    multiline rows={10} 
-                    size="small" 
-                    variant="filled" 
-                    InputProps={{disableUnderline: true }}
-                    sx={{marginBottom: 2, width: '100%'}}/> */}
-               {/* <ReCAPTCHA
-                  sitekey=""
-                   onChange={null}
-                  /> */}
-                  {/* <Button variant="contained" color="primary" sx={{marginTop: 2}}>Submit</Button>
-                </form>
-              </Box> */}
               <Box ml={10} bgcolor='#111' p={2} sx={{ width: '30%', maxHeight: 'fit-content'}}>
-                <Typography><LocalPhoneIcon /> (509) 643-2115</Typography>
-                <Typography><EmailIcon /> nick@ramrezdev.com</Typography>
-                <Typography>Seattle, WA</Typography>
+              <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocalPhoneIcon /> (509) 643-2115</Typography>
+                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><EmailIcon /> nickolasram@gmail.com</Typography>
+                <Typography sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocationOnIcon />Seattle, WA</Typography>
               </Box>
             </Box>
           </Box>
         </Box>                                                                                                                                                      
-        
-        {/* <Container> */}
-            {/* <Typography variant='h2'>
-              About
-            </Typography> */}
-          {/* </Container>  */}
-          {/* <Stack
-            height='100vh'
-            bgcolor='#222'
-            sx={{
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            <Dossier />
-          </Stack> */}
       </Box>
     </main>
   );
