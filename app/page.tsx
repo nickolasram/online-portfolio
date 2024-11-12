@@ -78,20 +78,34 @@ export default function Home() {
             {
               position: 'fixed', 
               top: 0, 
-              left: 0, 
               zIndex: 3,
-            //   [theme.breakpoints.down('md')]: {
-            //     display: 'none'
-            //  }
+              [theme.breakpoints.down('md')]: {
+                right: '8%'
+              },
+              [theme.breakpoints.up('md')]: {
+                left: 0
+              }
             }
           }
           >
               <Stack direction='row' sx={{display: 'flex', justifyContent: 'space-around'}}>
-                <LocationCityIcon fontSize="large" sx={{color: 'rgba(197,180,133,1)'}}/>
+                <LocationCityIcon 
+                  sx={{
+                      color: 'rgba(197,180,133,1)',
+                      fontSize: '2.25rem'
+                    }}/>
                 <Typography>/</Typography>
-                <MemoryIcon fontSize="large" sx={{color: '#222'}}/>
+                <MemoryIcon 
+                  sx={{
+                      color: '#222',
+                      fontSize: '2.5rem'
+                    }}/>
               </Stack>
-              <LocationCityIcon fontSize="large" sx={{color: '#222'}}/>
+              <LocationCityIcon
+               sx={{
+                color: '#222',
+                fontSize: '2.5rem'
+              }}/>
         </Stack>
       </Slide>
       <Box
@@ -103,7 +117,12 @@ export default function Home() {
         sx={{
           overflow: 'visible',
           display:'grid',
-          gridTemplateColumns: '8% 1fr'
+          [theme.breakpoints.down('md')]: {
+            gridTemplateColumns: `0 1fr`,
+          },
+          [theme.breakpoints.up('md')]: {
+            gridTemplateColumns: `8% 1fr`,
+          }
         }}
       >
         <Box 
