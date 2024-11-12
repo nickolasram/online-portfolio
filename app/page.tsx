@@ -1,7 +1,7 @@
 'use client';
 import { Carousel } from "@/components/Carousel";
 import Image from 'next/image';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import bart from '@/public/bart.jpg'
 import suit from '@/public/suit.png'
 import { Project } from "@/Models/Project";
@@ -42,12 +42,14 @@ const portfolioHeading = {
 const projectsArray: Project[] = projectData;
 
 export default function Home() {
+  const topRef = useRef<HTMLElement | null>(null);
+  const backdropRef = useRef<HTMLElement | null>(null);
   const [pageYOffset, setPageYOffset] = useState(0);
   const theme = useTheme();
 
   function parallax() {
-    var s = document.getElementById("banner-div");
-    var r = document.getElementById("banner-wrapper-backdrop-filter");
+    var s = topRef.current;
+    var r = backdropRef.current
     var yPos = 0 - window.pageYOffset/8;  
     s!.style.top = yPos + "%"; 
     var filterValue = Math.min(0.01 * Math.max(10, window.pageYOffset/4), 1)
@@ -68,21 +70,28 @@ export default function Home() {
     <main>
       <Slide direction="down" in timeout={1000}>
         <Stack
-          bgcolor='#00000066'
           width='8%'
           p={2}
           useFlexGap
           spacing={2}
-          sx={{position: 'fixed', top: 0, left: 0, zIndex: 3}}
+          sx={
+            {
+              position: 'fixed', 
+              top: 0, 
+              left: 0, 
+              zIndex: 3,
+            //   [theme.breakpoints.down('md')]: {
+            //     display: 'none'
+            //  }
+            }
+          }
           >
-              <Link href='#banner-div' variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Greeting</Link>
-              <Link href='#portfolio-heading'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Portfolio</Link>
-              <Link href='#about-heading'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>About</Link>
-              <Link href='#contact-heading'  variant='body2' color="primary.contrastText" underline="none" sx={navSize}>Contact</Link>
               <Stack direction='row' sx={{display: 'flex', justifyContent: 'space-around'}}>
                 <LocationCityIcon fontSize="large" sx={{color: 'rgba(197,180,133,1)'}}/>
-                <MemoryIcon fontSize="large" sx={{color: '#008C8C'}}/>
+                <Typography>/</Typography>
+                <MemoryIcon fontSize="large" sx={{color: '#222'}}/>
               </Stack>
+              <LocationCityIcon fontSize="large" sx={{color: '#222'}}/>
         </Stack>
       </Slide>
       <Box
@@ -98,7 +107,7 @@ export default function Home() {
         }}
       >
         <Box 
-          id="banner-div"
+          ref={topRef}
           width={1}
           bgcolor='#000'
           zIndex={2}
@@ -139,7 +148,7 @@ export default function Home() {
           </Box>
         </Box>
         <Box
-          id="banner-wrapper-backdrop-filter"
+          ref={backdropRef}
           // bgcolor='primary.main'
           bgcolor='#222'
           pt='70vh'
@@ -171,7 +180,7 @@ export default function Home() {
             <Box>
               <Box  sx={{display: "flex", gap: 0, alignItems: 'flex-end', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>
                 <Box sx={{height: 5, width: 20}}></Box>
-                <Box sx={portfolioHeading} id='portfolio-heading'></Box>
+                <Box sx={portfolioHeading}></Box>
               </Box>
               <Dossier projects={projectsArray}/>
             </Box>
@@ -181,7 +190,7 @@ export default function Home() {
               width: '100%',
             }}
           >
-            <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}} id="about-heading">About</Typography>
+            <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>About</Typography>
             <Box sx={{marginTop: 0, marginBottom: '2rem', display: 'flex', gap: 3}}>
               <Typography ml={10} sx={{ maxWidth: '40vw'}}>I recently graduated from NSC&apos;s application development program. 
               After establishing a foundation in coding with Java and Python, 
@@ -206,7 +215,7 @@ export default function Home() {
               width: '100%',
             }}
           >
-            <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}} id="contact-heading">Contact</Typography>
+            <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>Contact</Typography>
             <Box sx={{marginTop: 0, marginBottom: '10rem', display: 'flex', gap: 3}}>
               <Box ml={10} bgcolor='#111' p={2} sx={{ width: '30%', maxHeight: 'fit-content'}}>
               <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocalPhoneIcon /> (509) 643-2115</Typography>
