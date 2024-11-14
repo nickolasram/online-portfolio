@@ -19,7 +19,8 @@ const Logos =()=>{
                     <Box 
                         sx={
                         { height: logo.badge.height,
-                        width: '90px', 
+                        minWidth: '90px', 
+                        maxWidth: '90px', 
                         position: "relative", 
                         display: 'flex', 
                         alignItems: 'center', 

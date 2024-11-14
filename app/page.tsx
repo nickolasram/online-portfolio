@@ -261,7 +261,13 @@ export default function Home() {
                readable, intuitive, and quick UIs and UXs. This is why I spent a majority of my time while developing
                 websites and applications at NSC as a front&ndash;end developer working with React 
                 and React&ndash;related frameworks and libraries and why I’m looking for work in front-end web development.</Typography>
-              <Box sx={{width: '30%'}}>
+              <Box 
+                sx={{
+                  maxWidth: '80vw',
+                  [theme.breakpoints.up('md')]: {
+                    width: '30%'
+                  },
+                }}>
                 <Typography variant="caption">Hover for caption/zoom</Typography>
                 <Logos />
               </Box>
