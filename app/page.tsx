@@ -3,7 +3,7 @@ import { Carousel } from "@/components/Carousel";
 import Image from 'next/image';
 import { useState, useEffect, useRef } from "react";
 import bart from '@/public/bart.jpg'
-import suit from '@/public/suit.png'
+import suit from '@/public/suitsmall.png'
 import { Project } from "@/Models/Project";
 import Dossier from "@/components/Dossier";
 import LocationCityIcon from '@mui/icons-material/LocationCity';
@@ -134,15 +134,19 @@ export default function Home() {
           display='flex'
           flexDirection='row'
           alignItems='flex-start'
-          justifyContent='center'
+          pl={'24px'}
           sx={{
             background: 'linear-gradient(180deg, rgba(15,15,15,1) 0%, rgba(15,15,15,1) 35%, rgba(15,15,15,0) 100%)',
-            gridColumn: '1 / -1'
+            gridColumn: "1 / -1",           
+            [theme.breakpoints.up('md')]: {
+              justifyContent: 'center',
+              paddingLeft: 0
+            }
           }}
           >
             <Box mt={10} width={.6}>
             <Image
-                src={bart}
+                src={suit}
                 height={250}
                 alt='personal photo'
                 style={{float: 'right',
@@ -151,7 +155,16 @@ export default function Home() {
                         marginBottom: 25
                       }}
               />
-              <Stack justifyContent='flext-start' height='125px'>
+              <Stack 
+                justifyContent='flext-start' 
+                mb={3}
+                sx={{
+                  height: '125px',
+                  [theme.breakpoints.only('sm')]: {
+                    height: '200px',
+                  }
+                }}
+              >
                 <Typography variant='h1'>
                     Nickolas Ramirez
                   </Typography>
@@ -159,7 +172,7 @@ export default function Home() {
                     UI/UX Engineer
                   </Typography>
               </Stack>
-              <Typography variant='body1'>
+              <Typography variant='body1' sx={{maxWidth: '80vw'}}>
                 Recent graduate from North Seattle College with a BAS in application development where I focused on front end development.
                 Here you&apos;ll find a portfolio of projects I worked on as a student at NSC and independently; more information about myself,
                 my studies, and my goals as a developer; as well as my contact information.
