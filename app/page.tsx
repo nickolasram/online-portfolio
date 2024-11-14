@@ -179,7 +179,9 @@ export default function Home() {
             justifyContent: 'center',
             alignItems: 'center',
             gridColumn: '2 / -1',
-            borderLeft: '24px double rgb(197,180,133,1)'
+            [theme.breakpoints.up('sm')]: {
+              borderLeft: '24px double rgb(197,180,133,1)'
+            },
           }}
         >
           {/* <Container>
