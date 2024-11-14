@@ -225,8 +225,31 @@ export default function Home() {
             }}
           >
             <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>About</Typography>
-            <Box sx={{marginTop: 0, marginBottom: '2rem', display: 'flex', gap: 3}}>
-              <Typography ml={10} sx={{ maxWidth: '40vw'}}>I recently graduated from NSC&apos;s application development program. 
+            <Box 
+              sx={
+                {
+                  marginTop: 0, 
+                  marginBottom: '2rem', 
+                  display: 'flex', 
+                  gap: 3,
+                  [theme.breakpoints.down('md')]: {
+                    flexDirection: 'column',
+                    marginLeft: '24px',
+                  }
+                }
+              }
+              >
+              <Typography 
+                sx={
+                  { 
+                    maxWidth: '80vw',
+                    [theme.breakpoints.up('md')]: {
+                      maxWidth: '40vw',
+                      marginLeft: 10
+                    }
+                  }
+                }
+              >I recently graduated from NSC&apos;s application development program. 
               After establishing a foundation in coding with Java and Python, 
               the program ultimately focused on developing desktop and mobile web&ndash;based applications 
               across the entire stack with such topics as client&ndash;side and server&ndash;side web development, 
