@@ -16,6 +16,7 @@ import Logos from '@/components/Logos';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import ArticleIcon from '@mui/icons-material/Article';
 
 const portfolioBGBox = {
   width: '100%',
@@ -280,10 +281,24 @@ export default function Home() {
           >
             <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>Contact</Typography>
             <Box sx={{marginTop: 0, marginBottom: '10rem', display: 'flex', gap: 3}}>
-              <Box ml={10} bgcolor='#111' p={2} sx={{ width: '30%', maxHeight: 'fit-content'}}>
-              <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocalPhoneIcon /> (509) 643-2115</Typography>
+            <Box 
+                bgcolor='#111' 
+                p={2}  
+                sx={
+                  { 
+                    marginLeft: '24px',
+                    maxHeight: 'fit-content',
+                    [theme.breakpoints.up('md')]: {
+                      minWidth: 'fit-content',
+                      width: '30%', 
+                      marginLeft: 10,
+                    }
+                    }
+                  }>
+                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocalPhoneIcon /> (509) 643-2115</Typography>
                 <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><EmailIcon /> nickolasram@gmail.com</Typography>
-                <Typography sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocationOnIcon />Seattle, WA</Typography>
+                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocationOnIcon />Seattle, WA</Typography>
+                <Link href="https://www.linkedin.com/in/ramrezdev/" color='#fff' sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><ArticleIcon />LinkedIn</Link>
               </Box>
             </Box>
           </Box>
