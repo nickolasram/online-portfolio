@@ -314,10 +314,15 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
       >
         <DialogContent
           sx={{
-            height: '90vh',
-            width: 'auto',
-            maxWidth: '100vw',
-            aspectRatio: `${project.displayImage.width} / ${project.displayImage.height}`
+            height: 'auto',
+            maxWidth: '90vw',  
+            width: '90vw',
+            aspectRatio: `${project.displayImage.width} / ${project.displayImage.height}`,
+            [theme.breakpoints.up('md')]: {
+              height: '90vh',
+              width: 'auto',
+              maxWidth: '100vw',
+            },
           }}
         >
           <Image
