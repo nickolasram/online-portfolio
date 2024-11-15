@@ -150,16 +150,30 @@ export default function Home() {
           }}
           >
             <Box mt={10} width={.6}>
-            <Image
-                src={suit}
-                height={250}
-                alt='personal photo'
-                style={{float: 'right',
-                        marginRight: 75,
-                        marginLeft: 25,
-                        marginBottom: 25
-                      }}
-              />
+            <Box
+                mr={7}
+                mb={2}
+                sx={{
+                  position: 'relative',
+                    height: '28.9vh',
+                    width: '25.4vh',
+                  [theme.breakpoints.up('sm')]: {
+                    float: 'right',
+                    marginLeft: 2
+                  },
+                  [theme.breakpoints.up('md')]: {
+                    height: '31.79vh',
+                    width: '27.94vh',
+                  },
+                }}
+              >
+                <Image
+                  src={suit}
+                  // height={250}
+                  fill
+                  alt='personal photo'
+                />
+              </Box>
               <Stack 
                 justifyContent='flext-start' 
                 mb={3}
