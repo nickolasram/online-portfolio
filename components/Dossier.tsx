@@ -10,6 +10,8 @@ import Dimensions from '@/Models/Dimensions'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LaunchIcon from '@mui/icons-material/Launch';
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery } from '@mui/material';
 
 interface DossierProps{
     projects: Project[];
@@ -66,43 +68,6 @@ const folderStyle={
     // backgroundColor: '#444',
     // marginBottom: 2
 }
-const fileTabStyle={
-    writingMode: 'vertical-rl',
-    textOrientation: 'mixed',
-    transform: 'rotate(180deg) rotateY(0.5turn)',
-    color: '#fff',
-    width: 'fit-content',
-    minWidth: 'fit-content',
-    padding: 1,
-    marginLeft: 4,
-    marginBottom: 1,
-    // backgroundColor: '#F9FBFF ',
-    backgroundColor: '#111',
-    fontFamily: "Spline Sans Mono, monospace",
-    transition: 'all .25s ease-out',
-    alignSelf: 'flex-end',
-    border: '1px solid #C5B485'
-}
-const fileWrapperStyle={
-    display: 'flex', 
-    flexDirection: 'row',
-    alignItems: 'flex-start', 
-    justifyContent: 'start',
-    height: 'fit-content',
-    width: 'fit-content',
-    gap: 6,
-    marginBottom: '4rem'
-}
-const tabsStyle={
-    height:'fit-content',
-    display: 'flex',
-    paddingTop: 1,
-    // width: 'calc(100% + 5px)',
-    transform: 'rotateY(0.5turn)',
-    width: 'fit-content',
-    // flexDirection: 'column',
-    // alignItems: 'flex-end',
-}
 const tabWrapperStyle={
     // borderLeft: '2px solid #C5B485',
     // borderBottom: '2px solid #C5B485',
@@ -115,12 +80,8 @@ const tabWrapperStyle={
 const titleAndTab={
     display: 'flex',
     height: '100%',
-    // width: 170,
     alignItems: 'flex-start',
     justifyContent: 'end',
-    // backgroundImage: `url(${portfolioSVG.src})`,
-    // backgroundPosition: 'left bottom',
-    // backgroundRepeat: 'no-repeat',
 }
 const pageWrapper = {
     paddingTop: 1,
@@ -143,9 +104,11 @@ export default function Dossier({projects}: DossierProps){
     const [tagCollapse, setTagCollapse] = useState(true);
     const [dimensions, setDimensions] = useState<Dimensions>({height: 250, width: 250})
 
+    const theme = useTheme();
+    const MdAndGreater = useMediaQuery(theme.breakpoints.up('md'));
+
     const handleCollapse=()=>{
         setTagCollapse(false);
-        // setTagCollapse(true);
         setTimeout(()=>setTagCollapse(true), 500)
     }
 
@@ -154,8 +117,62 @@ export default function Dossier({projects}: DossierProps){
     };
 
 
-    
-    const heights = [30, 70, 50, 66, 40, 60, 30, 50, 80];
+    const fileWrapperStyle={
+        display: 'flex', 
+        flexDirection: 'column-reverse',
+        alignItems: 'flex-start', 
+        justifyContent: 'start',
+        height: 'fit-content',
+        width: 'fit-content',
+        gap: 1,
+        marginBottom: '4rem',
+        [theme.breakpoints.up('md')]: {
+            flexDirection: 'row',
+            gap: 6
+        }
+    }
+
+    const tabsStyle={
+        height:'fit-content',
+        display: 'flex',
+        paddingTop: 1,
+        width: 'fit-content',
+        marginLeft: '24px',
+        [theme.breakpoints.up('md')]: {
+            transform: 'rotateY(0.5turn)',
+            marginLeft: 0
+        }
+    }
+
+    const fileTabStyle={
+        color: '#fff',
+        width: 'fit-content',
+        minWidth: 'fit-content',
+        padding: 1,
+        marginBottom: 1,
+        backgroundColor: '#111',
+        fontFamily: "Spline Sans Mono, monospace",
+        transition: 'all .25s ease-out',
+        alignSelf: 'flex-end',
+        border: '1px solid #C5B485',
+        [theme.breakpoints.up('md')]: {
+            writingMode: 'vertical-rl',
+            textOrientation: 'mixed',
+            transform: 'rotate(180deg) rotateY(0.5turn)',
+            marginLeft: 4,
+        }
+    }
+
+    const tabPaddingRight =(isSelected: boolean)=> {
+        if (isSelected){
+            if (MdAndGreater){
+                return 10
+            } else return 3
+        }
+        if(MdAndGreater){return 5}
+        else return 1
+
+    };
 
     return(
         <Box sx={[wrapperStyle, {textFillColor: 'initial'}]}>
@@ -163,19 +180,21 @@ export default function Dossier({projects}: DossierProps){
                 <Box sx={fileWrapperStyle}>
                     <Box sx={titleAndTab}>
                         <Box sx={tabWrapperStyle}>
-                            <Tabs orientation='vertical' 
+                            <Tabs 
+                                orientation={MdAndGreater ? 'vertical' : 'horizontal' }
                                 value={value} 
                                 onChange={handleChange} 
                                 aria-label="basic tabs example"
-                                variant="standard"
+                                variant='standard'
+                                // variant={MdAndGreater ? 'standard' : 'scrollable' }
                                 textColor="inherit"
+                                // scrollButtons={MdAndGreater ? false : true }
+                                // allowScrollButtonsMobile
                                 sx={tabsStyle}
                                 TabIndicatorProps={{
                                     sx: {
                                         backgroundColor: '#C5B485',
                                         width: `1px`,
-                                        // boxShadow: '-4px 0px #800',
-                                        // transform: 'rotate(180deg)',
                                     }
                                 }}
                             >
@@ -190,7 +209,8 @@ export default function Dossier({projects}: DossierProps){
                                                 [fileTabStyle, 
                                                  {
                                                     // paddingRight: Math.max(1, 5-(Math.abs(index-value)*Math.abs(index-value)*0.15)),
-                                                    paddingRight: index===value?10:5,  
+                                                    paddingRight: tabPaddingRight(index===value),
+                                                    paddingLeft: index===value&&!MdAndGreater?3:1,  
                                                   opacity: index===value?1:0.75                                              
                                                 }]} 
                                                 {...a11yProps(index)}></Tab>
@@ -202,10 +222,27 @@ export default function Dossier({projects}: DossierProps){
                     {
                         projects.map((project, index)=>(
                             <CustomTabPanel value={value} index={index} key={index}>
-                                <Box sx={{display: 'flex', flexDirection: 'row'}}>
-                                <Box sx={pageWrapper}>
-                                    <ProjectFile project={project} passThrough={setTagCollapse} dimensionsFunction={setDimensions} passedDimensions={dimensions}/>
-                                        <Typography variant="body2" sx={[{display: 'flex', gap: '1rem', height: '1.5rem', overflow:'hidden'}]}>
+                                <Box sx={{
+                                    display: 'flex', 
+                                    flexDirection: 'column',
+                                    [theme.breakpoints.up('md')]: {
+                                        flexDirection: 'row',
+                                    }
+                                    }}>
+                                    <Box sx={pageWrapper}>
+                                        <ProjectFile project={project} passThrough={setTagCollapse} dimensionsFunction={setDimensions} passedDimensions={dimensions}/>
+                                        <Typography
+                                         variant="body2"
+                                         sx={{
+                                             display: 'flex', 
+                                             gap: '1rem', 
+                                             height: '1.5rem', 
+                                             overflow:'hidden',
+                                             paddingLeft: '24px',
+                                             [theme.breakpoints.up('md')]: {
+                                                paddingLeft: 0
+                                            }
+                                             }}>
                                             Tags: 
                                             <Collapse
                                                 in={tagCollapse}
@@ -213,17 +250,26 @@ export default function Dossier({projects}: DossierProps){
                                                 timeout={500}
                                                 sx={{height: '2rem'}}
                                             >
-                                                <Typography variant="body2">
+                                                <Typography variant="body2"
+                                                    sx={{
+                                                        [theme.breakpoints.down('md')]: {
+                                                            maxWidth: '60vw',
+                                                            overflow: 'hidden',
+                                                            whiteSpace: 'nowrap',
+                                                            textOverflow: 'ellipsis',
+                                                        }
+                                                    }}>
                                                     {project.tags?.join(", ")}
                                                 </Typography>
                                             </Collapse>
                                         </Typography>
                                     </Box>
-                                    <Stack spacing={1} p={3} >
+                                    <Stack 
+                                        spacing={1} p={3} 
+                                        direction={MdAndGreater?'column':'row'}
+                                        >
                                         <GitHubIcon fontSize="large" 
                                             sx={{color: project.github? "#F9FBFF": "#555", cursor: project.github? "pointer": "default"}}/>
-                                        <YouTubeIcon fontSize="large" 
-                                            sx={{color: project.video? "#F9FBFF": "#555", cursor: project.video? "pointer": "default"}}/>
                                         <LaunchIcon fontSize="large" 
                                             sx={{color: project.site? "#F9FBFF": "#555", cursor: project.site? "pointer": "default"}}/>
                                     </Stack>
