@@ -1,4 +1,5 @@
 import { Link, Typography, Box, Tabs, Tab, Collapse, Stack  } from "@mui/material";
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import { useState, SyntheticEvent, useEffect } from 'react';
 import Image from 'next/image';
 import portfolioSVG from '@/public/PortfolioSVG.svg';
@@ -163,6 +164,24 @@ export default function Dossier({projects}: DossierProps){
         }
     }
 
+    const linkStyle={
+        color: '#fff',
+        backgroundColor: '#700',
+        paddingInline: 2,
+        "@keyframes jiggle": {
+            "0%": { transform: "translateX(0)" },
+            "80%": { transform: "translateX(5px)" },
+            "85%": { transform: "translateX(-5px)" },
+            "95%": { transform: "translateX(5px)" },
+            "100%": { transform: "translateX(0)" }},
+          animation: "jiggle 3s ease-in-out",
+          [theme.breakpoints.up('md')]: {
+            position: 'absolute',
+            bottom: '4%', 
+            right: -25,
+          },
+      }
+
     const tabPaddingRight =(isSelected: boolean)=> {
         if (isSelected){
             if (MdAndGreater){
@@ -265,13 +284,21 @@ export default function Dossier({projects}: DossierProps){
                                         </Typography>
                                     </Box>
                                     <Stack 
-                                        spacing={1} p={3} 
+                                        spacing={MdAndGreater ? 1: 2} p={3} 
                                         direction={MdAndGreater?'column':'row'}
                                         >
                                         <GitHubIcon fontSize="large" 
                                             sx={{color: project.github? "#F9FBFF": "#555", cursor: project.github? "pointer": "default"}}/>
                                         <LaunchIcon fontSize="large" 
                                             sx={{color: project.site? "#F9FBFF": "#555", cursor: project.site? "pointer": "default"}}/>
+                                        { !MdAndGreater &&
+                                            <Stack direction="row" alignItems="center" gap={0} sx={[linkStyle, {cursor: 'pointer'}]}>
+                                                <Link variant={MdAndGreater ? 'body1': 'body2'} underline="none" color="#F9FBFF">
+                                                    More Details 
+                                                </Link>
+                                                <DoubleArrowIcon />
+                                          </Stack>
+                                        }
                                     </Stack>
                                 </Box>
                                 
