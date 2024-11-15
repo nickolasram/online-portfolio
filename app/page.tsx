@@ -297,7 +297,7 @@ export default function Home() {
                     width: '30%'
                   },
                 }}>
-                <Typography variant="caption">Hover for caption/zoom</Typography>
+                <Typography variant="caption">Hover or touch for caption/zoom</Typography>
                 <Logos />
               </Box>
             </Box> 
@@ -323,8 +323,8 @@ export default function Home() {
                     }
                     }
                   }>
-                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocalPhoneIcon /> (509) 643-2115</Typography>
-                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><EmailIcon /> nickolasram@gmail.com</Typography>
+                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center', paddingLeft: 0, marginLeft: 0}]}><LocalPhoneIcon /> (509) 643-2115</Typography>
+                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center', paddingLeft: 0, marginLeft: 0}]}><EmailIcon /> nickolasram@gmail.com</Typography>
                 <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocationOnIcon />Seattle, WA</Typography>
                 <Link href="https://www.linkedin.com/in/ramrezdev/" color='#fff' sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><ArticleIcon />LinkedIn</Link>
               </Box>
