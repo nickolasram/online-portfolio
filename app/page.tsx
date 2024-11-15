@@ -17,6 +17,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import ArticleIcon from '@mui/icons-material/Article';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 const portfolioBGBox = {
   width: '100%',
@@ -90,22 +91,25 @@ export default function Home() {
           }
           >
               <Stack direction='row' sx={{display: 'flex', justifyContent: 'space-around'}}>
-                <LocationCityIcon 
+              <LocationCityIcon 
+                htmlColor='rgba(197,180,133,1)'
+                stroke='#ffffff00'
                   sx={{
-                      color: 'rgba(197,180,133,1)',
                       fontSize: '2.25rem'
                     }}/>
                 <Typography>/</Typography>
                 <MemoryIcon 
+                  htmlColor='#111'
+                  stroke='#666'
                   sx={{
-                      color: '#222',
                       fontSize: '2.5rem'
                     }}/>
               </Stack>
-              <LocationCityIcon
+              <DarkModeIcon
+                htmlColor='#222'
+                stroke='#fff'
                sx={{
-                color: '#222',
-                fontSize: '2.5rem'
+                fontSize: '2rem'
               }}/>
         </Stack>
       </Slide>
