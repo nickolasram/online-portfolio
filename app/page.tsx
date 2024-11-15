@@ -149,14 +149,21 @@ export default function Home() {
             }
           }}
           >
-            <Box mt={10} width={.6}>
-            <Box
+            <Box 
+              width={.6}
+              sx={{
+                marginTop: 4,
+                [theme.breakpoints.up('md')]: {
+                  marginTop: 10,
+                },
+              }}>
+              <Box
                 mr={7}
                 mb={2}
                 sx={{
                   position: 'relative',
-                    height: '28.9vh',
-                    width: '25.4vh',
+                    height: '21.675vh',
+                    width: '19.05vh',
                   [theme.breakpoints.up('sm')]: {
                     float: 'right',
                     marginLeft: 2
@@ -169,19 +176,21 @@ export default function Home() {
               >
                 <Image
                   src={suit}
-                  // height={250}
                   fill
                   alt='personal photo'
                 />
               </Box>
               <Stack 
                 justifyContent='flext-start' 
-                mb={3}
                 sx={{
-                  height: '125px',
+                  marginBottom: 1,
                   [theme.breakpoints.only('sm')]: {
                     height: '200px',
-                  }
+                  },
+                  [theme.breakpoints.up('md')]: {
+                    marginBottom: 3,
+                    height: '125px',
+                  },
                 }}
               >
                 <Typography variant='h1'>
