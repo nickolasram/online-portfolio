@@ -12,6 +12,7 @@ import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
+import { useTheme } from '@mui/material/styles';
 
 interface ProjectCardProps {
   project: Project;
@@ -42,47 +43,7 @@ interface TabPanelProps {
     );
   }
 
-const fileStyle={
-  height: 'fit-content',
-  // minWidth: 800,
-  // position: 'relative',
-  // zIndex: 3,
-  display: 'flex',
-  backgroundColor: '#111',
-  paddingLeft: 3,
-  paddingRight: 7,
-  paddingTop: 3,
-  paddingBottom: 7,
-  gap: 3,
-  position: 'relative',
-  marginBottom: '2rem',
-  marginRight: '.5rem',
-  minWidth: '50vw',
-}
-
-const basicFontStyle={
-  color: '#F9FBFF',
-  // fontFamily: "Spline Sans Mono, monospace",
-}
-const linkStyle={
-  position: 'absolute',
-  bottom: '4%', 
-  color: '#fff',
-  backgroundColor: '#700',
-  right: -25,
-  paddingInline: 2,
-  "@keyframes jiggle": {
-      "0%": { transform: "translateX(0)" },
-      "80%": { transform: "translateX(5px)" },
-      "85%": { transform: "translateX(-5px)" },
-      "95%": { transform: "translateX(5px)" },
-      "100%": { transform: "translateX(0)" }},
-    animation: "jiggle 3s ease-in-out",
-}
 const PageStyle={
-  // borderRight: '1px solid #222',
-  // borderTop: '1px solid #222',
-  // borderBottom: '1px solid #222',
   zIndex: 3,
   height: '100%',
   width: '100%',
@@ -92,12 +53,7 @@ const PageStyle={
   justifyContent: 'space-between',
   overflow: 'hidden'
 }
-const pageTopStyle={
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 3,
-  minWidth: 350
-} 
+
 
 const Bold =({text}: {text: string})=>{
   return(
@@ -115,47 +71,85 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
   const [dialogOpen, setDialogOpen] = useState(false);
   const [picY, setPicY] = useState(900);
   const [picX, setPicX] = useState(project.displayImage.width)
-  // const [imgWidth, setImgWidth] = useState(null);
-
-// default window height = x
-// default pic height = 900
-// default pic width = y
-// default window width = w
-// 900/y = x/w
-// w900/y = x
-//w900 = xy
-//w900/x = y
+  const theme = useTheme();
 
   useEffect(()=>{
     setTitleCollapse(true);
-    // window.addEventListener("resize", function(){
-    //   var x = window.innerWidth
-      // parallax(); 
-    // });
   },[]);
 
 
   const pictureStyle={
     position: 'relative',
-    top: '-32px',
-    // left: 450,
-    // border: '5px solid #222',
     padding: '10px',
-    // height: '260px',
     backgroundColor: '#fff',
     zIndex: 4,
     cursor: 'pointer',
-    height: `${passedDimensions.height}px`,
-    width: `${passedDimensions.width}px`,
-    // transform: 'rotate(0.75deg)',
+    height: `${passedDimensions.height/2}px`,
+    width: `${passedDimensions.width/2}px`,
     border: '2px solid #C5B485',
     transition: 'all .5s ease-out',
-    // '&:hover': {
-    //   left: '100%',
-    //   transform: 'rotate(0deg)'
-    // }
+    [theme.breakpoints.up('md')]: {
+      top: '-32px',
+      height: `${passedDimensions.height}px`,
+      width: `${passedDimensions.width}px`,
+    },
   }
-
+  const pageTopStyle={
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 1,
+    minWidth: 350,
+    [theme.breakpoints.up('md')]: {
+      gap: 3,
+    },
+  } 
+  const linkStyle={
+    // position: 'absolute',
+    // bottom: '4%', 
+    color: '#fff',
+    backgroundColor: '#700',
+    // right: -25,
+    paddingInline: 2,
+    "@keyframes jiggle": {
+        "0%": { transform: "translateX(0)" },
+        "80%": { transform: "translateX(5px)" },
+        "85%": { transform: "translateX(-5px)" },
+        "95%": { transform: "translateX(5px)" },
+        "100%": { transform: "translateX(0)" }},
+      animation: "jiggle 3s ease-in-out",
+      [theme.breakpoints.up('md')]: {
+        position: 'absolute',
+        bottom: '4%', 
+        right: -25,
+      },
+  }
+  const fileStyle={
+    height: 'fit-content',
+    display: 'flex',
+    backgroundColor: '#111',
+    paddingLeft: 3,
+    paddingRight: 7,
+    paddingTop: 3,
+    paddingBottom: 7,
+    gap: 3,
+    position: 'relative',
+    marginBottom: '2rem',
+    marginRight: '.5rem',
+    minWidth: '50vw',
+    flexDirection: 'column',
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'row'
+    },
+  }
+  const basicFontStyle={
+    color: '#F9FBFF',
+    display: 'flex', 
+    gap: '1rem',
+    fontSize: '1.25rem',
+      [theme.breakpoints.up('md')]: {
+        fontSize: '1.5rem',
+      }, 
+  }
   const ReturnIcon=()=>{
     switch(project.status){
       case 'In Development':
@@ -183,13 +177,21 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
               timeout={250}
               addEndListener={()=>setTimeout(()=>setRoleCollapse(roleCollapse => !roleCollapse), 250)}
             >
-              <Typography variant='body2' component='span' sx={[basicFontStyle, 
-                {fontWeight: 700, color: '#F9FBFF', fontSize: '1.75rem', textWrap: 'nowrap'}]} >
+              <Typography variant='body2' component='span' sx={ 
+                {
+                  fontWeight: 700, 
+                  color: '#F9FBFF', 
+                  fontSize: '1.25rem', 
+                  textWrap: 'nowrap',
+                  [theme.breakpoints.up('md')]: {
+                    fontSize: '1.75rem',
+                  },
+                }} >
                   {project.title}
               </Typography>
             </Collapse>
           </Box>
-          <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
+          <Typography variant='body2' sx={basicFontStyle}>
               <Bold text='Role:'/> 
               <Collapse
               component='span'
@@ -199,12 +201,12 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
               addEndListener={()=>setTimeout(()=>setStatusCollapse(!statusCollapse), 150)}
               sx={{height: '1.6rem', display: 'inline'}}
               >
-                <Typography variant='body2' component='span' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+                <Typography variant='body2' component='span' sx={basicFontStyle}>
                   {project.role}
                 </Typography>
               </Collapse>
           </Typography>
-          <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
+          <Typography variant='body2' sx={basicFontStyle}>
               <Bold text='Status:'/> 
               <Grow 
                 in={statusCollapse}
@@ -215,7 +217,7 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
                 {ReturnIcon()}
             </Grow>
           </Typography>
-          <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
+          <Typography variant='body2' sx={basicFontStyle}>
               <Bold text='Client:'/> 
               <Collapse
               component='span'
@@ -225,12 +227,12 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
               addEndListener={()=>setTimeout(()=>setDateCollapse(!dateCollapse), 150)}
               sx={{height: '1.6rem', display: 'inline'}}
               >
-                <Typography variant='body2' component='span' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+                <Typography variant='body2' component='span' sx={basicFontStyle}>
                   {project.client}
                 </Typography>
               </Collapse>
           </Typography>
-          <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
+          <Typography variant='body2' sx={basicFontStyle}>
               <Bold text='Date:'/> 
               <Collapse
               component='span'
@@ -240,7 +242,7 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
               addEndListener={()=>setTimeout(()=>setLinksCollapse(!linksCollapse), 150)}
               sx={{height: '1.6rem', display: 'inline'}}
               >
-                <Typography variant='body2' component='span' sx={[basicFontStyle, {fontSize: '1.5rem'}]}>
+                <Typography variant='body2' component='span' sx={basicFontStyle}>
                   {project.date}
                 </Typography>
               </Collapse>
