@@ -284,7 +284,9 @@ export default function Dossier({projects}: DossierProps){
                                         </Typography>
                                     </Box>
                                     <Stack 
-                                        spacing={MdAndGreater ? 1: 2} p={3} 
+                                        spacing={MdAndGreater ? 1: 2} 
+                                        p={MdAndGreater ? 3 : 2} 
+                                        pl={MdAndGreater ? 3 : '24px'} 
                                         direction={MdAndGreater?'column':'row'}
                                         >
                                         <GitHubIcon fontSize="large" 

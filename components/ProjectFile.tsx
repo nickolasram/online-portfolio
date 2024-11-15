@@ -98,17 +98,16 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
     display: 'flex',
     flexDirection: 'column',
     gap: 1,
-    minWidth: 350,
+    minWidth: '80vw',
     [theme.breakpoints.up('md')]: {
       gap: 3,
+      minWidth: 350,
     },
   } 
   const linkStyle={
-    // position: 'absolute',
-    // bottom: '4%', 
+    display: 'none',
     color: '#fff',
     backgroundColor: '#700',
-    // right: -25,
     paddingInline: 2,
     "@keyframes jiggle": {
         "0%": { transform: "translateX(0)" },
@@ -118,6 +117,7 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
         "100%": { transform: "translateX(0)" }},
       animation: "jiggle 3s ease-in-out",
       [theme.breakpoints.up('md')]: {
+        display: 'inline',
         position: 'absolute',
         bottom: '4%', 
         right: -25,
@@ -128,17 +128,22 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
     display: 'flex',
     backgroundColor: '#111',
     paddingLeft: 3,
-    paddingRight: 7,
+    paddingRight: 3,
     paddingTop: 3,
-    paddingBottom: 7,
+    paddingBottom: 3,
     gap: 3,
     position: 'relative',
-    marginBottom: '2rem',
-    marginRight: '.5rem',
-    minWidth: '50vw',
+    marginBottom: '1rem',
+    marginRight: '0',
+    minWidth: 'none',
     flexDirection: 'column',
     [theme.breakpoints.up('md')]: {
-      flexDirection: 'row'
+      flexDirection: 'row',
+      minWidth: '50vw',
+      paddingRight: 7,
+      paddingBottom: 7,
+      marginRight: '.5rem',
+      marginBottom: '2rem',
     },
   }
   const basicFontStyle={
