@@ -150,11 +150,12 @@ export default function Home() {
           }}
           >
             <Box 
-              width={.6}
               sx={{
                 marginTop: 4,
+                width: .8,
                 [theme.breakpoints.up('md')]: {
                   marginTop: 10,
+                  width: .6,
                 },
               }}>
               <Box
@@ -200,7 +201,7 @@ export default function Home() {
                     UI/UX Engineer
                   </Typography>
               </Stack>
-              <Typography variant='body1' sx={{maxWidth: '80vw'}}>
+              <Typography variant='body1' sx={{maxWidth: '95vw'}}>
                 Recent graduate from North Seattle College with a BAS in application development where I focused on front end development.
                 Here you&apos;ll find a portfolio of projects I worked on as a student at NSC and independently; more information about myself,
                 my studies, and my goals as a developer; as well as my contact information.
