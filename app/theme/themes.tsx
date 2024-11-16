@@ -6,16 +6,16 @@ let darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      light: "#005C5C",
-      main: "#111",
-      dark: "#4556c5",
-      contrastText: "#fff",
+      light: "#c5b485",
+      main: "#222",
+      dark: "#111",
+      contrastText: "#f9fbff",
     },
     secondary: {
       light: "#6fbf73",
       main: "#fff",
       dark: "#357a38",
-      contrastText: "#fff",
+      contrastText: "#f9fbff",
     },
   },
   components: {
@@ -23,7 +23,7 @@ let darkTheme = createTheme({
     styleOverrides: {
       root: {
         "&.Mui-focused": {
-          color: '#fff'
+          color: '#f9fbff'
         }
       }
     },
@@ -50,7 +50,7 @@ let darkTheme = createTheme({
     h1: {
       fontSize: '3rem',
       fontWeight: 700,
-      color: '#fff'
+      color: '#f9fbff'
     },
     h2: {
       fontSize: '2.5rem',
@@ -66,11 +66,11 @@ let darkTheme = createTheme({
     },
     body1: {
       fontSize: '1.5rem',
-      color: '#fff'
+      color: '#f9fbff'
     },
     body2: {
       fontSize: '1rem',
-      color: '#fff'
+      color: '#f9fbff'
     },
     // tag1: {
       // fontSize: '1rem',
@@ -132,10 +132,10 @@ let lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      light: "#3f50b5",
-      main: "#3f50b5",
-      dark: "#3f50b5",
-      contrastText: "#000",
+      light: "#c5b485",
+      main: "#f9fbff",
+      dark: "#ccc",
+      contrastText: "#111",
     },
     secondary: {
       light: "#6fbf73",
@@ -147,6 +147,34 @@ let lightTheme = createTheme({
       default: "#EEE7DA",
     },
   },
+  typography: {
+    h1: {
+      fontSize: '3rem',
+      fontWeight: 700,
+      color: '#111'
+    },
+    h2: {
+      fontSize: '2.5rem',
+      fontWeight: 700,
+    },
+    h3: {
+      fontSize: '1.5rem',
+      fontWeight: 500,
+    },
+    subtitle1: {
+      fontSize: '1.5rem',
+      color: '#C4CED4'
+    },
+    body1: {
+      fontSize: '1.5rem',
+      color: '#000'
+    },
+    body2: {
+      fontSize: '1rem',
+      color: '#000'
+    },
+  }
+  
 });
 lightTheme = responsiveFontSizes(lightTheme);
 
