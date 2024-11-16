@@ -6,18 +6,24 @@ import bart from '@/public/bart.jpg'
 import suit from '@/public/suitsmall.png'
 import { Project } from "@/Models/Project";
 import Dossier from "@/components/Dossier";
+import portfolioSVG from '@/public/PortfolioSVG.svg';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import MemoryIcon from '@mui/icons-material/Memory';
 import {projectData} from "@/data";
 import portHead from "@/public/PortHead.png"
+import portHeadDark from "@/public/PortHeadDark.png"
 import { useTheme } from "@mui/material/styles";
-import { Typography, Stack, Box, Link, Slide } from "@mui/material";
+import { Typography, Stack, Box, Container, Button, Link, Slide, Collapse, TextField } from "@mui/material";
+import {LinkProps} from '@mui/material/Link'
 import Logos from '@/components/Logos';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import ArticleIcon from '@mui/icons-material/Article';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { darkTheme } from "./theme/themes";
+import {useThemeContext} from './theme/providers'
+import { StayPrimaryLandscape } from "@/node_modules/@mui/icons-material/index";
 
 const portfolioBGBox = {
   width: '100%',
@@ -26,19 +32,7 @@ const portfolioBGBox = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'flex-start',
-  marginBottom: 0
-}
-
-const navSize = {
-  fontSize: '1.5rem'
-}
-
-const portfolioHeading = {
-  height: 55,
-  width: 220,
-  backgroundImage:`url(${portHead.src})`,
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "contain",
+  marginBottom: 0,
 }
 
 const projectsArray: Project[] = projectData;
@@ -46,16 +40,19 @@ const projectsArray: Project[] = projectData;
 export default function Home() {
   const topRef = useRef<HTMLElement | null>(null);
   const backdropRef = useRef<HTMLElement | null>(null);
+  const gutterRef = useRef<HTMLElement | null>(null);
   const [pageYOffset, setPageYOffset] = useState(0);
   const theme = useTheme();
 
   function parallax() {
     var s = topRef.current;
     var r = backdropRef.current
+    var g = gutterRef.current
     var yPos = 0 - window.pageYOffset/8;  
     s!.style.top = yPos + "%"; 
     var filterValue = Math.min(0.01 * Math.max(10, window.pageYOffset/4), 1)
     r!.style.filter = `brightness(${filterValue})`;
+    g!.style.filter = `brightness(${filterValue})`;
     setPageYOffset(window.pageYOffset)
   }
 
@@ -67,6 +64,16 @@ export default function Home() {
       });
     }
   }, []);
+
+  const { mode, toggleTheme } = useThemeContext();
+
+  const portfolioHeading = {
+    height: 55,
+    width: 220,
+    backgroundImage:mode==='light'?`url(${portHeadDark.src})`:`url(${portHead.src})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+  }
 
   return (
     <main>
@@ -82,7 +89,8 @@ export default function Home() {
               top: 0, 
               zIndex: 3,
               [theme.breakpoints.down('md')]: {
-                right: '8%'
+                right: '8%',
+                backgroundColor: '#111'
               },
               [theme.breakpoints.up('md')]: {
                 left: 0
@@ -91,9 +99,9 @@ export default function Home() {
           }
           >
               <Stack direction='row' sx={{display: 'flex', justifyContent: 'space-around'}}>
-              <LocationCityIcon 
-                htmlColor='rgba(197,180,133,1)'
-                stroke='#ffffff00'
+                <LocationCityIcon 
+                htmlColor={theme.palette.primary.light}
+                // stroke='primary.main'
                   sx={{
                       fontSize: '2.25rem'
                     }}/>
@@ -106,11 +114,12 @@ export default function Home() {
                     }}/>
               </Stack>
               <DarkModeIcon
-                htmlColor='#222'
-                stroke='#fff'
+                htmlColor={theme.palette.primary.main}
+                stroke={theme.palette.primary.contrastText}
                sx={{
                 fontSize: '2rem'
-              }}/>
+              }}
+              onClick={toggleTheme}/>
         </Stack>
       </Slide>
       <Box
@@ -155,7 +164,7 @@ export default function Home() {
                 width: .8,
                 [theme.breakpoints.up('md')]: {
                   marginTop: 10,
-                  width: .6,
+                  width: .6
                 },
               }}>
               <Box
@@ -194,14 +203,14 @@ export default function Home() {
                   },
                 }}
               >
-                <Typography variant='h1'>
+                <Typography variant='h1' color="#fbf9ff">
                     Nickolas Ramirez
                   </Typography>
-                  <Typography variant='subtitle1'>
+                  <Typography variant='subtitle1' color="#fbf9ff">
                     UI/UX Engineer
                   </Typography>
               </Stack>
-              <Typography variant='body1' sx={{maxWidth: '95vw'}}>
+              <Typography variant='body1' color="#fbf9ff" sx={{maxWidth: '95vw'}}>
                 Recent graduate from North Seattle College with a BAS in application development where I focused on front end development.
                 Here you&apos;ll find a portfolio of projects I worked on as a student at NSC and independently; more information about myself,
                 my studies, and my goals as a developer; as well as my contact information.
@@ -209,9 +218,19 @@ export default function Home() {
           </Box>
         </Box>
         <Box
+          ref={gutterRef}
+          bgcolor='primary.main'
+          sx={{
+            filter: 'brightness(0.1)',
+            height: 1,
+            width: 1,
+            gridColumn: "1 / 2",
+        }}
+        >
+        </Box>
+        <Box
           ref={backdropRef}
-          // bgcolor='primary.main'
-          bgcolor='#222'
+          bgcolor='primary.main'
           pt='70vh'
           width={1}
           sx={{
@@ -220,25 +239,12 @@ export default function Home() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            gridColumn: '2 / -1',
+            gridColumn: "2 / -1",
             [theme.breakpoints.up('sm')]: {
               borderLeft: '24px double rgb(197,180,133,1)'
             },
-          }}
+        }}
         >
-          {/* <Container>
-            <Typography variant='h2' id='portfolio-heading'>
-              Portfolio
-            </Typography>
-          </Container> 
-          <Stack
-            width={1}
-            height='75vh'S
-            alignItems='center'
-            justifyContent='center'
-          >
-            <Carousel projects={projectsArray} />
-          </Stack> */}
           <Box sx={portfolioBGBox}>
             <Box>
               <Box  sx={{display: "flex", gap: 0, alignItems: 'flex-end', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>
@@ -249,9 +255,7 @@ export default function Home() {
             </Box>
           </Box>
           <Box
-            sx={{
-              width: '100%',
-            }}
+            sx={{width: '100%'}}
           >
             <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>About</Typography>
             <Box 
@@ -291,26 +295,27 @@ export default function Home() {
                 websites and applications at NSC as a front&ndash;end developer working with React 
                 and React&ndash;related frameworks and libraries and why I’m looking for work in front-end web development.</Typography>
               <Box 
-                sx={{
-                  maxWidth: '80vw',
-                  [theme.breakpoints.up('md')]: {
-                    width: '30%'
-                  },
-                }}>
+                sx={
+                  {
+                    maxWidth: '80vw',
+                    [theme.breakpoints.up('md')]: {
+                      width: '30%'
+                    },
+                  }
+                }
+                >
                 <Typography variant="caption">Hover or touch for caption/zoom</Typography>
                 <Logos />
               </Box>
             </Box> 
           </Box>
           <Box
-            sx={{
-              width: '100%',
-            }}
+            sx={{width: '100%'}}
           >
             <Typography variant='h1' pl={5} sx={{fontSize: '4rem', borderBottom: '2px solid #C5B485', width: 'fit-content', marginBottom: '2rem'}}>Contact</Typography>
             <Box sx={{marginTop: 0, marginBottom: '10rem', display: 'flex', gap: 3}}>
-            <Box 
-                bgcolor='#111' 
+              <Box 
+                bgcolor='primary.dark' 
                 p={2}  
                 sx={
                   { 
@@ -323,10 +328,10 @@ export default function Home() {
                     }
                     }
                   }>
-                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center', paddingLeft: 0, marginLeft: 0}]}><LocalPhoneIcon /> (509) 643-2115</Typography>
-                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center', paddingLeft: 0, marginLeft: 0}]}><EmailIcon /> nickolasram@gmail.com</Typography>
+                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocalPhoneIcon /> (509) 643-2115</Typography>
+                <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><EmailIcon /> nickolasram@gmail.com</Typography>
                 <Typography mb={1.5} sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><LocationOnIcon />Seattle, WA</Typography>
-                <Link href="https://www.linkedin.com/in/ramrezdev/" color='#fff' sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><ArticleIcon />LinkedIn</Link>
+                <Link href="https://www.linkedin.com/in/ramrezdev/" color='primary.contrastText' sx={[{display: 'flex', gap: '1rem', height: '2rem', overflow:'hidden', alignItems: 'center'}]}><ArticleIcon />LinkedIn</Link>
               </Box>
             </Box>
           </Box>
