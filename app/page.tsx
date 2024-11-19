@@ -99,7 +99,7 @@ export default function Home() {
             }
           }
           >
-              <Stack direction='row' sx={{display: 'flex', justifyContent: 'space-around'}}>
+              {/* <Stack direction='row' sx={{display: 'flex', justifyContent: 'space-around'}}>
                 <LocationCityIcon 
                 htmlColor={theme.palette.primary.light}
                 // stroke='primary.main'
@@ -113,7 +113,7 @@ export default function Home() {
                   sx={{
                       fontSize: '2.5rem'
                     }}/>
-              </Stack>
+              </Stack> */}
               <DarkModeIcon
                 htmlColor={theme.palette.primary.main}
                 stroke={theme.palette.primary.contrastText}
