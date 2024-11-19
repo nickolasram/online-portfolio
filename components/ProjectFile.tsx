@@ -126,7 +126,7 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
   const fileStyle={
     height: 'fit-content',
     display: 'flex',
-    backgroundColor: '#111',
+    backgroundColor: 'primary.dark',
     paddingLeft: 3,
     paddingRight: 3,
     paddingTop: 3,
