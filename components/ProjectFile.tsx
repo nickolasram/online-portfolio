@@ -147,7 +147,7 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
     },
   }
   const basicFontStyle={
-    color: '#F9FBFF',
+    color: 'primary.contrastText',
     display: 'flex', 
     gap: '1rem',
     fontSize: '1.25rem',
@@ -185,7 +185,7 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
               <Typography variant='body2' component='span' sx={ 
                 {
                   fontWeight: 700, 
-                  color: '#F9FBFF', 
+                  color: 'primary.contrastText', 
                   fontSize: '1.25rem', 
                   textWrap: 'nowrap',
                   [theme.breakpoints.up('md')]: {
@@ -252,38 +252,7 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
                 </Typography>
               </Collapse>
           </Typography>
-          {/* <Typography variant='body2' sx={[basicFontStyle, {fontSize: '1.5rem', display: 'flex', gap: '1rem'}]}>
-            <Grow in={linksCollapse}
-            style={{ transitionDelay: '0ms' }}
-            >
-              <GitHubIcon fontSize="large" />
-            </Grow>
-            <Grow in={linksCollapse}
-            style={{ transitionDelay: '100ms' }}>
-              <YouTubeIcon fontSize="large" />
-            </Grow>
-            <Grow in={linksCollapse}
-            style={{ transitionDelay: '200ms' }}>
-              <LaunchIcon fontSize="large" />
-            </Grow>
-              
-          </Typography> */}
         </Box>
-        {/* <Box sx={{height: '40%'}}>
-          <Typography variant='h6' sx={[basicFontStyle]}>
-              Tags
-          </Typography>
-          <Box sx={{border: '1px solid #222', backgroundColor: '#222', padding: 2, overflowY: 'hidden', maxHeight: '70%'}}>
-            <Typography 
-            sx={[basicFontStyle, {textDecoration: 'underline',
-                overflowWrap: 'break-word', wordBreak: 'break-all'}
-              ]}
-            variant='body2'
-            >{project.tags?.join(', ')} {[...Array(300)].map((nullitem, index)=>(
-              <Box component="span" key={index*100000}>&ensp;</Box>
-            ))}</Typography>
-          </Box>
-        </Box> */}
       </Box>
       <Box sx={pictureStyle} onClick={()=>setDialogOpen(true)}>
         <Fade in style={{ transitionDelay:'500ms', }}>
