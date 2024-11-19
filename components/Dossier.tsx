@@ -70,13 +70,9 @@ const folderStyle={
     // marginBottom: 2
 }
 const tabWrapperStyle={
-    // borderLeft: '2px solid #C5B485',
-    // borderBottom: '2px solid #C5B485',
     height: 'fit-content',
     width: 100,
-    // borderBottomLeftRadius: 5,
     backgroundColor: '#22222200',
-    textColor: "#222"
 }
 const titleAndTab={
     display: 'flex',
@@ -146,12 +142,12 @@ export default function Dossier({projects}: DossierProps){
     }
 
     const fileTabStyle={
-        color: '#fff',
+        color: 'primary.contrastText',
         width: 'fit-content',
         minWidth: 'fit-content',
         padding: 1,
         marginBottom: 1,
-        backgroundColor: '#111',
+        backgroundColor: 'primary.dark',
         fontFamily: "Spline Sans Mono, monospace",
         transition: 'all .25s ease-out',
         alignSelf: 'flex-end',
@@ -290,9 +286,9 @@ export default function Dossier({projects}: DossierProps){
                                         direction={MdAndGreater?'column':'row'}
                                         >
                                         <GitHubIcon fontSize="large" 
-                                            sx={{color: project.github? "#F9FBFF": "#555", cursor: project.github? "pointer": "default"}}/>
+                                            sx={{color: project.github? "primary.contrastText": "primary.light", cursor: project.github? "pointer": "default"}}/>
                                         <LaunchIcon fontSize="large" 
-                                            sx={{color: project.site? "#F9FBFF": "#555", cursor: project.site? "pointer": "default"}}/>
+                                            sx={{color: project.site? "primary.contrastText": "primary.dark", cursor: project.site? "pointer": "default"}}/>
                                         { !MdAndGreater &&
                                             <Stack direction="row" alignItems="center" gap={0} sx={[linkStyle, {cursor: 'pointer'}]}>
                                                 <Link variant={MdAndGreater ? 'body1': 'body2'} underline="none" color="#F9FBFF">
