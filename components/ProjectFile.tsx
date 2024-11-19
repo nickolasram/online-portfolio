@@ -301,7 +301,7 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
         </Fade>
       </Box>
       <Stack direction="row" alignItems="center" gap={1} sx={[linkStyle, {cursor: 'pointer'}]}>
-        <Link variant='body1' underline="none" color="#F9FBFF">
+        <Link href={`project/${project.abbr}`} variant='body1' underline="none" color="#F9FBFF">
             More Details 
         </Link>
         <DoubleArrowIcon />

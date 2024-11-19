@@ -291,7 +291,7 @@ export default function Dossier({projects}: DossierProps){
                                             sx={{color: project.site? "primary.contrastText": "primary.dark", cursor: project.site? "pointer": "default"}}/>
                                         { !MdAndGreater &&
                                             <Stack direction="row" alignItems="center" gap={0} sx={[linkStyle, {cursor: 'pointer'}]}>
-                                                <Link variant={MdAndGreater ? 'body1': 'body2'} underline="none" color="#F9FBFF">
+                                                <Link href={`project/${project.abbr}`} variant={MdAndGreater ? 'body1': 'body2'} underline="none" color="#F9FBFF">
                                                     More Details 
                                                 </Link>
                                                 <DoubleArrowIcon />
