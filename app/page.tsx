@@ -79,8 +79,7 @@ export default function Home() {
   return (
     <main>
       <Slide direction="down" in timeout={1000}>
-        <Stack
-          width='8%'
+      <Stack
           p={2}
           useFlexGap
           spacing={2}
@@ -90,11 +89,12 @@ export default function Home() {
               top: 0, 
               zIndex: 3,
               [theme.breakpoints.down('md')]: {
-                right: '8%',
-                backgroundColor: '#111'
+                right: 0,
+                backgroundColor: 'primary.dark'
               },
               [theme.breakpoints.up('md')]: {
-                left: 0
+                left: 0,
+                width:'8%'
               }
             }
           }
@@ -115,7 +115,7 @@ export default function Home() {
                     }}/>
               </Stack> */}
               <DarkModeIcon
-                htmlColor={theme.palette.primary.main}
+                htmlColor={theme.palette.primary.dark}
                 stroke={theme.palette.primary.contrastText}
                sx={{
                 fontSize: '2rem'
