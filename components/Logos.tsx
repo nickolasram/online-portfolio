@@ -15,7 +15,7 @@ const Logos =()=>{
         }}
         >
             {LogoArray.map((logo, index) => (
-                <Tooltip key={index} title={logo.alt}>
+                <Tooltip key={index} title={logo.alt} enterTouchDelay={0}>
                     <Box 
                         sx={
                         { height: logo.badge.height,
