@@ -1,4 +1,5 @@
 import { projectData } from "@/data"
+import { Dropdown } from "@/components/Dropdown"
 
 export default function ProductList({
     params,
@@ -7,5 +8,10 @@ export default function ProductList({
   }) {
     const project = projectData.find(obj=>{return obj.abbr === params.abbr})
   
-    return <h1>{project?.title}</h1>
+    return (
+      <div>
+        <Dropdown home={false} />
+        <h1>{project?.title}</h1>
+      </div>
+    )
 }

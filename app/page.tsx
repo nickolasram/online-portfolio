@@ -1,30 +1,22 @@
 'use client';
-import { Carousel } from "@/components/Carousel";
 import Image from 'next/image';
 import { useState, useEffect, useRef } from "react";
-import bart from '@/public/bart.jpg'
 import suit from '@/public/suitsmall.png'
 import { Project } from "@/Models/Project";
 import Dossier from "@/components/Dossier";
-import portfolioSVG from '@/public/PortfolioSVG.svg';
-import LocationCityIcon from '@mui/icons-material/LocationCity';
-import MemoryIcon from '@mui/icons-material/Memory';
 import {projectData} from "@/data";
 import portHead from "@/public/PortHead.png"
 import portHeadDark from "@/public/PortHeadDark.png"
 import { useTheme } from "@mui/material/styles";
-import { Typography, Stack, Box, Container, Button, Link, Slide, Collapse, TextField } from "@mui/material";
-import {LinkProps} from '@mui/material/Link'
+import { Typography, Stack, Box, Link, Slide, } from "@mui/material";
 import Logos from '@/components/Logos';
 // import ReCAPTCHA from "react-google-recaptcha";
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import ArticleIcon from '@mui/icons-material/Article';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { darkTheme } from "./theme/themes";
 import {useThemeContext} from './theme/providers'
-import { StayPrimaryLandscape } from "@/node_modules/@mui/icons-material/index";
+import { Dropdown } from '@/components/Dropdown';
 
 const portfolioBGBox = {
   width: '100%',
@@ -78,51 +70,7 @@ export default function Home() {
 
   return (
     <main>
-      <Slide direction="down" in timeout={1000}>
-      <Stack
-          p={2}
-          useFlexGap
-          spacing={2}
-          sx={
-            {
-              position: 'fixed', 
-              top: 0, 
-              zIndex: 3,
-              [theme.breakpoints.down('md')]: {
-                right: 0,
-                backgroundColor: 'primary.dark'
-              },
-              [theme.breakpoints.up('md')]: {
-                left: 0,
-                width:'8%'
-              }
-            }
-          }
-          >
-              {/* <Stack direction='row' sx={{display: 'flex', justifyContent: 'space-around'}}>
-                <LocationCityIcon 
-                htmlColor={theme.palette.primary.light}
-                // stroke='primary.main'
-                  sx={{
-                      fontSize: '2.25rem'
-                    }}/>
-                <Typography>/</Typography>
-                <MemoryIcon 
-                  htmlColor='#111'
-                  stroke='#666'
-                  sx={{
-                      fontSize: '2.5rem'
-                    }}/>
-              </Stack> */}
-              <DarkModeIcon
-                htmlColor={theme.palette.primary.dark}
-                stroke={theme.palette.primary.contrastText}
-               sx={{
-                fontSize: '2rem'
-              }}
-              onClick={toggleTheme}/>
-        </Stack>
-      </Slide>
+      <Dropdown home={true} />
       <Box
         bgcolor='primary.main'
         width='100vw'
