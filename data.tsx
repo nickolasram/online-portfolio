@@ -56,7 +56,17 @@ export const projectData: Project[]=[
       abbr: 'GGC', 
       mobile: "Yes", 
       desktop: 'Yes',
-      displayImage: FullGGC
+      displayImage: FullGGC,
+      description: `I worked with GeekGirlCon through my school during the summer of 2024 for a few weeks to help build their mobile app.
+                    I served primarily as a front end dev and my focus was on building the initial iteration of the schedule page.
+                    My directive at the time was to make it as close to the desktop version of the site as possible so others could
+                    better adapt the design for mobile later. Below, you'll see a picture of the schedule page as I left it 
+                    when my time working with them was over. You'll also see a picture of the schedule page as it appears on the 
+                    website which I was trying to emulate not only in look but also in function as I implented the date changing and the 
+                    filtering functions for mobile as well. Finally, I have included a picture of the current version of the mobile schedule as well (though,
+                    to be clear, I was not part of the team that changed the design for mobile.) Working on this project was my introduction to Expo,
+                    React Native, and Tamagui.
+                    `
     },
   {
     title: 'Complexity-Helper Website', 

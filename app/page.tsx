@@ -242,7 +242,7 @@ export default function Home() {
                the aspect of web development that always appealed to me most was building interesting, 
                readable, intuitive, and quick UIs and UXs. This is why I spent a majority of my time while developing
                 websites and applications at NSC as a front&ndash;end developer working with React 
-                and React&ndash;related frameworks and libraries and why I’m looking for work in front-end web development.</Typography>
+                and React&ndash;related frameworks and libraries and why I&apos;m looking for work in front-end web development.</Typography>
               <Box 
                 sx={
                   {
