@@ -3,7 +3,6 @@ import { projectData } from "@/data";
 import { Dropdown } from "@/components/Dropdown";
 import { Typography, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import {encode} from 'html-entities';
 
 export default function ProductList({
     params,
