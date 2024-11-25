@@ -69,7 +69,7 @@ export default function ProductList({
             backgroundImage:`url(${project?.displayImage.src})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: 'center center',
-            backgroundSize: project?.displayImage!.width < project?.displayImage!.height ? "55%" : 'cover',
+            backgroundSize: project!.displayImage!.width < project!.displayImage!.height ? "55%" : 'cover',
             [theme.breakpoints.up('md')]: {
               width:'92%'
             }
