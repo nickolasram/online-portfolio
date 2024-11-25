@@ -13,10 +13,13 @@ let darkTheme = createTheme({
     },
     secondary: {
       light: "#6fbf73",
-      main: "#fff",
+      main: "#22222288",
       dark: "#357a38",
       contrastText: "#f9fbff",
     },
+    background: {
+      default: '#222'
+    }
   },
   components: {
   MuiInputLabel: {
@@ -139,13 +142,13 @@ let lightTheme = createTheme({
     },
     secondary: {
       light: "#6fbf73",
-      main: "#4caf50",
+      main: "#f9fbffcc",
       dark: "#357a38",
       contrastText: "#000",
     },
     background: {
-      default: "#EEE7DA",
-    },
+      default: '#f9fbff'
+    }
   },
   typography: {
     h1: {
