@@ -65,7 +65,7 @@ export default function ProductList({
         <Box  mb={3}
           sx={{
             maxWidth: '100%',
-            backgroundColor: 'primary.contrastText',
+            backgroundColor: 'primary.dark',
             backgroundImage:`url(${project?.displayImage.src})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: 'center center',
