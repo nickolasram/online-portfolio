@@ -3,16 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import { Project } from "@/Models/Project";
 import Image from 'next/image';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import LaunchIcon from '@mui/icons-material/Launch';
-import ProjectCard from "./ProjectCard";
 import Dimensions from '@/Models/Dimensions';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
-import ConstructionIcon from '@mui/icons-material/Construction';
-import CheckIcon from '@mui/icons-material/Check';
-import ClearIcon from '@mui/icons-material/Clear';
 import { useTheme } from '@mui/material/styles';
+import {StatusIcon} from '@/components/StatusIcon';
 
 interface ProjectCardProps {
   project: Project;
@@ -155,16 +149,6 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
         fontSize: '1.5rem',
       }, 
   }
-  const ReturnIcon=()=>{
-    switch(project.status){
-      case 'In Development':
-        return <ConstructionIcon fontSize="large" sx={{color: '#111', backgroundColor: '#C5B485'}} />;
-      case 'Completed':
-        return <CheckIcon fontSize="large" sx={{color: '#fff', backgroundColor: '#428d81'}} />;
-      default:
-        return <ConstructionIcon fontSize="large" sx={{color: '#111', backgroundColor: '#C5B485'}} />;
-    }
-  }
 
   const handleDialogClose=()=>{
     setDialogOpen(false)
@@ -219,7 +203,9 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
                 addEndListener={()=>setTimeout(()=>setClientCollapse(!clientCollapse), 150)}
                 // hover and description
               >
-                {ReturnIcon()}
+                <Box>
+                  <StatusIcon fontSize="large" status={project.status}/>
+                </Box>
             </Grow>
           </Typography>
           <Typography variant='body2' sx={basicFontStyle}>
