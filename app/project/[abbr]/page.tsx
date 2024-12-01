@@ -109,8 +109,16 @@ export default function ProductList({
                 <ConstructionIcon sx={{verticalAlign: 'middle'}}/> {project?.status}
               </Typography>
               <Stack direction="row" spacing={2} >
-                <GitHubIcon sx={{verticalAlign: 'middle'}} fontSize="large" />
-                <LaunchIcon sx={{verticalAlign: 'middle'}} fontSize="large" />
+                <GitHubIcon 
+                  sx={{
+                    verticalAlign: 'middle',
+                    color: project!.github ? "primary.contrastText": "primary.dark"
+                    }} fontSize="large" />
+                <LaunchIcon 
+                  sx={{
+                    verticalAlign: 'middle',
+                    color: project!.site ? "primary.contrastText": "primary.dark"
+                    }} fontSize="large" />
               </Stack>
             </Stack>
           </Box>

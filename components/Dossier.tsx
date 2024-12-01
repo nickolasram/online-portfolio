@@ -286,7 +286,7 @@ export default function Dossier({projects}: DossierProps){
                                         direction={MdAndGreater?'column':'row'}
                                         >
                                         <GitHubIcon fontSize="large" 
-                                            sx={{color: project.github? "primary.contrastText": "primary.light", cursor: project.github? "pointer": "default"}}/>
+                                            sx={{color: project.github? "primary.contrastText": "primary.dark", cursor: project.github? "pointer": "default"}}/>
                                         <LaunchIcon fontSize="large" 
                                             sx={{color: project.site? "primary.contrastText": "primary.dark", cursor: project.site? "pointer": "default"}}/>
                                         { !MdAndGreater &&
