@@ -3,9 +3,9 @@ import { projectData } from "@/data";
 import { Dropdown } from "@/components/Dropdown";
 import { Typography, Box, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import ConstructionIcon from '@mui/icons-material/Construction';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
+import {StatusIcon} from '@/components/StatusIcon';
 
 interface tagProps{
   symbol?: React.ReactNode;
@@ -106,7 +106,7 @@ export default function ProductList({
             </Stack>
             <Stack sx={bannerStackStyle}>
               <Typography>
-                <ConstructionIcon sx={{verticalAlign: 'middle'}}/> {project?.status}
+                <StatusIcon fontSize="small" status={project!.status} /> {project?.status}
               </Typography>
               <Stack direction="row" spacing={2} >
                 <GitHubIcon 
@@ -136,7 +136,6 @@ export default function ProductList({
             }}
           >{project?.description}</Typography>
         }
-        
       </Box>
       )
 }

@@ -11,7 +11,7 @@ export interface Project{
     description?: string;
     role?: string;
     tags?: string[];
-    status?: string;
+    status: "In Development" | "On Hold" | "Completed";
     client?: string;
     date?: string;
     abbr: string;

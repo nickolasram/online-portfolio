@@ -74,7 +74,7 @@ export const projectData: Project[]=[
     github: '/', 
     role: 'Sole Developer', 
     tags: ['React', 'Amplify', 'Dynamo DB', 'Lambda', 'S3', 'API Gateway', 'AWS'], 
-    status: 'In Development', 
+    status: 'On Hold', 
     client: 'Self', 
     date: '2024', 
     thumbImage: ComplexityHelper, 
