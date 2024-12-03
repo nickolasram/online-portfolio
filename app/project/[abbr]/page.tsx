@@ -1,11 +1,12 @@
 'use client';
 import { projectData } from "@/data";
 import { Dropdown } from "@/components/Dropdown";
-import { Typography, Box, Stack } from "@mui/material";
+import { Typography, Box, Stack, Dialog, DialogContent } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
 import {StatusIcon} from '@/components/StatusIcon';
+import { useState } from 'react';
 
 interface tagProps{
   symbol?: React.ReactNode;
@@ -35,6 +36,10 @@ export default function ProductList({
   }: {
     params: { abbr: string };
   }) {
+    const [dialogOpen, setDialogOpen] = useState(false);
+  const handleDialogClose=()=>{
+    setDialogOpen(false)
+  }
     const theme = useTheme();
     const project = projectData.find(obj=>{return obj.abbr === params.abbr})
 
@@ -61,7 +66,7 @@ export default function ProductList({
           }
         }}
       >
-        <Dropdown home={false} />
+        <Dropdown home={false} handleClick={setDialogOpen}/>
         <Box  mb={3}
           sx={{
             maxWidth: '100%',
@@ -136,6 +141,21 @@ export default function ProductList({
             }}
           >{project?.description}</Typography>
         }
+        <Dialog
+          open={dialogOpen}
+          onClose={handleDialogClose}
+          maxWidth="xl"
+        >
+          <DialogContent
+            sx={{
+              height: 'auto',
+              maxWidth: '90vw',  
+              width: '90vw',
+            }}
+          >
+            <Typography>asas</Typography>
+          </DialogContent>
+        </Dialog>
       </Box>
       )
 }
