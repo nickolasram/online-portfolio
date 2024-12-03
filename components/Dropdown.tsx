@@ -6,14 +6,16 @@ import { Stack, Slide, Link } from "@mui/material";
 import {useThemeContext} from '../app/theme/providers'
 import ListIcon from '@mui/icons-material/List';
 import HomeIcon from '@mui/icons-material/Home';
+import { Dispatch, SetStateAction } from 'react';
 
 interface DropdownProps {
     home: boolean;
+    handleClick?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Dropdown=({home}: DropdownProps)=>{
-    const theme = useTheme();
-    const { mode, toggleTheme } = useThemeContext();
+export const Dropdown=({home, handleClick}: DropdownProps)=>{
+  const theme = useTheme();
+  const { mode, toggleTheme } = useThemeContext();
 
     return(
         <Slide direction="down" in timeout={1000}>
@@ -51,10 +53,12 @@ export const Dropdown=({home}: DropdownProps)=>{
                 <ListIcon 
                     htmlColor={theme.palette.primary.dark}
                     stroke={theme.palette.primary.contrastText}
-                  sx={{
-                      fontSize: '2rem',
-                      cursor: 'pointer'
-                    }}/>
+                    sx={{
+                        fontSize: '2rem',
+                        cursor: 'pointer'
+                      }}
+                      onClick={()=>handleClick!(true)}
+                  />
                 }
               <DarkModeIcon
                 htmlColor={theme.palette.primary.dark}
