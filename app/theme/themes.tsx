@@ -15,7 +15,7 @@ let darkTheme = createTheme({
       light: "#6fbf73",
       main: "#22222288",
       dark: "#357a38",
-      contrastText: "#f9fbff",
+      contrastText: "#777",
     },
     background: {
       default: '#222'
@@ -75,59 +75,7 @@ let darkTheme = createTheme({
       fontSize: '1rem',
       color: '#f9fbff'
     },
-    // tag1: {
-      // fontSize: '1rem',
-      // color: '#fff'
-    // }
   }
-//   components: {
-//     MuiButton: {
-//       styleOverrides: {
-//         root: {
-//           color: "#f5f5f5",
-//         },
-//       },
-//     },
-//     MuiPaper: {
-//       styleOverrides: {
-//         root: {
-//           backgroundColor: "#333",
-//         },
-//       },
-//     },
-//     MuiLink: {
-//       styleOverrides: {
-//         root: {
-//           color: "#fff",
-//           textDecorationColor: "#fff"
-//         },
-//       },
-//     },
-//     MuiOutlinedInput: {
-//       styleOverrides: {
-//         root: {
-//           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-//             borderColor: "#fff",
-//           },
-//         },
-//         input: {
-//           '&:-webkit-autofill': {
-//             '-webkit-box-shadow': '0 0 0 100px rgba(69, 69, 69) inset',
-//             '-webkit-text-fill-color': '#fff',
-//           },
-//         },
-//       },
-//     },
-//     MuiInputLabel: {
-//       styleOverrides: {
-//         root: {
-//           '&.Mui-focused': {
-//             color: '#fff'
-//           },
-//         },
-//       },
-//     },
-//   },
 });
 darkTheme = responsiveFontSizes(darkTheme);
 
@@ -144,7 +92,7 @@ let lightTheme = createTheme({
       light: "#6fbf73",
       main: "#f9fbffcc",
       dark: "#357a38",
-      contrastText: "#000",
+      contrastText: "#777",
     },
     background: {
       default: '#f9fbff'

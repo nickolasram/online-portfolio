@@ -158,10 +158,7 @@ export default function ProductList({
           open={dialogOpen}
           onClose={handleDialogClose}
           maxWidth="xl"
-          PaperProps={{sx:{backgroundColor: 'secondary.main'}}}
-          sx={{
-            // backdropFilter: 'blur(1px)'
-          }}
+          PaperProps={{sx:{backgroundColor: 'secondary.main', borderRadius: 0, backdropFilter: 'blur(2px)',}}}
         >
           <DialogContent
             sx={{
@@ -169,7 +166,10 @@ export default function ProductList({
               width: 'max-content',
               display: 'flex',
               flexDirection: 'column',
-              backdropFilter: 'blur(2px)',
+              borderStyle: 'solid',
+              borderWidth: 2,
+              borderColor: 'primary.light',
+              fontWeight: 700,
               [theme.breakpoints.up('md')]: {
                 paddingInline: 5
               }
@@ -185,10 +185,16 @@ export default function ProductList({
                     href={`/project/${project.abbr}`} 
                     key={index}
                     sx={{
-                      width: 'fit-content'
+                      width: 'fit-content',
+                      fontWeight: 400,
+                      textDecorationColor: '#c5b485',
+                      '&:hover': {
+                        color: 'secondary.contrastText',
+                        textDecorationColor: '#c5b485aa',
+                      }
                     }}
                   >
-                      {project.abbrTitle}
+                    {project.abbrTitle}
                   </Link>
                 </Zoom>
               ))
