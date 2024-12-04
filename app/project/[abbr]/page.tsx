@@ -178,12 +178,11 @@ export default function ProductList({
             Projects:
             {
               projectData.map((project, index)=>(
-                <Zoom in={dialogOpen} timeout={Math.floor(Math.random() * (750) + 400)}>
+                <Zoom in={dialogOpen} key={index} timeout={Math.floor(Math.random() * (750) + 400)}>
                   <Link 
                     mt={1}
                     color='primary.contrastText'
                     href={`/project/${project.abbr}`} 
-                    key={index}
                     sx={{
                       width: 'fit-content',
                       fontWeight: 400,
