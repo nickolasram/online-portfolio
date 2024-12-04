@@ -1,4 +1,4 @@
-import { Link, Typography, Box, Stack, Grow, Collapse, Fade, Dialog, DialogContent } from "@mui/material";
+import { Link, Typography, Box, Stack, Grow, Collapse, Fade, Dialog, DialogContent, Tooltip } from "@mui/material";
 import { useState, useEffect, useRef } from 'react';
 import { Project } from "@/Models/Project";
 import Image from 'next/image';
@@ -197,16 +197,17 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
           </Typography>
           <Typography variant='body2' sx={basicFontStyle}>
               <Bold text='Status:'/> 
-              <Grow 
-                in={statusCollapse}
-                timeout={200}
-                addEndListener={()=>setTimeout(()=>setClientCollapse(!clientCollapse), 150)}
-                // hover and description
-              >
-                <Box>
-                  <StatusIcon fontSize="large" status={project.status}/>
-                </Box>
-            </Grow>
+              <Tooltip title={project.status} enterTouchDelay={0}>
+                <Grow 
+                  in={statusCollapse}
+                  timeout={200}
+                  addEndListener={()=>setTimeout(()=>setClientCollapse(!clientCollapse), 150)}
+                >
+                  <Box>
+                      <StatusIcon fontSize="large" status={project.status}/>
+                  </Box>
+              </Grow>
+            </Tooltip>
           </Typography>
           <Typography variant='body2' sx={basicFontStyle}>
               <Bold text='Client:'/> 
