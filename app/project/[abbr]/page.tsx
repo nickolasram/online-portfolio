@@ -1,7 +1,7 @@
 'use client';
 import { projectData } from "@/data";
 import { Dropdown } from "@/components/Dropdown";
-import { Typography, Box, Stack, Dialog, DialogContent, Link } from "@mui/material";
+import { Typography, Box, Stack, Dialog, DialogContent, Link, Zoom } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
@@ -67,7 +67,7 @@ export default function ProductList({
         }}
       >
         <Dropdown home={false} handleClick={setDialogOpen}/>
-        <Box  mb={3}
+        <Box  mb={2}
           sx={{
             maxWidth: '100%',
             backgroundColor: 'primary.dark',
@@ -114,14 +114,14 @@ export default function ProductList({
                 <StatusIcon fontSize="small" status={project!.status} /> {project?.status}
               </Typography>
               <Stack direction="row" spacing={2} >
-              <Link href={project?.github ? project.github : ''} sx={{cursor: project?.github? 'pointer':'default', pointerEvents: project?.github? 'auto':'none'}}>
+              <Link href={project?.github? project.github : ''} sx={{cursor: project?.github? 'pointer':'default', pointerEvents: project?.github? 'auto':'none'}}>
                 <GitHubIcon 
                   sx={{
                     verticalAlign: 'middle',
                     color: project!.github ? "primary.contrastText": "primary.dark"
                     }} fontSize="large" />
               </Link>
-              <Link href={project?.site ? project.site : ''} sx={{cursor: project?.site? 'pointer':'default', pointerEvents: project?.site? 'auto':'none'}}>
+              <Link href={project?.site? project.site : ''} sx={{cursor: project?.site? 'pointer':'default', pointerEvents: project?.site? 'auto':'none'}}>
                 <LaunchIcon 
                   sx={{
                     verticalAlign: 'middle',
@@ -132,6 +132,13 @@ export default function ProductList({
             </Stack>
           </Box>
         </Box>
+        <Typography 
+          variant='body2' 
+          mb={3}
+          pl={2}
+          >
+            {project?.tags?.join(', ')}
+        </Typography>
         {project?.description&&
           <Typography
             sx={{
@@ -143,38 +150,51 @@ export default function ProductList({
                 marginRight: '8%',
               }
             }}
-          >{project?.description}</Typography>
+          >
+            &ensp;{project?.description}
+          </Typography>
         }
         <Dialog
           open={dialogOpen}
           onClose={handleDialogClose}
           maxWidth="xl"
+          PaperProps={{sx:{backgroundColor: 'secondary.main'}}}
+          sx={{
+            // backdropFilter: 'blur(1px)'
+          }}
         >
           <DialogContent
             sx={{
-              height: 'auto',
-              maxWidth: '90vw',  
-              width: '90vw',
+              height: '95vh',
+              width: 'max-content',
               display: 'flex',
-              flexDirection: 'column'
+              flexDirection: 'column',
+              backdropFilter: 'blur(2px)',
+              [theme.breakpoints.up('md')]: {
+                paddingInline: 5
+              }
             }}
           >
+            Projects:
             {
               projectData.map((project, index)=>(
-                <Link href={`/project/${project.abbr}`} key={index}>{project.abbrTitle}</Link>
+                <Zoom in={dialogOpen} timeout={Math.floor(Math.random() * (750) + 400)}>
+                  <Link 
+                    mt={1}
+                    color='primary.contrastText'
+                    href={`/project/${project.abbr}`} 
+                    key={index}
+                    sx={{
+                      width: 'fit-content'
+                    }}
+                  >
+                      {project.abbrTitle}
+                  </Link>
+                </Zoom>
               ))
             }
           </DialogContent>
         </Dialog>
       </Box>
       )
-}
-
-const x ={
-  github: '/', 
-  // role: 'Frontend Dev', 
-  tags: ['Expo', 'React-Native', 'tamagui'], 
-  // status: 'Completed', 
-  // client: 'Geek Girl Con', 
-  // date: '2024', 
 }
