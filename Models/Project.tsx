@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { CarouselImage } from "./CarouselImage";
 
 export interface Project{
     title: string;
@@ -11,10 +12,11 @@ export interface Project{
     description?: string;
     role?: string;
     tags?: string[];
-    status: "In Development" | "On Hold" | "Completed";
+    status: "In Development" | "Completed" | "On Hold";
     client?: string;
     date?: string;
     abbr: string;
     mobile: "Yes" | "No" | "In Development";
     desktop: "Yes" | "No" | "In Development";
+    CarouselImages?: CarouselImage[];
 }
