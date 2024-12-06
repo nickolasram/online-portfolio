@@ -216,7 +216,7 @@ const ImageCarousel=({images}: ICarouselProps)=>{
                         <Image
                             src={image.image}
                             height={returnImageHeight(index)}
-                            width='auto'
+                            width={image.image.width*(returnImageHeight(index)/image.image.height)}
                             alt={image.alt}
                             style={{margin: 0, padding: 0}}
                             ref={refsArray[index]}
