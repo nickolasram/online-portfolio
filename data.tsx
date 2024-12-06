@@ -49,7 +49,7 @@ export const projectData: Project[]=[
       github: '/', 
       role: 'Frontend Dev', 
       tags: ['Expo', 'React-Native', 'tamagui'], 
-      status: 'In Development', 
+      status: 'Completed', 
       client: 'Geek Girl Con', 
       date: '2024', 
       thumbImage: GGC, 
@@ -66,7 +66,32 @@ export const projectData: Project[]=[
                     filtering functions for mobile as well. Finally, I have included a picture of the current version of the mobile schedule as well (though,
                     to be clear, I was not part of the team that changed the design for mobile.) Working on this project was my introduction to Expo,
                     React Native, and Tamagui.
-                    `
+                    `,
+      CarouselImages: [
+        {image: FullBelindasWeb,
+        alt: 'test',
+        description: 'this is a description for the first image'}, 
+        {image: FullBelindasMobile,
+          alt: 'test',
+          description: `this is a long description for the second image.
+          better adapt the design for mobile later. Below, you'll see a picture of the schedule page as I left it 
+                    when my time working with them was over. You'll also see a picture of the schedule page as it appears on the 
+                    website which I was trying to emulate not only in look but also in function as I implented the date changing and the 
+                    filtering functions for mobile as well. Finally, I have included a picture of the current version of the mobile schedule as well (though,
+                    to be clear, I was not part of the team that changed the design for mobile.) Working on this project was my introduction to Expo,
+                    React Native, and Tamagui`},
+        {image: FullOnlinePortfolio,
+          alt: 'test',
+          description: `this is a description for the third image.
+          better adapt the design for mobile later. Below, you'll see a picture of the schedule page as I left it 
+                    when my time working with them was over. You'll also see a picture of the schedule page as it appears on the 
+                    website which I was trying to emulate not only in look but also in function as I implented the date changing and the 
+                    filtering functions for mobile as well. Finally, I have included a picture of the current version of the mobile schedule as well (though,
+                    to be clear, I was not part of the team that changed the design for mobile.) Working on this project was my introduction to Expo,
+                    React Native, and Tamagui`},
+        {image: FullADPracticum,
+          alt: 'test'}
+      ]
     },
   {
     title: 'Complexity-Helper Website', 
@@ -81,7 +106,7 @@ export const projectData: Project[]=[
     abbr: 'CH',
     mobile: "In Development", 
     desktop: 'Yes',
-    displayImage: FullComplexityHelper
+    displayImage: FullComplexityHelper,
   },
   {
       title: 'Belinda\'s Closet Mobile App', 
