@@ -187,7 +187,7 @@ const ICarouselContent=({children, handleClick, max}: ImageRowProps)=>{
 
 const ImageCarousel=({images}: ICarouselProps)=>{
     const theme = useTheme();
-    const refsArray  =  images!.map(() => createRef<HTMLElement>());
+    const refsArray  =  images!.map(() => createRef<HTMLImageElement>());
     const MdAndGreater = useMediaQuery(theme.breakpoints.up('md'));
 
     const returnImageHeight=(index: number)=>{
