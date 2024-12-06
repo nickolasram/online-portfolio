@@ -7,6 +7,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
 import {StatusIcon} from '@/components/StatusIcon';
 import { useState } from 'react';
+import ImageCarousel from "@/components/ImageCarousel";
 
 interface tagProps{
   symbol?: React.ReactNode;
@@ -141,6 +142,7 @@ export default function ProductList({
         </Typography>
         {project?.description&&
           <Typography
+          mb={3}
             sx={{
               marginLeft: 2,
               maxWidth: '80%',
@@ -200,6 +202,9 @@ export default function ProductList({
             }
           </DialogContent>
         </Dialog>
+        {project?.CarouselImages &&
+          <ImageCarousel images={project?.CarouselImages}/>
+        }
       </Box>
       )
 }
