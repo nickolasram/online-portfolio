@@ -246,8 +246,7 @@ const ImageCarousel=({images}: ICarouselProps)=>{
                     sx={{
                         height:images![dialogOpen.ind].image.height,
                         aspectRatio: images![dialogOpen.ind].image.width / images![dialogOpen.ind].image.height,
-                        position: portrait(dialogOpen.ind)? 'relative' : 'absolute',
-                        // maxHeight: '50vh'
+                        position: 'relative'
                     }}
                 >
                     <Image
