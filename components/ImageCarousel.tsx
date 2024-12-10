@@ -247,7 +247,7 @@ const ImageCarousel=({images}: ICarouselProps)=>{
                         height:images![dialogOpen.ind].image.height,
                         aspectRatio: images![dialogOpen.ind].image.width / images![dialogOpen.ind].image.height,
                         position: portrait(dialogOpen.ind)? 'relative' : 'absolute',
-                        maxHeight: '50vh'
+                        // maxHeight: '50vh'
                     }}
                 >
                     <Image
@@ -257,9 +257,9 @@ const ImageCarousel=({images}: ICarouselProps)=>{
                     />
                 </Box>
                 <Container >
-                <Typography pt={2} pb={2}>
+                {/* <Typography pt={2} pb={2}>
                     {images![dialogOpen.ind].description}
-                </Typography>
+                </Typography> */}
                 </Container>
             </Dialog>             
         </Box>
