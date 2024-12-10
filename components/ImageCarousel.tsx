@@ -160,9 +160,9 @@ const ICarouselContent=({children, handleClick, max}: ImageRowProps)=>{
                     display: 'flex',
                     gap: 2,
                     overflowX: 'scroll',
-                    borderInlineWidth: '3px',
-                    borderInlineStyle: 'solid',
-                    borderInlineColor: '#c5b485',
+                    borderInlineWidth: isMobile? 'none' : '3px',
+                    borderInlineStyle: isMobile? 'none' : 'solid',
+                    borderInlineColor: isMobile? 'none' : '#c5b485',
                     '&::-webkit-scrollbar': {
                         width: 0,
                         background: 'transparent',
@@ -246,7 +246,7 @@ const ImageCarousel=({images}: ICarouselProps)=>{
                     sx={{
                         height:images![dialogOpen.ind].image.height,
                         aspectRatio: images![dialogOpen.ind].image.width / images![dialogOpen.ind].image.height,
-                        position: 'relative',
+                        position: 'absolute',
                     }}
                 >
                     <Image
