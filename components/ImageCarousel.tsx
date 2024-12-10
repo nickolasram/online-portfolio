@@ -1,12 +1,13 @@
 import { useTheme } from "@mui/material/styles";
-import { Box, useMediaQuery, Container } from "@mui/material";
+import { Box, useMediaQuery, Container, Dialog } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Image from 'next/image';
 import { CarouselImage } from "@/Models/CarouselImage";
 import { Typography } from "@/node_modules/@mui/material/index";
-import { useRef, createRef } from "react";
-import {BrowserView} from 'react-device-detect';
+import { useRef, createRef, useState } from "react";
+import {BrowserView, isMobile} from 'react-device-detect';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
 
 interface ImageRowProps {
     children?: React.ReactNode;
@@ -187,11 +188,16 @@ const ICarouselContent=({children, handleClick, max}: ImageRowProps)=>{
 
 const ImageCarousel=({images}: ICarouselProps)=>{
     const theme = useTheme();
-    const refsArray  =  images!.map(() => createRef<HTMLImageElement>());
+    const refsArray  =  images!.map(() => createRef<HTMLElement>());
     const MdAndGreater = useMediaQuery(theme.breakpoints.up('md'));
+    const [dialogOpen, setDialogOpen] = useState({bool: false, ind: 0});
+    const handleDialogClose=()=>{
+        setDialogOpen({bool: false, ind: 0})
+    }
+    const portrait =(index: number)=> {return images![index].image.height > images![index].image.width}
 
     const returnImageHeight=(index: number)=>{
-        if (MdAndGreater || images![index].image.height > images![index].image.width) return 450
+        if (MdAndGreater || portrait(index)) return 450
         return 150
     }
 
@@ -213,6 +219,7 @@ const ImageCarousel=({images}: ICarouselProps)=>{
             <ICarouselContent handleClick={autoScroll} max={images!.length-1}>
                 {images!.map((image, index)=>(
                     <ImageContainer key={index} description={image.description}>
+                        <ZoomInIcon sx={{position: 'absolute', top: 0, right: 0, color: 'grey', fontSize: '52px', backgroundColor: '#77777777'}} onClick={()=>setDialogOpen({bool: true, ind: index})}/>
                         <Image
                             src={image.image}
                             height={returnImageHeight(index)}
@@ -220,10 +227,40 @@ const ImageCarousel=({images}: ICarouselProps)=>{
                             alt={image.alt}
                             style={{margin: 0, padding: 0}}
                             ref={refsArray[index]}
+                            onClick={()=>setDialogOpen({bool: true, ind: index})}
                         />
                     </ImageContainer>
                 ))}
-            </ICarouselContent>                
+            </ICarouselContent>  
+            <Dialog
+                open={dialogOpen.bool}
+                onClose={handleDialogClose}
+                maxWidth='xl'
+                PaperProps={{
+                    sx:{
+                        overflow: 'scroll'
+                    }
+                }}
+            >                            
+                <Box
+                    sx={{
+                        height:images![dialogOpen.ind].image.height,
+                        aspectRatio: images![dialogOpen.ind].image.width / images![dialogOpen.ind].image.height,
+                        position: 'relative',
+                    }}
+                >
+                    <Image
+                        src={images![dialogOpen.ind].image}
+                        fill
+                        alt={images![dialogOpen.ind].alt}
+                    />
+                </Box>
+                <Container >
+                <Typography pt={2} pb={2}>
+                    {images![dialogOpen.ind].description}
+                </Typography>
+                </Container>
+            </Dialog>             
         </Box>
     )
 }
