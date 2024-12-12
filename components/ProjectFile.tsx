@@ -84,8 +84,8 @@ export default function ProjectFile({project, passThrough, dimensionsFunction, p
     transition: 'all .5s ease-out',
     [theme.breakpoints.up('md')]: {
       top: '-32px',
-      height: `${passedDimensions.height}px`,
-      width: `${passedDimensions.width}px`,
+      height: `${passedDimensions.height/1.5}px`,
+      width: `${passedDimensions.width/1.5}px`,
     },
   }
   const pageTopStyle={

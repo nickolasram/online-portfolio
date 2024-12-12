@@ -95,7 +95,7 @@ export const projectData: Project[]=[
         description: 'The state of the schedule page when my time working with GGC was done.'}, 
         {image: UpdatedGGC,
           alt: 'Picture of the GGC app as you\'ll find it on the app store.',
-          description: `Picture of the GGC app as you\'ll find it on the app store. Visual design updated by the team since I worked on it.`},
+          description: `Picture of the GGC app as you\'ll find it on the app store.`},
       ]
     },
   {
@@ -204,6 +204,9 @@ export const projectData: Project[]=[
         {image: NSCPM,
           alt: 'image of site planes made on miro',
           description: `The design plans I made on Miro for the team with info on general strategy and data models.`},
+          {image: FullADPracticum,
+          alt: 'image of the practicum site',
+          description:`the final home page I built.`}
       ]
     },
   {
@@ -331,6 +334,14 @@ export const LogoArray: Logo[]=[
     background: '#000'
   },
   {
+    alt: 'NextJS Logo',
+    badge: NextSmall
+  },
+  {
+    alt: 'Tailwind Logo',
+    badge: TailwindSmall
+  },
+  {
     alt: 'Amplify Logo',
     badge: AmplifySmall
   },
@@ -379,10 +390,6 @@ export const LogoArray: Logo[]=[
     badge: MongoDBSmall
   },
   {
-    alt: 'NextJS Logo',
-    badge: NextSmall
-  },
-  {
     alt: 'Postgres Logo',
     badge: PostgresSmall
   },
@@ -395,10 +402,6 @@ export const LogoArray: Logo[]=[
     badge: RDSSMall
   },
   {
-    alt: 'Redis Logo',
-    badge: RedisSmall
-  },
-  {
     alt: 'AWS S3 Logo',
     badge: S3Real
   },
@@ -407,11 +410,11 @@ export const LogoArray: Logo[]=[
     badge: SQLSmall
   },
   {
-    alt: 'Tailwind Logo',
-    badge: TailwindSmall
-  },
-  {
     alt: 'TamaGui Logo',
     badge: TamaguiSmall
-  }
+  },
+  {
+    alt: 'Redis Logo',
+    badge: RedisSmall
+  },
 ]

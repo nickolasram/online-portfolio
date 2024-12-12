@@ -238,7 +238,7 @@ export default function Home() {
               cloud computing SAS, and data science. Not only was I able to learn about these topics in the classroom, 
               but I was lucky enough to exercise the skills I learned by helping to develop a number of websites and applications
                for NSC and other clients in an agile-like environment with my cohorts. 
-               While studying at NSC (and even before when I started exploring the topic as a hobby,) 
+               While studying at NSC, 
                the aspect of web development that always appealed to me most was building interesting, 
                readable, intuitive, and quick UIs and UXs. This is why I spent a majority of my time while developing
                 websites and applications at NSC as a front&ndash;end developer working with React 

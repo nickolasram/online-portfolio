@@ -221,6 +221,7 @@ const ImageCarousel=({images}: ICarouselProps)=>{
                     <ImageContainer key={index} description={image.description}>
                         <ZoomInIcon sx={{position: 'absolute', top: 0, right: 0, color: 'grey', fontSize: '52px', backgroundColor: '#77777777'}} onClick={()=>setDialogOpen({bool: true, ind: index})}/>
                         <Image
+                            loading='eager'
                             src={image.image}
                             height={returnImageHeight(index)}
                             width={image.image.width*(returnImageHeight(index)/image.image.height)}
