@@ -50,7 +50,7 @@ import CHQ3 from '@/public/CHQ3.png';
 import CHT from '@/public/CHT.png';
 import CHFC from '@/public/CHFC.png';
 import S3Real from '@/public/S3Real.png';
-import GGCMMain from '@/public/GGCMMAin.png';
+import GGCMMain from '@/public/GGCMMain.png';
 import GGCMCat from '@/public/GGCMCat.png';
 import GGCMSolo from '@/public/GGCMSolo.png';
 import NSCPF1 from '@/public/NSCPFig1.png';
