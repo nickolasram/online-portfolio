@@ -272,7 +272,7 @@ export const projectData: Project[]=[
   {
       title: 'Portfolio Website', 
       abbrTitle: 'Online Portfolio', 
-      github: '/', 
+      github: 'https://github.com/nickolasram/online-portfolio', 
       video: '/',
       role: 'Sole Developer', 
       tags: ['NextJS', 'MUI', 'Amplify'], 
