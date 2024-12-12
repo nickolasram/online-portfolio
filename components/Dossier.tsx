@@ -285,11 +285,11 @@ export default function Dossier({projects}: DossierProps){
                                         pl={MdAndGreater ? 3 : '24px'} 
                                         direction={MdAndGreater?'column':'row'}
                                         >
-                                            <Link href={project.github? project.github : ''} sx={{cursor: project.github? 'pointer':'default', pointerEvents: project.github? 'auto':'none'}}>
+                                            <Link target="_blank" rel="noreferrer" href={project.github? project.github : ''} sx={{cursor: project.github? 'pointer':'default', pointerEvents: project.github? 'auto':'none'}}>
                                                 <GitHubIcon fontSize="large" 
                                                     sx={{color: project.github? "primary.contrastText": "primary.dark", cursor: project.github? "pointer": "default"}}/>
                                             </Link>
-                                            <Link href={project.site ? project.site : ''} sx={{cursor: project.site? "pointer": "default", pointerEvents: project.site? 'auto':'none'}}>
+                                            <Link target="_blank" rel="noreferrer" href={project.site ? project.site : ''} sx={{cursor: project.site? "pointer": "default", pointerEvents: project.site? 'auto':'none'}}>
                                                 <LaunchIcon fontSize="large" 
                                                     sx={{color: project.site? "primary.contrastText": "primary.dark"}}/>
                                             </Link>

@@ -115,14 +115,14 @@ export default function ProductList({
                 <StatusIcon fontSize="small" status={project!.status} /> {project?.status}
               </Typography>
               <Stack direction="row" spacing={2} >
-              <Link href={project?.github? project.github : ''} sx={{cursor: project?.github? 'pointer':'default', pointerEvents: project?.github? 'auto':'none'}}>
+              <Link target="_blank" rel="noreferrer" href={project?.github? project.github : ''} sx={{cursor: project?.github? 'pointer':'default', pointerEvents: project?.github? 'auto':'none'}}>
                 <GitHubIcon 
                   sx={{
                     verticalAlign: 'middle',
                     color: project!.github ? "primary.contrastText": "primary.dark"
                     }} fontSize="large" />
               </Link>
-              <Link href={project?.site? project.site : ''} sx={{cursor: project?.site? 'pointer':'default', pointerEvents: project?.site? 'auto':'none'}}>
+              <Link target="_blank" rel="noreferrer" href={project?.site? project.site : ''} sx={{cursor: project?.site? 'pointer':'default', pointerEvents: project?.site? 'auto':'none'}}>
                 <LaunchIcon 
                   sx={{
                     verticalAlign: 'middle',
