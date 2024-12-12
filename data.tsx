@@ -67,7 +67,7 @@ export const projectData: Project[]=[
   {
       title: 'Geek Girl Con Mobile App', 
       abbrTitle: 'GGC Mobile',
-      github: 'https://github.com/nickolasram/online-portfolio', 
+      github: 'https://github.com/GeekGirlCon/mobile-app', 
       role: 'Frontend Dev', 
       tags: ['Expo', 'React-Native', 'Tamagui'], 
       status: 'Completed', 
