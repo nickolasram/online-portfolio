@@ -163,7 +163,7 @@ export default function Home() {
               I am a recent graduate of North Seattle College (NSC) with a Bachelor of Applied Science in Application Development, 
               specializing in front-end development. This portfolio showcases a selection of projects I worked on both during my 
               studies at NSC and independently. 
-              You'll also find more information about my background, my academic journey, and my goals as a developer.
+              You&apos;ll also find more information about my background, my academic journey, and my goals as a developer.
               </Typography>
           </Box>
         </Box>
