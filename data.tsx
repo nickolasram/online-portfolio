@@ -334,7 +334,7 @@ export const LogoArray: Logo[]=[
     background: '#000'
   },
   {
-    alt: 'NextJS Logo',
+    alt: 'Next.js Logo',
     badge: NextSmall
   },
   {
