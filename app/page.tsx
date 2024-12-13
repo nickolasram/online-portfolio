@@ -160,7 +160,7 @@ export default function Home() {
                   </Typography>
               </Stack>
               <Typography variant='body1' color="#fbf9ff" sx={{maxWidth: '95vw'}}>
-              I am a recent graduate of North Seattle College (NSC) with a Bachelor of Applied Science in Application Development, 
+              &ensp;I am a recent graduate of North Seattle College (NSC) with a Bachelor of Applied Science in Application Development, 
               specializing in front-end development. This portfolio showcases a selection of projects I worked on both during my 
               studies at NSC and independently. 
               You&apos;ll also find more information about my background, my academic journey, and my goals as a developer.
@@ -232,12 +232,12 @@ export default function Home() {
                     }
                   }
                 }
-              >In 2024, I graduated from NSC&apos;s Application Development program, where I built a strong foundation in coding 
+              >&ensp;In 2024, I graduated from NSC&apos;s Application Development program, where I built a strong foundation in coding 
               with Java and Python. The program also focused on full&ndash;stack web development, for both client&ndash;side 
               and server-side, cloud computing (SaaS), and data science. I applied the knowledge I acquired by contributing to the 
               development of websites and applications for NSC and other clients, working in an agile&ndash;like environment alongside my peers.
               <br/>
-              Through this experience, I found that I was most drawn to creating engaging, user&ndash;friendly, and fast&ndash;loading UIs and
+              &ensp;Through this experience, I found that I was most drawn to creating engaging, user&ndash;friendly, and fast&ndash;loading UIs and
               UXs. This passion led me to focus primarily on front&ndash;end development, particularly with React and its associated frameworks and
               libraries. As a result, I&apos;m now eager to pursue a career in front&ndash;end web development.</Typography>
               <Box 
