@@ -79,7 +79,7 @@ export const projectData: Project[]=[
       mobile: "Yes", 
       desktop: 'Yes',
       displayImage: FullGGC,
-      description: `I worked with GeekGirlCon through my school during the summer of 2024 for a few weeks to help build their mobile app.
+      description: `During the summer of 2024, I had the opportunity to collaborate with GeekGirlCon to help develop their mobile app.
                     I served primarily as a front end dev and my focus was on building the initial iteration of the schedule page.
                     My directive at the time was to make it as close to the desktop version of the site as possible so others could
                     better adapt the design for mobile later. Below, you'll see a picture of the schedule page as I left it 
@@ -114,8 +114,7 @@ export const projectData: Project[]=[
     desktop: 'Yes',
     displayImage: FullComplexityHelper,
     description: `This was an independent project I worked during my time at North Seattle College. This site is designed to be
-                  a tool to help students learn about time complexities in algorithms and data structures. I put the project on hold
-                  due to school and work, but intend to finish it. Currently, the general UI/UX for desktop including the main page,
+                  a tool to help students learn about time complexities in algorithms and data structures. Currently, the general UI/UX for desktop including the main page,
                   flashcards, tutorial articles, and review exercises is finished with the actual content being all placeholder. The website
                   is built with React and vanilla CSS and is being hosted on AWS Amplify with various AWS services helping to host and retrieve content.
     `,
@@ -159,10 +158,11 @@ export const projectData: Project[]=[
       mobile: "Yes", 
       desktop: 'No',
       displayImage: FullBelindasMobile,
-      description: `As a student at NSC, I worked on the Android app for the Belinda's Closet program. The program provides students
-      with free clothing if they need it. On the mobile application I worked on the category and product pages from building the pages'
-      layouts and programming the navigation between those pages and the home page. On top of those pages I also worked on some minor visual
-      improvements. This project was my first practical experience building applications in Kotlin and as part of a larger team.`,
+      description: `I contributed to the development of the Android app for the Belinda's Closet program, 
+      which offers students free clothing as needed. My responsibilities focused on the category and product pages, 
+      where I designed and implemented page layouts and programmed the navigation between those pages and the home page. 
+      Additionally, I made several visual enhancements to improve the user experience. This project marked my first hands-on experience with Kotlin and working within a collaborative team environment, 
+      providing valuable exposure to application development and teamwork in a real-world setting.`,
       CarouselImages: [
         {image: GGCMMain,
           alt: 'image of the Main page on the GGC Mobile app',
@@ -224,8 +224,8 @@ export const projectData: Project[]=[
     mobile: "No", 
     desktop: 'Yes',
     displayImage: FullNSCEvents,
-    description: `At NSC, I worked on this site in a testing and consultation capacity. I reviewed pull requests and provided help to 
-    students that were running into similar problems I had encountered while working on the Belinda's Closet website.`,
+    description: `At NSC, I worked on this site in a testing and consultation capacity. I reviewed pull requests and provided 
+    help to students that were running into similar problems I had encountered while working on the Belinda's Closet website.`,
     CarouselImages: [{
       image: FullNSCEvents,
       alt: 'screenshot of the NSC Events website'
@@ -246,10 +246,11 @@ export const projectData: Project[]=[
       mobile: "No", 
       desktop: 'Yes',
       displayImage: FullBelindasWeb,
-      description: `As a student at NSC, I worked on the desktop site for the Belinda's Closet program primarily as a front end dev.
-      The program provides students with free clothing if they need it. I helped build the initial layout in Tailwind and then 
-      helped convert the site over to Material UI and install a standardized layout. I built a couple components as well, but my
-      final task on the project, redesigning the entire home page, is where I'd say I learned the most about Material UI at NSC.`,
+      description: `I worked as a front-end developer on the Belinda's Closet desktop site, 
+      a program that provides free clothing to students in need. My initial contributions involved building the site layout 
+      using Tailwind CSS, before transitioning the site to Material UI and implementing a standardized layout. I also developed 
+      several components. However, my most significant learning experience came during my final task: redesigning the entire homepage. 
+      This project was where I deepened my understanding of Material UI and gained valuable experience at NSC.`,
       CarouselImages: [
         {image: BCW1,
           alt: `image of the initial Belinda's Closet layout`,
@@ -284,9 +285,10 @@ export const projectData: Project[]=[
       mobile: "In Development", 
       desktop: 'Yes',
       displayImage: FullOnlinePortfolio,
-      description: `Built on NextJS with Material UI and running on AWS Amplify, this has been my project since graduating 
-      NSC's Application Development Bachelor's program. It has been much more difficult building a website without a team, 
-      but also incredibly educational on working with Material UI and NextJS.`,
+      description: `This project, built with Next.js and Material UI, has been my focus 
+      since graduating from NSC's Application Development Bachelor's program. While building a 
+      website solo has been challenging, it's also been an incredibly rewarding learning experience, 
+      especially in working with Next.js and Material UI.`,
       CarouselImages: [
         {image: FullOnlinePortfolio, 
           alt: `image of the introduction banner for this site`,

@@ -5,7 +5,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Image from 'next/image';
 import { CarouselImage } from "@/Models/CarouselImage";
 import { Typography } from "@/node_modules/@mui/material/index";
-import { useRef, createRef, useState } from "react";
+import { useRef, createRef, useState, useEffect } from "react";
 import {BrowserView, isMobile} from 'react-device-detect';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 
@@ -13,10 +13,12 @@ interface ImageRowProps {
     children?: React.ReactNode;
     handleClick: (index: number) => void;
     max: number;
+    project: string;
 }
 
 interface ICarouselProps {
     images?: CarouselImage[];
+    project: string;
 }
 
 interface ArrowBoxProps {
@@ -88,10 +90,14 @@ const ImageContainer=({children, description}: ImageContainerProps)=>{
 
 
 
-const ICarouselContent=({children, handleClick, max}: ImageRowProps)=>{
+const ICarouselContent=({children, handleClick, max, project}: ImageRowProps)=>{
+    const theme = useTheme();
     const contentRef = useRef<HTMLElement | null>(null);
     const xPositionRef = useRef<number>(0);
     const positionRef = useRef<number>(0);
+    const universal=['NSCE']
+    const smToMd=['NSCE','GGC']
+    const md=['NSCE','GGC','BCM']
     const ICarouselArrow=({children, position, handleClick, max}: ArrowBoxProps)=>{   
         function nextPosition(){
             if (position === 'left') {
@@ -125,7 +131,16 @@ const ICarouselContent=({children, handleClick, max}: ImageRowProps)=>{
                     backgroundColor: 'primary.dark',
                     zIndex: 99,
                     border: '2px solid #c5b485',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    [theme.breakpoints.up('md')]: {
+                        visibility: md.includes(project)? 'hidden' : 'visible'
+                    },
+                    [theme.breakpoints.between('sm','md')]: {
+                        visibility: smToMd.includes(project)? 'hidden' : 'visible'
+                    },
+                    [theme.breakpoints.down('sm')]: {
+                        visibility: universal.includes(project)? 'hidden' : 'visible'
+                    }
                 }}
                 onClick={nextPosition}
             >
@@ -186,11 +201,14 @@ const ICarouselContent=({children, handleClick, max}: ImageRowProps)=>{
     )
 }
 
-const ImageCarousel=({images}: ICarouselProps)=>{
+const ImageCarousel=({images, project}: ICarouselProps)=>{
     const theme = useTheme();
     const refsArray  =  images!.map(() => createRef<HTMLImageElement>());
+    const containerRef = useRef<HTMLElement | null>(null);
     const MdAndGreater = useMediaQuery(theme.breakpoints.up('md'));
     const [dialogOpen, setDialogOpen] = useState({bool: false, ind: 0});
+    const [bgc, setBgc] = useState('pink')
+
     const handleDialogClose=()=>{
         setDialogOpen({bool: false, ind: 0})
     }
@@ -207,7 +225,8 @@ const ImageCarousel=({images}: ICarouselProps)=>{
 
     return (
         <Box
-        mb={3}
+            ref={containerRef}
+            mb={3}
             sx={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -216,7 +235,7 @@ const ImageCarousel=({images}: ICarouselProps)=>{
                 }
             }}
         >
-            <ICarouselContent handleClick={autoScroll} max={images!.length-1}>
+            <ICarouselContent handleClick={autoScroll} max={images!.length-1} project={project}>
                 {images!.map((image, index)=>(
                     <ImageContainer key={index} description={image.description}>
                         <ZoomInIcon sx={{position: 'absolute', top: 0, right: 0, color: 'grey', fontSize: '52px', backgroundColor: '#77777777'}} onClick={()=>setDialogOpen({bool: true, ind: index})}/>

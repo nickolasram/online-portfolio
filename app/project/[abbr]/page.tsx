@@ -77,7 +77,8 @@ export default function ProductList({
             backgroundPosition: 'center center',
             backgroundSize: project!.displayImage!.width < project!.displayImage!.height ? "55%" : 'cover',
             [theme.breakpoints.up('md')]: {
-              width:'92%'
+              marginInline: 2,
+              width:'90%'
             }
           }}>
           <Box 
@@ -147,8 +148,8 @@ export default function ProductList({
               marginLeft: 2,
               maxWidth: '80%',
               [theme.breakpoints.up('md')]: {
-                marginLeft: 0,
-                maxWidth: '100%',
+                marginLeft: 2,
+                maxWidth: '90%',
                 marginRight: '8%',
               }
             }}
@@ -203,7 +204,7 @@ export default function ProductList({
           </DialogContent>
         </Dialog>
         {project?.CarouselImages &&
-          <ImageCarousel images={project?.CarouselImages}/>
+          <ImageCarousel images={project?.CarouselImages} project={project.abbr}/>
         }
       </Box>
       )

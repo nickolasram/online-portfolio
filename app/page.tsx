@@ -160,9 +160,10 @@ export default function Home() {
                   </Typography>
               </Stack>
               <Typography variant='body1' color="#fbf9ff" sx={{maxWidth: '95vw'}}>
-                Recent graduate from North Seattle College with a BAS in application development where I focused on front end development.
-                Here you&apos;ll find a portfolio of projects I worked on as a student at NSC and independently; more information about myself,
-                my studies, and my goals as a developer; as well as my contact information.
+              I am a recent graduate of North Seattle College (NSC) with a Bachelor of Applied Science in Application Development, 
+              specializing in front-end development. This portfolio showcases a selection of projects I worked on both during my 
+              studies at NSC and independently. 
+              You'll also find more information about my background, my academic journey, and my goals as a developer.
               </Typography>
           </Box>
         </Box>
@@ -231,18 +232,14 @@ export default function Home() {
                     }
                   }
                 }
-              >I recently graduated from NSC&apos;s application development program. 
-              After establishing a foundation in coding with Java and Python, 
-              the program ultimately focused on developing desktop and mobile web&ndash;based applications 
-              across the entire stack with such topics as client&ndash;side and server&ndash;side web development, 
-              cloud computing SAS, and data science. Not only was I able to learn about these topics in the classroom, 
-              but I was lucky enough to exercise the skills I learned by helping to develop a number of websites and applications
-               for NSC and other clients in an agile-like environment with my cohorts. 
-               While studying at NSC, 
-               the aspect of web development that always appealed to me most was building interesting, 
-               readable, intuitive, and quick UIs and UXs. This is why I spent a majority of my time while developing
-                websites and applications at NSC as a front&ndash;end developer working with React 
-                and React&ndash;related frameworks and libraries and why I&apos;m looking for work in front-end web development.</Typography>
+              >In 2024, I graduated from NSC&apos;s Application Development program, where I built a strong foundation in coding 
+              with Java and Python. The program also focused on full&ndash;stack web development, for both client&ndash;side 
+              and server-side, cloud computing (SaaS), and data science. I applied the knowledge I acquired by contributing to the 
+              development of websites and applications for NSC and other clients, working in an agile&ndash;like environment alongside my peers.
+              <br/>
+              Through this experience, I found that I was most drawn to creating engaging, user&ndash;friendly, and fast&ndash;loading UIs and
+              UXs. This passion led me to focus primarily on front&ndash;end development, particularly with React and its associated frameworks and
+              libraries. As a result, I&apos;m now eager to pursue a career in front&ndash;end web development.</Typography>
               <Box 
                 sx={
                   {
